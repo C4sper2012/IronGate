@@ -23,9 +23,10 @@ The IronGate Project secures your house with state of the art security tools lik
 
 
 
-<h3>Jeg har lavet noget Technical setup, Tilføjelser/Rettelser?  /Tobias</h3>
-## Technical setup 
+<h3>Jeg har lavet noget Technical setup, Tilføjelser/Rettelser?</h3>
+/Tobias
 
+## Technical setup "Working progress." 
 
 ### First floor:
 - Climate monitoring in rooms.
