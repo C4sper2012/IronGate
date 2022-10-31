@@ -1,0 +1,10 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+/DesignTimeBuild/
+/v17/
+/.vs/FourWheels.web/DesignTimeBuild/.dtbcache.v2
+*.suo
+*.v1

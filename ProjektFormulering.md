@@ -22,6 +22,7 @@ IronGate er strømvenlig og vil kunne gå i low power mode, hvis det ønskes, fo
 
 Projektet kommer til at bestå af 3 mindre projekter i form af forskellige etager i et hus, som skal kunne kommunikere med hinanden. 
 Fælles for alle projekter er at de skal bruge et DHT11-modul så brugeren kan se temperatur og fugtighed på en telefon eller browser.
+
 Alle projekter vil også have et eller flere specialer som vil være unik for det specifikke projekt.
 
 #### 1. Etage
@@ -36,3 +37,35 @@ Stueetagen skal også have en hub til at vise statusbeskeder eller lys, den skal
 #### Kælderen
 
 Kældersystemet skal kunne alarmere brugeren om oversvømmelse ved hjælp fra et WLDS-modul. 
+
+### Checklists
+
+Her kan man se og tracke fremgang på de forskellige små projecters mål.
+
+##### 1. Etage
+- [ ] WIFI-modul
+- [ ] DHT11-modul
+- [ ] SS-modul
+- [ ] Servo motor
+- [ ] Kommunikation
+
+##### Stueetagen
+- [ ] WIFI-modul
+- [ ] DHT11-modul
+- [ ] US-modul
+- [ ] Servo motor
+- [ ] Kommunikation
+- [ ] RFID-modul
+
+##### Kælderen
+- [ ] WIFI-modul
+- [ ] DHT11-modul
+- [ ] Servo motor
+- [ ] WLDS-modul
+- [ ] Kommunikation
+
+##### Hub
+- [ ] LCD
+- [ ] Status LED
+- [ ] HUB menu
+- [ ] Kommunikation (Skal sættes sammen med stueetagen fysisk)
