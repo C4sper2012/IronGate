@@ -4,8 +4,7 @@
 
 **Titel:** IronGate
 
-## Introduktion
-
+### Introduktion
 
 Internet of Things (IoT) refererer til ideen om at elektroniske apparaters tilstedeværesle, vil kunne effektivisere forskellige aspekter af vores hverdag, som både kan bruges kommercielt eller privat. 
 
@@ -18,3 +17,22 @@ IronGate benytter IoT og sensorere, som simulerer et miljø hvor man bygger mang
 IronGate vil kunne benyttes som bolig og vil sikre ejeren i tilfælde af forsøg på indbrud ved at benytte bevægelses sensorer eller hvis huset er låst, vil det betragte aktivitet som mistænkelig og informere ejeren om aktiviteten og automatisk lukke vinduer og tænde lys.
 
 IronGate er strømvenlig og vil kunne gå i low power mode, hvis det ønskes, for dermed at slukke alt monitorering.
+
+### Projectmål
+
+Projektet kommer til at bestå af 3 mindre projekter i form af forskellige etager i et hus, som skal kunne kommunikere med hinanden. 
+Fælles for alle projekter er at de skal bruge et DHT11-modul så brugeren kan se temperatur og fugtighed på en telefon eller browser.
+Alle projekter vil også have et eller flere specialer som vil være unik for det specifikke projekt.
+
+#### 1. Etage
+
+Vil have lyd sensor modul som skal kunne fortælle om børnene larmer og skal også kunne bruges til at kunne registrere mulige indbrudstyve når ejeren ikke er hjemme.
+
+#### Stueetagen  
+
+Vil have en ultralyds sensor som skal kunne tjekker for bevægelse udenfor huset og derefter lukke alle vinduer i huset for at kunne undgå tyveri. 
+Stueetagen skal også have en hub til at vise statusbeskeder eller lys, den skal også kunne bruges til at styrer lys og andre moduler i huset.
+
+#### Kælderen
+
+Kældersystemet skal kunne alarmere brugeren om oversvømmelse ved hjælp fra et WLDS-modul. 
