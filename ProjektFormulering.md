@@ -38,6 +38,16 @@ Stueetagen skal også have en hub til at vise statusbeskeder eller lys, den skal
 
 Kældersystemet skal kunne alarmere brugeren om oversvømmelse ved hjælp fra et WLDS-modul. 
 
+
+### Virkelige scenarier
+
+1.	Forestil et hus med to etager og en kælder, hver etage har lys og varme i alle rum som bliver styret over husets netværk. Der er også automatiske vinduer i udvalgte rum, som åbner enten manuelt eller hvis temperatur eller fugtighed er for høj.
+
+2.	Dennis tager på arbejde og låser huset med sit ID-kort, dette slår alarmsystemet til, lukker alle vinduer hvis åbne og skruer ned for temperaturen i alle rum.
+
+3.	Dennis er ikke hjemme en dag hvor der er høj sol med varme og hvis temperaturen bliver for høj vil vinduerne på første sal åbne sig en smule, men de åbner kun hvis Dennis aktivt har indstillet det.
+
+
 ### Checklists
 
 Her kan man se og tracke fremgang på de forskellige små projecters mål.
