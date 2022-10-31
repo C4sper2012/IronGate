@@ -6,7 +6,10 @@ The IronGate Project secures your house with state of the art security tools lik
 
  <center><img style="width: 60%;" src="https://blog.gemalto.com/wp-content/uploads/2018/10/IoT-Home-Security.jpg"/></center>
 
-## Technical information
+
+#
+
+### Technical information
  
 | Sensor | Library | Author  | Version |
 |--------|---------|---------|---------|
@@ -20,27 +23,27 @@ The IronGate Project secures your house with state of the art security tools lik
 | MQTT   | MQTT | Joel Gaehwiler | 2.5.0 |
 | Servo  | Servo| Michael Margolis | 2.5.0 |
 
-## Technical setup
+### Technical setup
 
-### First floor
+#### First floor
 - Climate monitoring in room.
 - Window opening system(Temp based).
     - connected to in-door climate.
 - Smart lighting.
 
-### Ground floor
+#### Ground floor
 - RFID Unlock/Lockdown (Affect all systems).
     - Turns on selected lights
     - Closes all windows.
 
-### Basement
+#### Basement
 
 - Moisture/flood monitoring(In case of flood when not home).
     - Alerts users if any flooding is detected.
     - 
 
 
-### All levels:
+#### All levels:
 - All Level has motions sensors that activates when alarm is armed.
 - Main hub(HMI) to control the systems.
 - Bluetooth redundancy if WiFi or MQTT fails?
