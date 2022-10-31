@@ -10,13 +10,13 @@ The IronGate Project secures your house with state of the art security tools lik
  
 | Sensor | Library | Author  | Version |
 |--------|---------|---------|---------|
-| DHT11  | DHT_Unified_Sensor| 1.4.4   |
+| DHT11  | DHT_Unified_Sensor| Adafruit | 1.4.4 |
 | WLDSM  | None    | None    |  None   |
 
 | Device | Library | Author  | Version |
 |--------|---------|---------|---------|
 | OLED   |   SSD1306 |Adafruit | 2.5.7 |
-| OLED   | Adafruit GFX Library| 1.11.3|
+| OLED   | Adafruit GFX Library| Adafruit | 1.11.3 |
 | MQTT   | MQTT | Joel Gaehwiler | 2.5.0 |
 | Servo  | Servo| Michael Margolis | 2.5.0 |
 
@@ -42,7 +42,8 @@ The IronGate Project secures your house with state of the art security tools lik
 ### Basement/Garage:
 
 - Moisture monitoring(In case of flood when not home).
-    - Alerts user?
+    - Alerts users if any flooding is detected.
+    - 
 
 
 ### All levels:
