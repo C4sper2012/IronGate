@@ -43,29 +43,29 @@ Kældersystemet skal kunne alarmere brugeren om oversvømmelse ved hjælp fra et
 Her kan man se og tracke fremgang på de forskellige små projecters mål.
 
 ##### 1. Etage
-- [ ] WIFI-modul
-- [ ] DHT11-modul
-- [ ] SS-modul
-- [ ] Servo motor
-- [ ] Kommunikation
+- [ ] WIFI-modul (Forbindelse til MQTT netværket)
+- [ ] DHT11-modul (Temperatur og luftfugtighed)
+- [ ] SS-modul (Lydsensor)
+- [ ] Servo motor (Vinduer)
+- [ ] Kommunikation (MQTT)
 
 ##### Stueetagen
-- [ ] WIFI-modul
-- [ ] DHT11-modul
-- [ ] US-modul
-- [ ] Servo motor
-- [ ] Kommunikation
-- [ ] RFID-modul
+- [ ] WIFI-modul (Forbindelse til MQTT netværket)
+- [ ] DHT11-modul (Temperatur og luftfugtighed)
+- [ ] US-modul (Ultralyds sensor)
+- [ ] Servo motor (Vinduer)
+- [ ] Kommunikation (MQTT)
+- [ ] RFID-modul (Låsning/oplåsning)
 
 ##### Kælderen
-- [ ] WIFI-modul
-- [ ] DHT11-modul
-- [ ] Servo motor
-- [ ] WLDS-modul
-- [ ] Kommunikation
+- [ ] WIFI-modul (Forbindelse til MQTT netværket)
+- [ ] DHT11-modul (Temperatur og luftfugtighed)
+- [ ] Servo motor (Vinduer)
+- [ ] WLDS-modul (Vandstandsregistreringsmodul)
+- [ ] Kommunikation (MQTT)
 
 ##### Hub
-- [ ] LCD
+- [ ] LCD (Skærm til hub)
 - [ ] Status LED
 - [ ] HUB menu
 - [ ] Kommunikation (Skal sættes sammen med stueetagen fysisk)
