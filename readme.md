@@ -6,8 +6,13 @@ The IronGate Project secures your house with state of the art security tools lik
 
  <center><img style="width: 60%;" src="https://blog.gemalto.com/wp-content/uploads/2018/10/IoT-Home-Security.jpg"/></center>
 
+## Documentaion
 
-#
+### Diagrams
+#### Flow Chart
+ <img src="https://github.com/C4sper2012/IronGate/blob/master/Documentation/Flowchart.png"/>
+ <img src="https://github.com/C4sper2012/IronGate/blob/master/Documentation/HIPO.drawio.png"/>
+
 
 ### Technical information
  
