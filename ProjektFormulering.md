@@ -23,6 +23,8 @@ IronGate er strømvenlig og vil kunne gå i low power mode, hvis det ønskes, fo
 Projektet kommer til at bestå af 3 mindre projekter i form af forskellige etager i et hus, som skal kunne kommunikere med hinanden. 
 Fælles for alle projekter er at de skal bruge et DHT11-modul så brugeren kan se temperatur og fugtighed på en telefon eller browser.
 
+Forestil et hus med to etager og en kælder, hver etage har lys og varme i alle rum som bliver styret over husets netværk. Der er også automatiske vinduer i udvalgte rum, som åbner enten manuelt eller hvis temperatur eller fugtighed er for høj.
+
 Alle projekter vil også have et eller flere specialer som vil være unik for det specifikke projekt.
 
 #### 1. Etage
@@ -41,11 +43,10 @@ Kældersystemet skal kunne alarmere brugeren om oversvømmelse ved hjælp fra et
 
 ### Virkelige scenarier
 
-1.	Forestil et hus med to etager og en kælder, hver etage har lys og varme i alle rum som bliver styret over husets netværk. Der er også automatiske vinduer i udvalgte rum, som åbner enten manuelt eller hvis temperatur eller fugtighed er for høj.
 
-2.	Dennis tager på arbejde og låser huset med sit ID-kort, dette slår alarmsystemet til, lukker alle vinduer hvis åbne og skruer ned for temperaturen i alle rum.
+1.	Dennis tager på arbejde og låser huset med sit ID-kort, dette slår alarmsystemet til, lukker alle vinduer hvis åbne og skruer ned for temperaturen i alle rum.
 
-3.	Dennis er ikke hjemme en dag hvor der er høj sol med varme og hvis temperaturen bliver for høj vil vinduerne på første sal åbne sig en smule, men de åbner kun hvis Dennis aktivt har indstillet det.
+2.	Dennis er ikke hjemme en dag hvor der er høj sol med varme og hvis temperaturen bliver for høj vil vinduerne på første sal åbne sig en smule, men de åbner kun hvis Dennis aktivt har indstillet det.
 
 
 ### Checklists
