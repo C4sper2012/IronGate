@@ -15,33 +15,27 @@ The IronGate Project secures your house with state of the art security tools lik
 
 | Device | Library | Author  | Version |
 |--------|---------|---------|---------|
-| OLED   |   SSD1306 |Adafruit | 2.5.7 |
+| OLED   |   SSD1306 | Adafruit | 2.5.7 |
 | OLED   | Adafruit GFX Library| Adafruit | 1.11.3 |
 | MQTT   | MQTT | Joel Gaehwiler | 2.5.0 |
 | Servo  | Servo| Michael Margolis | 2.5.0 |
 
+## Technical setup
 
-
-
-<h3>Jeg har lavet noget Technical setup, Tilføjelser/Rettelser?</h3>
-/Tobias
-
-## Technical setup "Working progress." 
-
-### First floor:
-- Climate monitoring in rooms.
-- Window opening system(time based event?).
-    - connected to in-door climate?
+### First floor
+- Climate monitoring in room.
+- Window opening system(Temp based).
+    - connected to in-door climate.
 - Smart lighting.
 
-### Ground floor:
-- RFID Unlock/Lockdown (Affect all system systems).
+### Ground floor
+- RFID Unlock/Lockdown (Affect all systems).
     - Turns on selected lights
     - Closes all windows.
 
-### Basement/Garage:
+### Basement
 
-- Moisture monitoring(In case of flood when not home).
+- Moisture/flood monitoring(In case of flood when not home).
     - Alerts users if any flooding is detected.
     - 
 
@@ -50,11 +44,6 @@ The IronGate Project secures your house with state of the art security tools lik
 - All Level has motions sensors that activates when alarm is armed.
 - Main hub(HMI) to control the systems.
 - Bluetooth redundancy if WiFi or MQTT fails?
-
-<br>
-
----
-
 - All peripherals at each level is hooked up to a mainboard using SPI or I2C.
 - The mainboard uses SPI or I2C to connect to a second board with built-in WiFi and Bluetooth.
 - The 3 WiFi boards communicate with each other using MQTT over WiFi. 

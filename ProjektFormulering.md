@@ -31,7 +31,7 @@ Vil have lyd sensor modul som skal kunne fortælle om børnene larmer og skal og
 
 #### Stueetagen  
 
-Vil have en ultralyds sensor som skal kunne tjekker for bevægelse udenfor huset og derefter lukke alle vinduer i huset for at kunne undgå tyveri. 
+Vil have en bevægelsesensor som skal kunne tjekker for bevægelse udenfor huset og derefter lukke alle vinduer i huset for at kunne undgå tyveri. 
 Stueetagen skal også have en hub til at vise statusbeskeder eller lys, den skal også kunne bruges til at styrer lys og andre moduler i huset.
 
 #### Kælderen
@@ -52,7 +52,7 @@ Her kan man se og tracke fremgang på de forskellige små projecters mål.
 ##### Stueetagen
 - [ ] WIFI-modul (Forbindelse til MQTT netværket)
 - [ ] DHT11-modul (Temperatur og luftfugtighed)
-- [ ] US-modul (Ultralyds sensor)
+- [ ] HC-SR501 Pir sensor modul (Bevægelsesensor)
 - [ ] Servo motor (Vinduer)
 - [ ] Kommunikation (MQTT)
 - [ ] RFID-modul (Låsning/oplåsning)
