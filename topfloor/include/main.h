@@ -3,7 +3,9 @@
 
 #include <Arduino.h>
 #include <SPI.h>
-#include "../lib/Servo/Servo.h"
-#include "../lib/DHT11/DHT11.h"
+#include "Servo.h"
+#include "DHT11.h"
+#include "MQTT.h"
+#include "KY037.h"
 
 #endif /* MAIN_H_ */
