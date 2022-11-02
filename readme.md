@@ -20,7 +20,7 @@ This section contains information about what libraries the different devices use
 | None | MQTT | Joel Gaehwiler | 2.5.0 |
 | None | ArduinoJson | Benoit Blanchon | 6.19.4 |
 
-#### Grund floor device
+#### Ground floor device
 | Part | Library | Author  | Version |
 |------|---------|---------|---------|
 | MKR Wifi 1010 | WifiNINA | Arduino | 1.8.13 |
@@ -48,7 +48,7 @@ This section contains information about what permissions the diffrent device hav
 | 1916370 | X | |
 | 1916393 | X | |
 
-#### Grund floor device
+#### Ground floor device
 | Channel | Publish | Subscribe |
 |---------|---------|-----------|
 | 1916369 | X | X |
@@ -80,7 +80,7 @@ This section contains information about what credentials the diffrent devices is
 - ClientId = NAU4KRsqEB05FzIpJCUvBy0
 - Password = vbfXHSLyWjof5dsAFtkeccMh
 
-#### Grund floor device
+#### Ground  floor device
 - Host = mqtt3.thingspeak.com
 - Username = DgciLSs4AAUdCy8AAjsoFgE
 - ClientId = DgciLSs4AAUdCy8AAjsoFgE
@@ -101,12 +101,15 @@ This device is only used for test purposes.
 - Password = hSSRXoNF/co86QYUOwJVZ4jd
 
 ## Diagrams
+### Psysical Architecture
+![Psysical Architecture](Documentation/ArchitectureDiagram.drawio.png "Psysical Architecture")
+
 ### Flowcharts
 This section contains the flowchart of the diffrent devices.
 
 #### First floor device
 
-#### Grund floor device
+#### Ground floor device
 ##### RFID access flowchart
 ![RFID Access Flowchart](Documentation/RFIDAccessFlowchart.png "RFID Access Flowchart")
 
@@ -116,7 +119,7 @@ This section contains the flowchart of the diffrent devices.
 ##### Water level sensor flowchart
 ![Water Level Sensor Flowchart](Documentation/WaterLevelSensorFlowchart.png "Water Level Sensor Flowchart")
 
- ## Use of third party apps and libraries
+## Use of third party apps and libraries
 The diagram, images and flowcharts was created in [Draw.io](https://www.draw.io).
 
 ## Responsibles  
