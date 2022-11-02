@@ -54,11 +54,11 @@ Kældersystemet skal kunne alarmere brugeren om oversvømmelse ved hjælp fra et
 Her kan man se og tracke fremgang på de forskellige små projecters mål.
 
 ##### 1. Etage
-- [ ] WIFI-modul (Forbindelse til MQTT netværket)
-- [ ] DHT11-modul (Temperatur og luftfugtighed)
-- [ ] SS-modul (Lydsensor)
-- [ ] Servo motor (Vinduer)
-- [ ] Kommunikation (MQTT)
+- [X] WIFI-modul (Forbindelse til MQTT netværket)
+- [X] DHT11-modul (Temperatur og luftfugtighed)
+- [X] SS-modul (Lydsensor)
+- [X] Servo motor (Vinduer)
+- [X] Kommunikation (MQTT)
 
 ##### Stueetagen
 - [ ] WIFI-modul (Forbindelse til MQTT netværket)
