@@ -58,11 +58,11 @@ Her kan man se og tracke fremgang på de forskellige små projecters mål.
 - [ ] RFID-modul (Låsning/oplåsning)
 
 ##### Kælderen
-- [ ] WIFI-modul (Forbindelse til MQTT netværket)
-- [ ] DHT11-modul (Temperatur og luftfugtighed)
-- [ ] Servo motor (Vinduer)
-- [ ] WLDS-modul (Vandstandsregistreringsmodul)
-- [ ] Kommunikation (MQTT)
+- [X] WIFI-modul (Forbindelse til MQTT netværket)
+- [X] DHT11-modul (Temperatur og luftfugtighed)
+- [X] Servo motor (Vinduer)
+- [X] WLDS-modul (Vandstandsregistreringsmodul)
+- [X] Kommunikation (MQTT)
 
 ##### Hub
 - [ ] LCD (Skærm til hub)
