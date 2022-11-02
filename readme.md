@@ -56,3 +56,45 @@ The IronGate Project secures your house with state of the art security tools lik
 - The mainboard uses SPI or I2C to connect to a second board with built-in WiFi and Bluetooth.
 - The 3 WiFi boards communicate with each other using MQTT over WiFi. 
 
+### Permissions
+
+#### First floor device
+| Server | Publish | Subscribe |
+|------------------------------|
+| 1916369 | | X |
+| 1916370 | X | |
+| 1916393 | X | |
+
+#### Grund floor device
+| Server | Publish | Subscribe |
+|------------------------------|
+| 1916369 | X | X |
+| 1916370 | X | X |
+| 1916393 | X | X |
+
+#### Bassement floor device
+| Server | Publish | Subscribe |
+|------------------------------|
+| 1916369 | | X |
+| 1916370 | X | |
+| 1916393 | X | |
+
+### Access
+
+#### First floor device
+- Host = mqtt3.thingspeak.com
+- Username = NAU4KRsqEB05FzIpJCUvBy0
+- ClientId = NAU4KRsqEB05FzIpJCUvBy0
+- Password = vbfXHSLyWjof5dsAFtkeccMh
+
+#### Grund floor device
+- Host = mqtt3.thingspeak.com
+- Username = DgciLSs4AAUdCy8AAjsoFgE
+- ClientId = DgciLSs4AAUdCy8AAjsoFgE
+- Password = GYsbytl/X62bjKR9JbYHEsQP
+
+#### Bassement floor device
+- Host = mqtt3.thingspeak.com
+- Username = CQ0EDQI2GxoiETYQEAAwEhE
+- ClientId = CQ0EDQI2GxoiETYQEAAwEhE
+- Password = ZZP3jZxHza3XO1XMJ4AFbk65
