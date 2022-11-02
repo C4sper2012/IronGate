@@ -60,21 +60,21 @@ The IronGate Project secures your house with state of the art security tools lik
 
 #### First floor device
 | Server | Publish | Subscribe |
-|------------------------------|
+|--------|---------|-----------|
 | 1916369 | | X |
 | 1916370 | X | |
 | 1916393 | X | |
 
 #### Grund floor device
 | Server | Publish | Subscribe |
-|------------------------------|
+|--------|---------|-----------|
 | 1916369 | X | X |
 | 1916370 | X | X |
 | 1916393 | X | X |
 
 #### Bassement floor device
 | Server | Publish | Subscribe |
-|------------------------------|
+|--------|---------|-----------|
 | 1916369 | | X |
 | 1916370 | X | |
 | 1916393 | X | |
