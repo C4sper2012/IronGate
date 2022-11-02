@@ -7,7 +7,7 @@ The IronGate Project secures your house with state of the art security tools lik
  <center><img style="width: 60%;" src="https://blog.gemalto.com/wp-content/uploads/2018/10/IoT-Home-Security.jpg"/></center>
 
 ## Goals
-Find these under <a href="https://github.com/C4sper2012/IronGate/blob/master/ProjektFormulering.md">ProjektFormulering.md</a>
+Find these under [ProjektFormulering.md](ProjektFormulering.md)
 
 ## Technical Details
 ### Libraries
