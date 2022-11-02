@@ -63,14 +63,14 @@ The only devices that can subscribe to this channel is the **Ground floor device
 This section contains information about what fields the diffrent devices is using.
 
 #### 1916369 - IronGate-WindowControl
-| Devices | Field | Purpose |
+| Device | Field | Purpose |
 |---------|-------|---------|
 | Bassement | Field1 | Servo controls |
 | Ground floor | Field3 | Servo controls |
 | First floor | Field5 | Servo controls |
 
 #### 1916370 - IronGate-TemperatureAndHumidity
-| Devices | Field | Purpose |
+| Device | Field | Purpose |
 |---------|-------|---------|
 | Bassement | Field1 | Temperature data |
 | Bassement | Field2 | Humidity data |
@@ -80,7 +80,7 @@ This section contains information about what fields the diffrent devices is usin
 | First floor | Field8 | Humidity data |
 
 #### 1916393 - IronGate-Uncategorized
-| Devices | Field | Purpose |
+| Device | Field | Purpose |
 |---------|-------|---------|
 | Bassement | Field1 | Water level data |
 | Ground floor | Field4 | Motion sensor data |
