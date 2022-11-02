@@ -101,6 +101,9 @@ This device is only used for test purposes.
 - Password = hSSRXoNF/co86QYUOwJVZ4jd
 
 ## Diagrams
+### Psysical Architecture
+![Psysical Architecture](Documentation/ArchitectureDiagram.drawio.png "Psysical Architecture")
+
 ### Flowcharts
 This section contains the flowchart of the diffrent devices.
 
