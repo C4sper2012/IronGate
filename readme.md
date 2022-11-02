@@ -6,80 +6,73 @@ The IronGate Project secures your house with state of the art security tools lik
 
  <center><img style="width: 60%;" src="https://blog.gemalto.com/wp-content/uploads/2018/10/IoT-Home-Security.jpg"/></center>
 
-## Documentaion
-
-### Diagrams
-#### Flow Chart
- <img src="https://github.com/C4sper2012/IronGate/blob/master/Documentation/Flowchart.png"/>
- <img src="https://github.com/C4sper2012/IronGate/blob/master/Documentation/HIPO.drawio.png"/>
-
-
-### Technical information
- 
-| Sensor | Library | Author  | Version |
-|--------|---------|---------|---------|
-| DHT11  | DHT_Unified_Sensor| Adafruit | 1.4.4 |
-| WLDSM  | None    | None    |  None   |
-
-| Device | Library | Author  | Version |
-|--------|---------|---------|---------|
-| OLED   |   SSD1306 | Adafruit | 2.5.7 |
-| OLED   | Adafruit GFX Library| Adafruit | 1.11.3 |
-| MQTT   | MQTT | Joel Gaehwiler | 2.5.0 |
-| Servo  | Servo| Michael Margolis | 2.5.0 |
-
-### Technical setup
-
-#### First floor
-- Climate monitoring in room.
-- Window opening system(Temp based).
-    - connected to in-door climate.
-- Smart lighting.
-
-#### Ground floor
-- RFID Unlock/Lockdown (Affect all systems).
-    - Turns on selected lights
-    - Closes all windows.
-
-#### Basement
-
-- Moisture/flood monitoring(In case of flood when not home).
-    - Alerts users if any flooding is detected.
-    - 
-
-
-#### All levels:
-- All Level has motions sensors that activates when alarm is armed.
-- Main hub(HMI) to control the systems.
-- Bluetooth redundancy if WiFi or MQTT fails?
-- All peripherals at each level is hooked up to a mainboard using SPI or I2C.
-- The mainboard uses SPI or I2C to connect to a second board with built-in WiFi and Bluetooth.
-- The 3 WiFi boards communicate with each other using MQTT over WiFi. 
-
-### Permissions
+## Technical Details
+### Libraries
+This section contains information about what libraries the different devices uses.
 
 #### First floor device
-| Server | Publish | Subscribe |
-|--------|---------|-----------|
+| Part | Library | Author  | Version |
+|------|---------|---------|---------|
+| MKR Wifi 1010 | WifiNINA | Arduino | 1.8.13 |
+| DHT11 | Adafruit Unified Sensor | Adafruit | 1.1.6 |
+| DHT11 | DHT sensor library | Adafruit | 1.4.4 |
+| Servo | Adafruit SoftServo | Adafruit | 1.0.2 |
+| None | MQTT | Joel Gaehwiler | 2.5.0 |
+| None | ArduinoJson | Benoit Blanchon | 6.19.4 |
+
+#### Grund floor device
+| Part | Library | Author  | Version |
+|------|---------|---------|---------|
+| MKR Wifi 1010 | WifiNINA | Arduino | 1.8.13 |
+| DHT11 | Adafruit Unified Sensor | Adafruit | 1.1.6 |
+| DHT11 | DHT sensor library | Adafruit | 1.4.4 |
+| Servo | Adafruit SoftServo | Adafruit | 1.0.2 |
+| None | MQTT | Joel Gaehwiler | 2.5.0 |
+
+#### Bassement floor device
+| Part | Library | Author  | Version |
+|------|---------|---------|---------|
+| MKR Wifi 1010 | WifiNINA | Arduino | 1.8.13 |
+| DHT11 | Adafruit Unified Sensor | Adafruit | 1.1.6 |
+| DHT11 | DHT sensor library | Adafruit | 1.4.4 |
+| Servo | Adafruit SoftServo | Adafruit | 1.0.2 |
+| None | MQTT | Joel Gaehwiler | 2.5.0 |
+
+### Permissions
+This section contains information about what permissions the diffrent device have on the ThingSpeak broker.
+
+#### First floor device
+| Channel | Publish | Subscribe |
+|---------|---------|-----------|
 | 1916369 | | X |
 | 1916370 | X | |
 | 1916393 | X | |
 
 #### Grund floor device
-| Server | Publish | Subscribe |
-|--------|---------|-----------|
+| Channel | Publish | Subscribe |
+|---------|---------|-----------|
 | 1916369 | X | X |
 | 1916370 | X | X |
 | 1916393 | X | X |
 
 #### Bassement floor device
-| Server | Publish | Subscribe |
-|--------|---------|-----------|
+| Channel | Publish | Subscribe |
+|---------|---------|-----------|
 | 1916369 | | X |
 | 1916370 | X | |
 | 1916393 | X | |
 
+#### Client test device
+This device is only used for test purposes.
+
+| Channel | Publish | Subscribe |
+|---------|---------|-----------|
+| 1916369 | X | X |
+| 1916370 | X | X |
+| 1916393 | X | X |
+
 ### Access
+This section contains information about what credentials the diffrent devices is using.
 
 #### First floor device
 - Host = mqtt3.thingspeak.com
@@ -98,3 +91,37 @@ The IronGate Project secures your house with state of the art security tools lik
 - Username = CQ0EDQI2GxoiETYQEAAwEhE
 - ClientId = CQ0EDQI2GxoiETYQEAAwEhE
 - Password = ZZP3jZxHza3XO1XMJ4AFbk65
+
+#### Client test device
+This device is only used for test purposes.
+
+- Host = mqtt3.thingspeak.com
+- Username = GCcqATMiOBASNBspJzkSMwI
+- ClientId = GCcqATMiOBASNBspJzkSMwI
+- Password = hSSRXoNF/co86QYUOwJVZ4jd
+
+## Diagrams
+### Flowcharts
+This section contains the flowchart of the diffrent devices.
+
+#### First floor device
+
+#### Grund floor device
+##### RFID access flowchart
+![RFID Access Flowchart](Documentation/RFIDAccessFlowchart.png "RFID Access Flowchart")
+
+##### HIPO flowchart
+![HIPO](Documentation/HIPO.drawio.png "HIPO")
+#### Bassement floor device
+##### Water level sensor flowchart
+![Water Level Sensor Flowchart](Documentation/WaterLevelSensorFlowchart.png "Water Level Sensor Flowchart")
+
+ ## Use of third party apps and libraries
+The diagram, images and flowcharts was created in [Draw.io](https://www.draw.io).
+
+## Responsibles  
+|Name|Role|
+|----|----|
+|Nicklas|Developer|
+|Casper|Developer|
+|Tobias|Developer|
