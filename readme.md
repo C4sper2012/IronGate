@@ -7,7 +7,7 @@ The IronGate Project secures your house with state of the art security tools lik
  <center><img style="width: 60%;" src="https://blog.gemalto.com/wp-content/uploads/2018/10/IoT-Home-Security.jpg"/></center>
 
 ## Goals
-Find these under <a href="https://github.com/C4sper2012/IronGate/blob/master/ProjektFormulering.md">ProjektFormulering.md</a>
+Find these under [ProjektFormulering.md](ProjektFormulering.md)
 
 ## Technical Details
 ### Libraries
@@ -40,6 +40,51 @@ This section contains information about what libraries the different devices use
 | DHT11 | DHT sensor library | Adafruit | 1.4.4 |
 | Servo | Adafruit SoftServo | Adafruit | 1.0.2 |
 | None | MQTT | Joel Gaehwiler | 2.5.0 |
+
+### Channel descriptions
+This section contains descriptions about all the channels the devices uses.
+
+#### 1916369 - IronGate-WindowControl
+The *1916369* channel is the IronGate window control channel and is used by the diffrent devices to subscribe and listen to.
+
+The only devices that also has publish permission on this channel is the **Ground floor device** and the **Client test device**.
+
+#### 1916370 - IronGate-TemperatureAndHumidity
+The *1916370* channel is the IronGate temperatures and humidity channel and is used by all devices to publish their temperatures and humidity data to.
+
+The only devices that can subscribe to this channel is the **Ground floor device** and the **Client test device**.
+
+#### 1916393 - IronGate-Uncategorized
+The *1916393* channel is the IronGate uncategorized data channel and is used for specific data like the *WLDS-Modul* water level and the *SS-Modul* sound detected data.
+
+The only devices that can subscribe to this channel is the **Ground floor device** and the **Client test device**.
+
+### Channel fields
+This section contains information about what fields the diffrent devices is using.
+
+#### 1916369 - IronGate-WindowControl
+| Device | Field | Purpose |
+|---------|-------|---------|
+| Bassement | Field1 | Servo controls |
+| Ground floor | Field3 | Servo controls |
+| First floor | Field5 | Servo controls |
+
+#### 1916370 - IronGate-TemperatureAndHumidity
+| Device | Field | Purpose |
+|---------|-------|---------|
+| Bassement | Field1 | Temperature data |
+| Bassement | Field2 | Humidity data |
+| Ground floor | Field4 | Temperature data |
+| Ground floor | Field5 | Humidity data |
+| First floor | Field7 | Temperature data |
+| First floor | Field8 | Humidity data |
+
+#### 1916393 - IronGate-Uncategorized
+| Device | Field | Purpose |
+|---------|-------|---------|
+| Bassement | Field1 | Water level data |
+| Ground floor | Field4 | Motion sensor data |
+| First floor | Field7 | Sound sensor data |
 
 ### Permissions
 This section contains information about what permissions the diffrent device have on the ThingSpeak broker.
