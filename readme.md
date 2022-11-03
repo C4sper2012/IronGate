@@ -162,6 +162,9 @@ This section contains the flowchart of the diffrent devices.
 ##### RFID access flowchart
 ![RFID Access Flowchart](Documentation/RFIDAccessFlowchart.png "RFID Access Flowchart")
 
+##### Climate control flowchart
+![Climate control flowchart](Documentation/Climate.drawio.png "Climate control flowchart")
+
 ##### HIPO flowchart
 ![HIPO](Documentation/HIPO.drawio.png "HIPO")
 #### Bassement floor device
