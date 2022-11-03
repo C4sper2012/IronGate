@@ -39,6 +39,7 @@ This section contains information about what libraries the different devices use
 | DHT11 | Adafruit Unified Sensor | Adafruit | 1.1.6 |
 | DHT11 | DHT sensor library | Adafruit | 1.4.4 |
 | Servo | Adafruit SoftServo | Adafruit | 1.0.2 |
+| OLED | Addafruit SSD1306 | Adafruit | 2.5.6 |
 | None | MQTT | Joel Gaehwiler | 2.5.0 |
 
 ### Channel descriptions
@@ -126,7 +127,7 @@ This section contains information about what credentials the diffrent devices is
 - Host = mqtt3.thingspeak.com
 - Username = NAU4KRsqEB05FzIpJCUvBy0
 - ClientId = NAU4KRsqEB05FzIpJCUvBy0
-- Password = vbfXHSLyWjof5dsAFtkeccMh
+- Password = lDoIYJHbpSkvHVOXAO+eqa/M
 
 #### Ground  floor device
 - Host = mqtt3.thingspeak.com
@@ -160,6 +161,9 @@ This section contains the flowchart of the diffrent devices.
 #### Ground floor device
 ##### RFID access flowchart
 ![RFID Access Flowchart](Documentation/RFIDAccessFlowchart.png "RFID Access Flowchart")
+
+##### Climate control flowchart
+![Climate control flowchart](Documentation/Climate.drawio.png "Climate control flowchart")
 
 ##### HIPO flowchart
 ![HIPO](Documentation/HIPO.drawio.png "HIPO")
