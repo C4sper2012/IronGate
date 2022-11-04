@@ -164,6 +164,9 @@ This section contains the flowchart of the diffrent devices.
 ##### RFID access flowchart
 ![RFID Access Flowchart](Documentation/RFIDAccessFlowchart.png "RFID Access Flowchart")
 
+##### RFID simplified flowchart
+![RFID simplified flowchart](Documentation/RFID.drawio.png "RFID simplified flowchart")
+
 ##### Climate control flowchart
 ![Climate control flowchart](Documentation/Climate.drawio.png "Climate control flowchart")
 
