@@ -59,11 +59,11 @@ Her kan man se og tracke fremgang på de forskellige små projecters mål.
 - [X] SS-modul (Lydsensor)
 - [X] Servo motor (Vinduer)
 - [X] Kommunikation (MQTT)
+- [X] HC-SR04 US sensor modul (Bevægelsesensor)
 
 ##### Stueetagen
 - [X] WIFI-modul (Forbindelse til MQTT netværket)
 - [X] DHT11-modul (Temperatur og luftfugtighed)
-- [ ] HC-SR501 Pir sensor modul (Bevægelsesensor)
 - [X] Servo motor (Vinduer)
 - [X] Kommunikation (MQTT)
 - [X] RFID-modul (Låsning/oplåsning)
