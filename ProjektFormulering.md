@@ -61,12 +61,12 @@ Her kan man se og tracke fremgang på de forskellige små projecters mål.
 - [X] Kommunikation (MQTT)
 
 ##### Stueetagen
-- [ ] WIFI-modul (Forbindelse til MQTT netværket)
-- [ ] DHT11-modul (Temperatur og luftfugtighed)
+- [X] WIFI-modul (Forbindelse til MQTT netværket)
+- [X] DHT11-modul (Temperatur og luftfugtighed)
 - [ ] HC-SR501 Pir sensor modul (Bevægelsesensor)
-- [ ] Servo motor (Vinduer)
-- [ ] Kommunikation (MQTT)
-- [ ] RFID-modul (Låsning/oplåsning)
+- [X] Servo motor (Vinduer)
+- [X] Kommunikation (MQTT)
+- [X] RFID-modul (Låsning/oplåsning)
 
 ##### Kælderen
 - [X] WIFI-modul (Forbindelse til MQTT netværket)
@@ -76,7 +76,7 @@ Her kan man se og tracke fremgang på de forskellige små projecters mål.
 - [X] Kommunikation (MQTT)
 
 ##### Hub
-- [ ] LCD (Skærm til hub)
-- [ ] Status LED
-- [ ] HUB menu
-- [ ] Kommunikation (Skal sættes sammen med stueetagen fysisk)
+- [X] OLED (Skærm til hub)
+- [X] Status LED
+- [X] HUB menu
+- [X] Kommunikation (Skal sættes sammen med stueetagen fysisk)
