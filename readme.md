@@ -22,6 +22,8 @@ This section contains information about what libraries the different devices use
 | Servo | Adafruit SoftServo | Adafruit | 1.0.2 |
 | None | MQTT | Joel Gaehwiler | 2.5.0 |
 | None | ArduinoJson | Benoit Blanchon | 6.19.4 |
+| OLED | Addafruit SSD1306 | Adafruit | 2.5.6 |
+| OLED | Adafruit GFX Library | Adafruit | 1.11.3 |
 
 #### Ground floor device
 | Part | Library | Author  | Version |
