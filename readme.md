@@ -48,7 +48,7 @@ This section contains descriptions about all the channels the devices uses.
 #### 1916369 - IronGate-WindowControl
 The *1916369* channel is the IronGate window control channel and is used by the diffrent devices to subscribe and listen to.
 
-The only devices that also has publish permission on this channel is the **Ground floor device** and the **Client test device**.
+The only devices that also has publish permission on this channel is the **Ground floor device**, **First floor device** and the **Client test device**.
 
 #### 1916370 - IronGate-TemperatureAndHumidity
 The *1916370* channel is the IronGate temperatures and humidity channel and is used by all devices to publish their temperatures and humidity data to.
@@ -93,7 +93,7 @@ This section contains information about what permissions the diffrent device hav
 #### First floor device
 | Channel | Publish | Subscribe |
 |---------|---------|-----------|
-| 1916369 | | X |
+| 1916369 | X | X |
 | 1916370 | X | |
 | 1916393 | X | |
 
