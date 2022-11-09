@@ -3,12 +3,39 @@
     x:Class="IronGateApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:IronGateApp.Controls"
     xmlns:local="clr-namespace:IronGateApp"
     Shell.FlyoutBehavior="Disabled">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <Shell.FlyoutHeader>
+        <controls:FlyoutHeader />
+    </Shell.FlyoutHeader>
+
+    <FlyoutItem Title="Home">
+        <Tab>
+            
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Climate">
+        <Tab>
+            
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Windows">
+        <Tab>
+            
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Detection">
+        <Tab>
+
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Settings">
+        <Tab>
+
+        </Tab>
+    </FlyoutItem>
+
 
 </Shell>
