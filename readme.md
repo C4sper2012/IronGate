@@ -22,6 +22,8 @@ This section contains information about what libraries the different devices use
 | Servo | Adafruit SoftServo | Adafruit | 1.0.2 |
 | None | MQTT | Joel Gaehwiler | 2.5.0 |
 | None | ArduinoJson | Benoit Blanchon | 6.19.4 |
+| OLED | Addafruit SSD1306 | Adafruit | 2.5.6 |
+| OLED | Adafruit GFX Library | Adafruit | 1.11.3 |
 
 #### Ground floor device
 | Part | Library | Author  | Version |
@@ -161,6 +163,9 @@ This section contains the flowchart of the diffrent devices.
 #### Ground floor device
 ##### RFID access flowchart
 ![RFID Access Flowchart](Documentation/RFIDAccessFlowchart.png "RFID Access Flowchart")
+
+##### RFID simplified flowchart
+![RFID simplified flowchart](Documentation/RFID.drawio.png "RFID simplified flowchart")
 
 ##### Climate control flowchart
 ![Climate control flowchart](Documentation/Climate.drawio.png "Climate control flowchart")
