@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IronGateApp.Models
+namespace IronGateApp.Models;
+
+public partial class Settings : ObservableObject
 {
-    public partial class Settings : ObservableObject
-    {
-        [ObservableProperty]
-        bool _shouldSendNotifications;
-    }
+    [ObservableProperty]
+    bool _shouldSendNotifications;
 }
