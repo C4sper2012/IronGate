@@ -12,35 +12,7 @@
         <control:FlyoutHeader />
     </Shell.FlyoutHeader>
 
-
-    <FlyoutItem Title="Home">
-        <Tab>
-            <ShellContent ContentTemplate="{DataTemplate views:MainPage}" />
-        </Tab>
-    </FlyoutItem>
-    <FlyoutItem Title="Climate">
-        <Tab>
-            <ShellContent ContentTemplate="{DataTemplate views:ClimatePage}" />
-        </Tab>
-    </FlyoutItem>
-    <FlyoutItem Title="Windows">
-        <Tab>
-            <ShellContent ContentTemplate="{DataTemplate views:WindowsPage}" />
-        </Tab>
-    </FlyoutItem>
-    <FlyoutItem Title="Sensors">
-        <Tab>
-            <ShellContent ContentTemplate="{DataTemplate views:SensorPage}" />
-        </Tab>
-    </FlyoutItem>
-    <FlyoutItem Title="Settings">
-        <Tab>
-            <ShellContent ContentTemplate="{DataTemplate views:SettingsPage}" />
-        </Tab>
-    </FlyoutItem>
-
-
-    <!--<ShellContent
+    <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate views:MainPage}" />
     <ShellContent
@@ -54,8 +26,7 @@
         ContentTemplate="{DataTemplate views:SensorPage}" />
     <ShellContent
         Title="Settings"
-        ContentTemplate="{DataTemplate views:SettingsPage}" />-->
-    
+        ContentTemplate="{DataTemplate views:SettingsPage}" />
     
 
 </Shell>
