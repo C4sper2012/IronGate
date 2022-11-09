@@ -53,12 +53,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Remove="Controls\FlyoutHeaderDetail.xaml" />
-	  <MauiXaml Remove="Controls\FlyoutHeaderFlyout.xaml" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="Controls\FlyoutHeader.xaml">
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
 	</ItemGroup>
 
