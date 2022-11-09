@@ -2,14 +2,14 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IronGateApp.Controls.FlyoutHeader"
-             HeightRequest="200">
-
+             HeightRequest="100">
+             
     <Grid BackgroundColor="Black">
         <Label Text="IronGate"
                TextColor="White"
                FontAttributes="Bold"
+               FontSize="Large"
                HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center"/>
     </Grid>
-    
 </ContentView>

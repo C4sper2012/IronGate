@@ -3,39 +3,28 @@
     x:Class="IronGateApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:IronGateApp.Controls"
-    xmlns:local="clr-namespace:IronGateApp.Views"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:control="clr-namespace:IronGateApp.Controls"
+    xmlns:views="clr-namespace:IronGateApp.Views"
+    x:Name="shell">
 
     <Shell.FlyoutHeader>
-        <controls:FlyoutHeader />
+        <control:FlyoutHeader />
     </Shell.FlyoutHeader>
 
-    <FlyoutItem Title="Home">
-        <Tab>
-            
-        </Tab>
-    </FlyoutItem>
-    <FlyoutItem Title="Climate">
-        <Tab>
-            
-        </Tab>
-    </FlyoutItem>
-    <FlyoutItem Title="Windows">
-        <Tab>
-            
-        </Tab>
-    </FlyoutItem>
-    <FlyoutItem Title="Detection">
-        <Tab>
-
-        </Tab>
-    </FlyoutItem>
-    <FlyoutItem Title="Settings">
-        <Tab>
-
-        </Tab>
-    </FlyoutItem>
-
-
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate views:MainPage}" />
+    <ShellContent
+        Title="Climate"
+        ContentTemplate="{DataTemplate views:ClimatePage}" />
+    <ShellContent
+        Title="Windows"
+        ContentTemplate="{DataTemplate views:WindowsPage}" />
+    <ShellContent
+        Title="Sensors"
+        ContentTemplate="{DataTemplate views:SensorPage}" />
+    <ShellContent
+        Title="Settings"
+        ContentTemplate="{DataTemplate views:SettingsPage}" />
+        
 </Shell>
