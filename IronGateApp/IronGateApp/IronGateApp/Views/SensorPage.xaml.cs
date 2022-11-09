@@ -1,9 +1,10 @@
-namespace IronGateApp.Views;
-
-public partial class SensorPage : ContentPage
+namespace IronGateApp.Views
 {
-	public SensorPage()
-	{
-		InitializeComponent();
-	}
+    public partial class SensorPage : ContentPage
+    {
+        public SensorPage()
+        {
+            InitializeComponent();
+        }
+    }
 }

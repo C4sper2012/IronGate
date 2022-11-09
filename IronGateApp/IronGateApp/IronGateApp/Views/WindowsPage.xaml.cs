@@ -1,9 +1,10 @@
-namespace IronGateApp.Views;
-
-public partial class WindowsPage : ContentPage
+namespace IronGateApp.Views
 {
-	public WindowsPage()
-	{
-		InitializeComponent();
-	}
+    public partial class WindowsPage : ContentPage
+    {
+        public WindowsPage()
+        {
+            InitializeComponent();
+        }
+    }
 }
