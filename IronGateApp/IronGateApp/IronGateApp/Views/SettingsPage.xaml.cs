@@ -1,9 +1,10 @@
-namespace IronGateApp.Views;
-
-public partial class SettingsPage : ContentPage
+namespace IronGateApp.Views
 {
-	public SettingsPage()
-	{
-		InitializeComponent();
-	}
+    public partial class SettingsPage : ContentPage
+    {
+        public SettingsPage()
+        {
+            InitializeComponent();
+        }
+    }
 }

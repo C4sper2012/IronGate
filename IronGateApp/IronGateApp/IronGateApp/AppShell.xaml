@@ -7,7 +7,6 @@
     xmlns:views="clr-namespace:IronGateApp.Views"
     x:Name="shell">
 
-
     <Shell.FlyoutHeader>
         <control:FlyoutHeader />
     </Shell.FlyoutHeader>
@@ -27,6 +26,5 @@
     <ShellContent
         Title="Settings"
         ContentTemplate="{DataTemplate views:SettingsPage}" />
-    
-
+        
 </Shell>

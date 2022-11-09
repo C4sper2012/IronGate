@@ -1,4 +1,4 @@
-﻿namespace IronGateApp.Views
+namespace IronGateApp.Views
 {
 	public partial class MainPage : ContentPage
 	{

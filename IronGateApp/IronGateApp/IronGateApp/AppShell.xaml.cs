@@ -1,4 +1,4 @@
-﻿using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls;
 
 namespace IronGateApp
 {
@@ -7,10 +7,7 @@ namespace IronGateApp
         public AppShell()
         {
             InitializeComponent();
-            BindingContext= this;
-
-
-            //Routing.RegisterRoute();
+            BindingContext = this;
         }
     }
 }

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IronGateApp.Controls.FlyoutHeader"
              HeightRequest="100">
-
+             
     <Grid BackgroundColor="Black">
         <Label Text="IronGate"
                TextColor="White"
@@ -12,5 +12,4 @@
                HorizontalTextAlignment="Center"
                VerticalTextAlignment="Center"/>
     </Grid>
-    
 </ContentView>
