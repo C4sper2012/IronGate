@@ -1,9 +1,10 @@
-namespace IronGateApp.Controls;
-
-public partial class FlyoutHeader : ContentView
+namespace IronGateApp.Controls
 {
-	public FlyoutHeader()
-	{
-		InitializeComponent();
-	}
+    public partial class FlyoutHeader : ContentView
+    {
+        public FlyoutHeader()
+        {
+            InitializeComponent();
+        }
+    }
 }

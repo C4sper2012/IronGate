@@ -1,9 +1,10 @@
-﻿namespace IronGateApp;
-
-public partial class AppShell : Shell
+﻿namespace IronGateApp
 {
-    public AppShell()
+    public partial class AppShell : Shell
     {
-        InitializeComponent();
+        public AppShell()
+        {
+            InitializeComponent();
+        }
     }
 }

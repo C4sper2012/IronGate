@@ -1,12 +1,10 @@
-﻿namespace IronGateApp.Views;
-
-public partial class MainPage : ContentPage
+﻿namespace IronGateApp.Views
 {
-    public MainPage()
+    public partial class MainPage : ContentPage
     {
-        InitializeComponent();
+        public MainPage()
+        {
+            InitializeComponent();
+        }
     }
 }
-
-
-

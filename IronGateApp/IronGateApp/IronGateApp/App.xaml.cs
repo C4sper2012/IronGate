@@ -1,11 +1,12 @@
-﻿namespace IronGateApp;
-
-public partial class App : Application
+﻿namespace IronGateApp
 {
-    public App()
+    public partial class App : Application
     {
-        InitializeComponent();
+        public App()
+        {
+            InitializeComponent();
 
-        MainPage = new AppShell();
+            MainPage = new AppShell();
+        }
     }
 }
