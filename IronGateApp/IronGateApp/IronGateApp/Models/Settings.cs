@@ -15,7 +15,7 @@ namespace IronGateApp.Models
         [ObservableProperty]
         bool _shouldCallPoliceOnMotionDetected;
 
-
-
+        [ObservableProperty]
+        bool _shouldLogMotionEntriesInApp;
     }
 }
