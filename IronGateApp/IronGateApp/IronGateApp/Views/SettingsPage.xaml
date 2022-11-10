@@ -4,7 +4,7 @@
              x:Class="IronGateApp.Views.SettingsPage"
              xmlns:viewmodel="clr-namespace:IronGateApp.ViewModels"
              x:DataType="viewmodel:SettingsViewModel"
-             Title="Settings">
+             Title="Setting">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Save" Command="{Binding SaveSettingsCommand}"  Order="Primary" Priority="0" />
     </ContentPage.ToolbarItems>
@@ -21,7 +21,7 @@
             </TableSection>
             <TableSection Title="Emergency services">
                 <SwitchCell Text="Call emergency services on motion detected" On="{Binding Setting.ShouldCallPoliceOnMotionDetected}"/>
-                <SwitchCell Text="Log when a motion is detected" On="{Binding Setting.ShouldCallPoliceOnMotionDetected}"/>
+                <SwitchCell Text="Log when a motion is detected" On="{Binding Setting.ShouldLogMotionEntriesInApp}"/>
             </TableSection>
         </TableRoot>
     </TableView>

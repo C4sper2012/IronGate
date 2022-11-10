@@ -24,7 +24,7 @@
         Title="Sensors"
         ContentTemplate="{DataTemplate views:SensorPage}" />
     <ShellContent
-        Title="Settings"
+        Title="Setting"
         ContentTemplate="{DataTemplate views:SettingsPage}" />
         
 </Shell>
