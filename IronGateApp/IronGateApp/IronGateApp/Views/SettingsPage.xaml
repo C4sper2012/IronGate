@@ -4,19 +4,25 @@
              x:Class="IronGateApp.Views.SettingsPage"
              xmlns:viewmodel="clr-namespace:IronGateApp.ViewModels"
              x:DataType="viewmodel:SettingsViewModel"
-             Title="Settings">
+             Title="Setting">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Command="{Binding SaveSettingsCommand}"  Order="Primary" Priority="0" />
+    </ContentPage.ToolbarItems>
     <TableView Intent="Settings">
         <TableRoot>
             <TableSection Title="Sensor notifications">
                 <SwitchCell Text="Recieve notification when motion is detected" On="{Binding Setting.ShouldNotifyMotionDetected}"/>
-                <SwitchCell Text="Recieve notification when water level is too high" On="{Binding Setting.ShouldNotifyWaterLevel"/>
+                <SwitchCell Text="Recieve notification when water level is too high" On="{Binding Setting.ShouldNotifyWaterLevel}"/>
             </TableSection>
             <TableSection Title="Floor climates">
-                <SwitchCell Text="Recieve notification on first floor climate" On="{Binding Setting.}/>
-                <SwitchCell Text="Recieve First floor climate notifications" On="{Binding Setting.ShouldSendNotifications}/>
-
+                <SwitchCell Text="Recieve notification on first floor climate" On="{Binding Setting.ShouldSendFirstFloorClimate}"/>
+                <SwitchCell Text="Receive notification on ground flor climate" On="{Binding Setting.ShouldSendGroundFloorClimate}"/>
+                <SwitchCell Text="Recieve notification on basement climate"    On="{Binding Setting.ShouldSendBasementClimate}"/>
             </TableSection>
-
+            <TableSection Title="Emergency services">
+                <SwitchCell Text="Call emergency services on motion detected" On="{Binding Setting.ShouldCallPoliceOnMotionDetected}"/>
+                <SwitchCell Text="Log when a motion is detected" On="{Binding Setting.ShouldLogMotionEntriesInApp}"/>
+            </TableSection>
         </TableRoot>
     </TableView>
 </ContentPage>

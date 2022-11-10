@@ -1,5 +1,3 @@
-using Microsoft.Maui.Controls;
-
 namespace IronGateApp
 {
     public partial class AppShell : Shell
