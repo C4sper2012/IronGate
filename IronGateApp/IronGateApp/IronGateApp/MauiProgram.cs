@@ -1,4 +1,5 @@
-﻿using IronGateApp.ViewModels;
+﻿using IronGateApp.DatabaseContext;
+using IronGateApp.ViewModels;
 using IronGateApp.Views;
 
 namespace IronGateApp
@@ -23,6 +24,9 @@ namespace IronGateApp
 
             builder.Services.AddSingleton<SettingsViewModel>();
             builder.Services.AddSingleton<SettingsPage>( );
+
+            builder.Services.AddTransient<IronGateContext>();
+
 
             return builder.Build();
         }
