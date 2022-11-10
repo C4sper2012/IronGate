@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IronGateApp.ViewModels
+namespace IronGateApp.Models
 {
-    public class BaseViewModel : ObservableObject
+    public partial class Setting : ObservableObject
     {
-
+        
     }
 }
