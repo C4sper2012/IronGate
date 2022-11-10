@@ -11,5 +11,11 @@ namespace IronGateApp.Models
     {
         [ObservableProperty]
         bool _shouldSendNotifications;
+
+        [ObservableProperty]
+        bool _shouldCallPoliceOnMotionDetected;
+
+
+
     }
 }
