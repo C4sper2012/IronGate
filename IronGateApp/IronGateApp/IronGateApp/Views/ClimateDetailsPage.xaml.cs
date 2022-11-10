@@ -1,9 +1,10 @@
 namespace IronGateApp.Views;
 
-public partial class ClimateDetailPage : ContentPage
+public partial class ClimateDetailsPage : ContentPage
 {
-	public ClimateDetailPage()
+	public ClimateDetailsPage(ClimateDetailsPage climateDetailsPage)
 	{
 		InitializeComponent();
+		BindingContext= climateDetailsPage;
 	}
 }

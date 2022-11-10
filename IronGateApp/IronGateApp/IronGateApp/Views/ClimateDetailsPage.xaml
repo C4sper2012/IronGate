@@ -2,8 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IronGateApp.Views.ClimateDetailsPage"
+             xmlns:viewmodel="clr-namespace:IronGateApp.ViewModels"
+             x:DataType="viewmodel:ClimateViewModel"
              Title="ClimateDetailPage">
     <VerticalStackLayout Padding="10" Spacing="10">
-        <Label Style="{StaticResource Medium}" />
+        <Label Style="{StaticResource Medium}" Text="{Binding Climate.}"/>
     </VerticalStackLayout>
 </ContentPage>
