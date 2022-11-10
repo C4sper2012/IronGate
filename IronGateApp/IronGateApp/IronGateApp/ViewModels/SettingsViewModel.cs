@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using IronGateApp.Models;
 
 namespace IronGateApp.ViewModels
 {
-    public class SettingsViewModel
+    public class SettingsViewModel : BaseViewModel
     {
-
+        public Setting Setting { get; } = new();
     }
 }
