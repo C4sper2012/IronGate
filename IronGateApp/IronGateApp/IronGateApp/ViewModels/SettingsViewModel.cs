@@ -1,4 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using IntelliJ.Lang.Annotations;
 using IronGateApp.Models;
 
 namespace IronGateApp.ViewModels
@@ -7,37 +9,19 @@ namespace IronGateApp.ViewModels
     {
         public Setting Setting { get; } = new();
 
-        #region Sensor detection
+        [RelayCommand]
+        async Task SaveSettings()
+        {
+            try
+            {
+            }
+            catch (Exception ex)
+            {
 
-        [ObservableProperty]
-        bool _shouldNotifyWaterLevel;
-
-        [ObservableProperty]
-        bool _shouldNotifyMotionDetected;
-
-        #endregion
-
-        #region Floor Climates
-
-        [ObservableProperty]
-        bool _shouldSendFirstFloorClimate;
-
-        [ObservableProperty]
-        bool _shouldSendGroundFloorClimate;
-
-        [ObservableProperty]
-        bool _shouldSendBasementClimate;
-
-        #endregion
-
-        #region Other options
-
-        [ObservableProperty]
-        bool _shouldCallPoliceOnMotionDetected;
-
-        [ObservableProperty]
-        bool _shouldLogMotionEntriesInApp;
-
-        #endregion
+            }
+            finally
+            {
+            }
+        }
     }
 }
