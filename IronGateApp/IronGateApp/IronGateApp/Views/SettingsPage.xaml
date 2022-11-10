@@ -5,80 +5,18 @@
              xmlns:viewmodel="clr-namespace:IronGateApp.ViewModels"
              x:DataType="viewmodel:SettingsViewModel"
              Title="Settings">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width=".4*"></ColumnDefinition>
-            <ColumnDefinition Width=".6*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Label Text="Settings" 
-               Grid.Row="0" 
-               Grid.Column="0" 
-               Grid.ColumnSpan="2" 
-               FontSize="Large" 
-               HorizontalTextAlignment="Center" 
-               VerticalTextAlignment="Center"></Label>
+    <TableView Intent="Settings">
+        <TableRoot>
+            <TableSection Title="Sensor notifications">
+                <SwitchCell Text="Recieve notification when motion is detected" On="{Binding Setting.ShouldNotifyMotionDetected}"/>
+                <SwitchCell Text="Recieve notification when water level is too high" On="{Binding Setting.ShouldNotifyWaterLevel"/>
+            </TableSection>
+            <TableSection Title="Floor climates">
+                <SwitchCell Text="Recieve notification on first floor climate" On="{Binding Setting.}/>
+                <SwitchCell Text="Recieve First floor climate notifications" On="{Binding Setting.ShouldSendNotifications}/>
 
-        <!--<Picker x:Name="LanguagePickerFromXaml" 
-                Grid.Row="1" 
-                Grid.ColumnSpan="2"
-                Title="Select your language for this app">
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>English</x:String>
-                    <x:String>Dutch</x:String>
-                    <x:String>French</x:String>
-                    <x:String>German</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>-->
+            </TableSection>
 
-        <Picker x:Name="LanguagePickerFromCode" 
-                Grid.Row="1" 
-                Grid.ColumnSpan="2" 
-                Title="Select your language for this app"></Picker>
-        <Label x:Name="SelectedLanguageLabel" 
-               Grid.Row="2"></Label>
-
-        <Label Text="Should app send notifications to the banner and lockscreen" 
-               Grid.Row="3"></Label>
-        <Switch IsToggled="{Binding Setting.ShouldSendNotifications }" 
-                Grid.Row="3" 
-                Grid.Column="1" ></Switch>
-        <Label x:Name="PieBudgetLabel" 
-               Grid.Row="4"></Label>
-
-        <Label Text="Maximum pies you can order per month" 
-               Grid.Row="5"></Label>
-        <Stepper Maximum="10" 
-                 x:Name="MaxPieStepper" 
-                 Grid.Row="5" 
-                 Grid.Column="1"
-                 HorizontalOptions="Center"  />
-        <Label x:Name="MaxPieLabel" 
-               Grid.Row="6"></Label>
-
-        <Button x:Name="SaveSettingsButton" Text="Save settings" 
-                HorizontalOptions="Center" 
-                VerticalOptions="Start" 
-                BackgroundColor="#22cfa7" 
-                Grid.Row="7" 
-                Grid.ColumnSpan="2" 
-                TextColor="White"></Button>
-
-        <ActivityIndicator x:Name="SavingActivityIndicator" 
-                           Grid.Row="8" 
-                           Grid.ColumnSpan="2" 
-                           Color="#22cfa7" IsRunning="False"></ActivityIndicator>
-    </Grid>
+        </TableRoot>
+    </TableView>
 </ContentPage>
