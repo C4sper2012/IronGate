@@ -3,9 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IronGateApp.Views.ClimateDetailsPage"
              xmlns:viewmodel="clr-namespace:IronGateApp.ViewModels"
-             x:DataType="viewmodel:ClimateViewModel"
-             Title="ClimateDetailPage">
+             x:DataType="viewmodel:ClimateDetailsViewModel"
+             Title="ClimateDetailsPage">
     <VerticalStackLayout Padding="10" Spacing="10">
-        <Label Style="{StaticResource Medium}" Text="{Binding Climate.}"/>
+        <Label FontSize="Medium" Text="{Binding Climate.Temperature}"/>
+        <Label FontSize="Medium" Text="{Binding Climate.Humidity}" />
+        
     </VerticalStackLayout>
 </ContentPage>

@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace IronGateApp.ViewModels
 {
-   
-    public partial class ClimateViewModel : BaseViewModel
+    [QueryProperty(nameof(Climate), "Climate")]
+    public partial class ClimateDetailsViewModel : BaseViewModel
     {
-        
-
+        [ObservableProperty]
+        Climate climate;
     }
 }

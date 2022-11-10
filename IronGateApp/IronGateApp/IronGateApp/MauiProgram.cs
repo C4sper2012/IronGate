@@ -1,4 +1,5 @@
-﻿using IronGateApp.Views;
+﻿using IronGateApp.ViewModels;
+using IronGateApp.Views;
 
 namespace IronGateApp
 {
@@ -17,6 +18,8 @@ namespace IronGateApp
 
             builder.Services.AddSingleton<ClimateDetailsPage>();
             builder.Services.AddSingleton<ClimatePage>();
+            builder.Services.AddSingleton<ClimateViewModel>();
+            builder.Services.AddTransient<ClimateDetailsViewModel>();
 
             return builder.Build();
         }

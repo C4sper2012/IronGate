@@ -1,10 +1,12 @@
+using IronGateApp.ViewModels;
+
 namespace IronGateApp.Views;
 
 public partial class ClimateDetailsPage : ContentPage
 {
-	public ClimateDetailsPage(ClimateDetailsPage climateDetailsPage)
+	public ClimateDetailsPage(ClimateDetailsViewModel climateDetailsViewModel)
 	{
 		InitializeComponent();
-		BindingContext= climateDetailsPage;
+		BindingContext = climateDetailsViewModel;
 	}
 }
