@@ -4,7 +4,7 @@
              x:Class="IronGateApp.Views.SettingsPage"
              xmlns:viewmodel="clr-namespace:IronGateApp.ViewModels"
              x:DataType="viewmodel:SettingsViewModel"
-             Title="Setting">
+             Title="Setting" Loaded="ContentPage_Loaded">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Save" Command="{Binding SaveSettingsCommand}"  Order="Primary" Priority="0" />
     </ContentPage.ToolbarItems>
