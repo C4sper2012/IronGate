@@ -5,7 +5,7 @@
              xmlns:viewmodel="clr-namespace:IronGateApp.ViewModels"
              x:DataType="viewmodel:SettingsViewModel"
              Title="Settings">
-    <Grid x:DataType="model:S">
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="100"></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
@@ -52,7 +52,7 @@
 
         <Label Text="Should app send notifications to the banner and lockscreen" 
                Grid.Row="3"></Label>
-        <Switch IsToggled="{Binding }" 
+        <Switch IsToggled="{Binding Setting.ShouldSendNotifications }" 
                 Grid.Row="3" 
                 Grid.Column="1" ></Switch>
         <Label x:Name="PieBudgetLabel" 
