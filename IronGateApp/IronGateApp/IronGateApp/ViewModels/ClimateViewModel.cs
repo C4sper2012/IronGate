@@ -23,20 +23,14 @@ namespace IronGateApp.ViewModels
         }
 
 
-        public ObservableCollection<Climate> Climates { get; set; } = new();
+        public Climate Climate { get; set; } = new();
 
         [RelayCommand]
         async Task GetClimateAsync()
         {
             try
             {
-                var climates = await _climateService.GetClimate();
-
-                if (climates != null)
-                    Climates.Clear();
-
-                foreach (var climate in climates)
-                    Climates.Add(climate);
+                Climate = await _climateService.GetClimate();
             }
             catch (Exception)
             {
@@ -46,14 +40,14 @@ namespace IronGateApp.ViewModels
         }
 
 
-        async Task GoToDetails(Climate climate)
+        async Task GoToDetails(int index)
         {
-            if (climate == null)
+            if (Climate == null)
                 return;
 
             await Shell.Current.GoToAsync(nameof(ClimateDetailsPage), true, new Dictionary<string, object>
             {
-                {"Climate", climate }
+                {"Climate", Climate }
             });
         }
 

@@ -21,16 +21,18 @@ namespace IronGateApp.Services
             this.client = new HttpClient();
         }
 
-        List<Climate> climates;
+        Climate climate;
 
-        public async Task<List<Climate>> GetClimate()
+        public async Task<Climate> GetClimate()
         {
-            var response = await client.GetAsync("https://api.thingspeak.com/channels/1916370/feeds.json?api_key=0QYE3TAWD42POHP2");
+            var response = await client.GetAsync("https://api.thingspeak.com/channels/1916370/feeds.json?api_key=0QYE3TAWD42POHP2&results=8000");
+
             if (response.IsSuccessStatusCode)
             {
-                climates = await response.Content.ReadFromJsonAsync<List<Climate>>();
+                climate = await response.Content.ReadFromJsonAsync<Climate>();
             }
-            return climates;
+
+            return climate;
         }
     }
 }

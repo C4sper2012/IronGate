@@ -7,13 +7,6 @@ using System.Threading.Tasks;
 
 namespace IronGateApp.Models
 {
-    //public class Climate
-    //{
-    //    public string Temperature { get; set; } = "25";
-    //    public string Humidity { get; set; } = "60";
-    //    public int? WaterLevel { get; set; } = 1;
-    //}
-
     public class Channel
     {
         [JsonProperty("id")]
