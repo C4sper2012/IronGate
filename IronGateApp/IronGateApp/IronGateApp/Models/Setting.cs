@@ -9,13 +9,6 @@ namespace IronGateApp.Models
 {
     public partial class Setting : ObservableObject
     {
-        [ObservableProperty]
-        bool _shouldSendNotifications;
-
-        [ObservableProperty]
-        bool _shouldCallPoliceOnMotionDetected;
-
-        [ObservableProperty]
-        bool _shouldLogMotionEntriesInApp;
+        
     }
 }
