@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace IronGateApp.Models
 {
-    public partial class Settings : ObservableObject
+    public partial class Setting : ObservableObject
     {
         [ObservableProperty]
         bool _shouldSendNotifications;
