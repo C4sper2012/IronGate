@@ -4,9 +4,15 @@ namespace IronGateApp.Views;
 
 public partial class ClimateDetailsPage : ContentPage
 {
-	public ClimateDetailsPage(ClimateDetailsViewModel climateDetailsViewModel)
+	public ClimateDetailsPage(/*ClimateDetailsViewModel climateDetailsViewModel*/)
 	{
 		InitializeComponent();
-		BindingContext = climateDetailsViewModel;
+		//BindingContext = climateDetailsViewModel;
 	}
+
+    protected override void OnAppearing()
+    {
+
+        base.OnAppearing();
+    }
 }

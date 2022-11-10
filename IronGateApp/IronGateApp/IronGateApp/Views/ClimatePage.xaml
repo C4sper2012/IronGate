@@ -2,20 +2,24 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IronGateApp.Views.ClimatePage"
+             xmlns:viewmodel="clr-namespace:IronGateApp.ViewModels"
+             x:DataType="viewmodel:ClimateViewModel"
              Title="ClimatePage">
     <VerticalStackLayout>
         <Button Text="First Floor"
                 TextColor="White"
                 FontSize="Large"
+                Command="{Binding GoToDetailsCommand}"
                 BackgroundColor="{StaticResource Primary}"
                 HeightRequest="70"
                 WidthRequest="350"
-                Margin="0, 50, 0, 30 "
+                Margin="0, 50, 0, 30"
                 CornerRadius="20"/>
         <Button Text="Ground Floor"
                 TextColor="White"
                 BackgroundColor="{StaticResource Primary}"
                 FontSize="Large"
+                Command="{Binding GoToDetailsCommand}"
                 HeightRequest="70"
                 WidthRequest="350"
                 CornerRadius="20"
@@ -24,6 +28,7 @@
                 TextColor="White"
                 BackgroundColor="{StaticResource Primary}"
                 FontSize="Large"
+                Command="{Binding GoToDetailsCommand}"
                 HeightRequest="70"
                 WidthRequest="350"
                 CornerRadius="20" />

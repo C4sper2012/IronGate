@@ -1,25 +1,20 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using IronGateApp.Models;
 using IronGateApp.Services;
 using IronGateApp.Views;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace IronGateApp.ViewModels
 {
-   
+
     public partial class ClimateViewModel : BaseViewModel
     {
         private readonly ClimateService _climateService;
 
         public ClimateViewModel(ClimateService climateService)
         {
-            _climateService= climateService;
+            _climateService = climateService;
         }
 
 
@@ -38,22 +33,26 @@ namespace IronGateApp.ViewModels
                 foreach (var climate in climates)
                     Climates.Add(climate);
             }
-            catch (Exception)
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Unable to get climate: {ex.Message}");
+                await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
+            }
+            finally
             {
 
-                throw;
             }
         }
 
-
-        async Task GoToDetails(Climate climate)
+        [RelayCommand]
+        async Task GoToDetails()
         {
-            if (climate == null)
+            if (Climates == null)
                 return;
 
             await Shell.Current.GoToAsync(nameof(ClimateDetailsPage), true, new Dictionary<string, object>
             {
-                {"Climate", climate }
+                {"Climate", Climates }
             });
         }
 
