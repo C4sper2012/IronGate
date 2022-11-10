@@ -1,6 +1,4 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using IntelliJ.Lang.Annotations;
+﻿using CommunityToolkit.Mvvm.Input;
 using IronGateApp.Models;
 
 namespace IronGateApp.ViewModels

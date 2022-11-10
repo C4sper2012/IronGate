@@ -6,7 +6,7 @@
              x:DataType="viewmodel:SettingsViewModel"
              Title="Settings">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" Command="SaveSettings"  Order="Primary" Priority="0" />
+        <ToolbarItem Text="Save" Command="{Binding SaveSettingsCommand}"  Order="Primary" Priority="0" />
     </ContentPage.ToolbarItems>
     <TableView Intent="Settings">
         <TableRoot>
