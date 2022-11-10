@@ -10,16 +10,18 @@
                 TextColor="White"
                 FontSize="Large"
                 Command="{Binding GoToDetailsCommand}"
+                CommandParameter="0"
                 BackgroundColor="{StaticResource Primary}"
                 HeightRequest="70"
                 WidthRequest="350"
                 Margin="0, 50, 0, 30"
-                CornerRadius="20"/>
+                CornerRadius="20" />
         <Button Text="Ground Floor"
                 TextColor="White"
                 BackgroundColor="{StaticResource Primary}"
                 FontSize="Large"
                 Command="{Binding GoToDetailsCommand}"
+                CommandParameter="1"
                 HeightRequest="70"
                 WidthRequest="350"
                 CornerRadius="20"
@@ -29,10 +31,9 @@
                 BackgroundColor="{StaticResource Primary}"
                 FontSize="Large"
                 Command="{Binding GoToDetailsCommand}"
+                CommandParameter="2"
                 HeightRequest="70"
                 WidthRequest="350"
-                CornerRadius="20" />
-
-
+                CornerRadius="20"/>
     </VerticalStackLayout>
 </ContentPage>

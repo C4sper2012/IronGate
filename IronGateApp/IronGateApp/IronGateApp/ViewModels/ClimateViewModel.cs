@@ -45,10 +45,22 @@ namespace IronGateApp.ViewModels
         }
 
         [RelayCommand]
-        async Task GoToDetails()
+        async Task GoToDetails(string index = "")
         {
             if (Climates == null)
                 return;
+
+            List<Feed> feeds;
+
+            switch (index)
+            {
+                case "0":
+                    //feeds = Climates.Select(c => c.Feeds.OrderByDescending(o => o.CreatedAt)).FirstOrDefault().Single(f => f.Field1 != null & f.Field2 != null); 
+                    break;
+                default:
+                    break;
+            }
+
 
             await Shell.Current.GoToAsync(nameof(ClimateDetailsPage), true, new Dictionary<string, object>
             {

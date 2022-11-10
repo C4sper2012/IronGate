@@ -13,6 +13,6 @@ public partial class ClimateDetailsPage : ContentPage
     protected override void OnAppearing()
     {
 
-        base.OnAppearing();
+		base.OnAppearing();
     }
 }

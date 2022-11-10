@@ -6,8 +6,9 @@
              x:DataType="viewmodel:ClimateDetailsViewModel"
              Title="ClimateDetailsPage">
     <VerticalStackLayout Padding="10" Spacing="10">
-        <!--<Label FontSize="Medium" Text="{Binding Climate.Channel.}"/>
-        <Label FontSize="Medium" Text="{Binding Climate.Humidity}" />-->
-        
+        <Label FontSize="Header" HorizontalOptions="Center" Margin="0, 20, 0, 20" Text="First Floor"></Label>
+        <Label FontSize="Medium" HorizontalOptions="Center" Margin="0, 20, 0, 20" Text="25°"/>
+        <Label FontSize="Medium" HorizontalOptions="Center" Text="60 %" />
+       
     </VerticalStackLayout>
 </ContentPage>
