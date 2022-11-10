@@ -4,12 +4,12 @@ using IronGateApp.Models;
 
 namespace IronGateApp.DatabaseContext
 {
-    public class MonkeyContext
+    public class IronGateContext
     {
         readonly HttpClient client;
         SQLiteAsyncConnection Database;
 
-        public MonkeyContext()
+        public IronGateContext()
         {
             client = new HttpClient();
         }
@@ -20,11 +20,12 @@ namespace IronGateApp.DatabaseContext
                 return;
 
             Database = new SQLiteAsyncConnection(AppConstants.DatabasePath, AppConstants.Flags);
+
             await Database.CreateTableAsync<Setting>();
 
         }
 
-        public async Task<Setting> GetSettingsAsync(int id)
+        public async Task<Setting> GetSettingsAsync()
         {
             await Init();
             return await Database.Table<Setting>().FirstOrDefaultAsync();

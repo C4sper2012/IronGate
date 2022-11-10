@@ -8,6 +8,8 @@ namespace IronGateApp.Constants
 {
     public static class AppConstants
     {
+        #region Database 
+
         public const string DatabaseFilename = "IronGateSQLite.db3";
 
         public const SQLite.SQLiteOpenFlags Flags =
@@ -20,5 +22,13 @@ namespace IronGateApp.Constants
 
         public static string DatabasePath =>
             Path.Combine(FileSystem.AppDataDirectory, DatabaseFilename);
+
+        #endregion
+
+        #region API 
+
+        public const string HUMIDITYFEED = "CHANNELS";
+
+        #endregion
     }
 }
