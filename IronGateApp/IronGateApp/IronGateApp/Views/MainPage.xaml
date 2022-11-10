@@ -4,7 +4,9 @@
              x:Class="IronGateApp.Views.MainPage">
 
     <VerticalStackLayout>
-        
+
+        <Label Text="Water level: 4"/>
+
     </VerticalStackLayout>
     
 </ContentPage>
