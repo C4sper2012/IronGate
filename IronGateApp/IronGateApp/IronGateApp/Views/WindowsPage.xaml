@@ -2,12 +2,32 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IronGateApp.Views.WindowsPage"
-             Title="WindowsPage">
-    <VerticalStackLayout>
-        <Label
-            Text="Windows Page"             
-            FontSize="Large"
-            VerticalOptions="Center"
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             Title="Windows Page">
+
+    <StackLayout>
+        <Frame CornerRadius="20" BackgroundColor="{StaticResource Primary}" Margin="20,20,20,0">
+            <Grid>
+                <Label Text="First Floor" TextColor="White" FontSize="Medium" />
+                <Label Text="Open" FontSize="Small" TextColor="White" Margin="0,40,0,0"></Label>
+                <Switch x:Name="FirstSwitch" IsToggled="True" OnColor="White" ThumbColor="Silver" Toggled="FirstFloor_Switch_Toggled"/>
+
+            </Grid>
+        </Frame>
+        <Frame CornerRadius="20" BackgroundColor="{StaticResource Primary}" Margin="20,20,20,0">
+            <Grid  >
+                <Label Text="Ground Floor" TextColor="White" FontSize="Medium"/>
+                <Label Text="Closed" FontSize="Small" TextColor="White" Margin="0,40,0,0"></Label>
+                <Switch x:Name="GroundSwitch" IsToggled="False" OnColor="White" ThumbColor="Silver" Toggled="GroundFloor_Switch_Toggled"/>
+
+            </Grid>
+        </Frame>
+        <Frame CornerRadius="20" BackgroundColor="{StaticResource Primary}" Margin="20,20,20,0">
+            <Grid >
+                <Label Text="Basement/Cellar" TextColor="White" FontSize="Medium"/>
+                <Label Text="Open" FontSize="Small" TextColor="White" Margin="0,40,0,0"></Label>
+                <Switch x:Name="BaseSwitch" IsToggled="True" OnColor="White" ThumbColor="Silver" Toggled="Basement_Switch_Toggled"/>
+            </Grid>
+        </Frame>
+    </StackLayout>
+
 </ContentPage>

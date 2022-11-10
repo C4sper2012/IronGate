@@ -6,18 +6,18 @@ namespace IronGateApp.Views
 	public partial class MainPage : ContentPage
 	{
 		ClimateViewModel _climateViewModel;
-		public MainPage(ClimateViewModel climateViewModel)
+		public MainPage(/*ClimateViewModel climateViewModel*/)
 		{
 			InitializeComponent();
-			_climateViewModel = climateViewModel;
+			//_climateViewModel = climateViewModel;
 
 		}
 
-		protected override void OnAppearing()
-		{
+		//protected override void OnAppearing()
+		//{
 
-			base.OnAppearing();
-			_climateViewModel.GetClimateCommand.Execute("");
-		}
+		//	base.OnAppearing();
+		//	_climateViewModel.GetClimateCommand.Execute("");
+		//}
 	}
 }
