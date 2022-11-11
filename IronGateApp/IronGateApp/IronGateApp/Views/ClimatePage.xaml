@@ -4,10 +4,30 @@
              x:Class="IronGateApp.Views.ClimatePage"
              Title="ClimatePage">
     <VerticalStackLayout>
-        <Label 
-            Text="Climate Page"
-            FontSize="Large"
-            VerticalOptions="Center"
-            HorizontalOptions="Center" />
+        <Button Text="First Floor"
+                TextColor="White"
+                FontSize="Large"
+                BackgroundColor="{StaticResource Primary}"
+                HeightRequest="70"
+                WidthRequest="350"
+                Margin="0, 50, 0, 30 "
+                CornerRadius="20"/>
+        <Button Text="Ground Floor"
+                TextColor="White"
+                BackgroundColor="{StaticResource Primary}"
+                FontSize="Large"
+                HeightRequest="70"
+                WidthRequest="350"
+                CornerRadius="20"
+                Margin="0, 0, 0, 30" />
+        <Button Text="Cellar/Basement"
+                TextColor="White"
+                BackgroundColor="{StaticResource Primary}"
+                FontSize="Large"
+                HeightRequest="70"
+                WidthRequest="350"
+                CornerRadius="20" />
+
+
     </VerticalStackLayout>
 </ContentPage>
