@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using IronGateApp.Models.Enums;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -86,5 +87,7 @@ namespace IronGateApp.Models
 
         [JsonProperty("feeds")]
         public List<Feed> Feeds { get; set; }
+
+        public Floor Floor { get; set; }
     }
 }
