@@ -1,12 +1,62 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="IronGateApp.Views.MainPage">
+             xmlns:chart="clr-namespace:Syncfusion.Maui.Charts;assembly=Syncfusion.Maui.Charts"
+             x:Class="IronGateApp.Views.MainPage"
+             Title="Home">
 
-    <VerticalStackLayout>
+    <Grid RowDefinitions="4*, auto, 2*" Margin="15">
 
-        <Label Text="Water level: 4"/>
+        <Frame Grid.Row="0" BackgroundColor="White">
+            <chart:SfCartesianChart Title="Floor Temperatures">
 
-    </VerticalStackLayout>
-    
+                <!--#region XAxes-->
+                <chart:SfCartesianChart.XAxes>
+                    <chart:CategoryAxis>
+                        <chart:CategoryAxis.Title>
+                            <chart:ChartAxisTitle Text="Floors"/>
+                        </chart:CategoryAxis.Title>
+                    </chart:CategoryAxis>
+                </chart:SfCartesianChart.XAxes>
+                <!--#endregion-->
+
+                <!--#region YAxes-->
+                <chart:SfCartesianChart.YAxes>
+                    <chart:NumericalAxis>
+                        <chart:NumericalAxis.Title>
+                            <chart:ChartAxisTitle Text="Temperature(In celsius)" />
+                        </chart:NumericalAxis.Title>
+                    </chart:NumericalAxis>
+                </chart:SfCartesianChart.YAxes>
+                <!--#endregion-->
+
+                <!--#region Column data-->
+                <chart:ColumnSeries Label="Temperatures"
+                                EnableTooltip="True"
+                                ShowDataLabels="True"
+                                ItemsSource="{Binding Data}"
+                                XBindingPath="Floor"
+                                YBindingPath="Temperature">
+                    <chart:ColumnSeries.DataLabelSettings>
+                        <chart:CartesianDataLabelSettings LabelPlacement="Inner"/>
+                    </chart:ColumnSeries.DataLabelSettings>
+                </chart:ColumnSeries>
+                <!--#endregion-->
+
+            </chart:SfCartesianChart>
+        </Frame>
+        
+
+        <Frame Grid.Row="1" Margin="0, 10" BackgroundColor="CadetBlue">
+            <Grid ColumnDefinitions="*, *" RowDefinitions="*, auto" >
+                <Label Text="Basement water level:" FontSize="Small" />
+                <Label Text="3" HorizontalOptions="Center" VerticalOptions="Center" FontSize="Large" 
+                   Grid.ColumnSpan="2" Grid.Row="1"/>
+            </Grid>
+        </Frame>
+        
+        
+
+    </Grid>
+
 </ContentPage>
