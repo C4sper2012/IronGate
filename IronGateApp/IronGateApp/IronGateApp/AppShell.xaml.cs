@@ -1,3 +1,5 @@
+using IronGateApp.Views;
+
 namespace IronGateApp
 {
     public partial class AppShell : Shell
@@ -5,7 +7,8 @@ namespace IronGateApp
         public AppShell()
         {
             InitializeComponent();
-            BindingContext = this;
+            Routing.RegisterRoute(nameof(ClimateDetailsPage), typeof(ClimateDetailsPage));
+            
         }
     }
 }

@@ -87,5 +87,7 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
+
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionIronGateAppHideInfoBar="True" /></VisualStudio></ProjectExtensions>
   
 </Project>
