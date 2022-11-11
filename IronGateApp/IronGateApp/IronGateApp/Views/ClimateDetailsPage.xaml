@@ -5,10 +5,10 @@
              xmlns:viewmodel="clr-namespace:IronGateApp.ViewModels"
              x:DataType="viewmodel:ClimateDetailsViewModel"
              Title="ClimateDetailsPage">
-    <VerticalStackLayout Padding="10" Spacing="10">
-        <Label FontSize="Header" HorizontalOptions="Center" Margin="0, 20, 0, 20" Text="First Floor"></Label>
-        <Label FontSize="Medium" HorizontalOptions="Center" Margin="0, 20, 0, 20" Text="25°"/>
-        <Label FontSize="Medium" HorizontalOptions="Center" Text="60 %" />
+    <VerticalStackLayout Padding="10" Spacing="10" x:DataType="viewmodel:ClimateDetailsViewModel">
+        <Label FontSize="Header" HorizontalOptions="Center" Margin="0, 20, 0, 20" Text="{Binding Climate.Floor}" ></Label>
+        <Label FontSize="Medium" HorizontalOptions="Center" Margin="0, 20, 0, 20" Text="{Binding Humidity, StringFormat='Humidity: {0}'}"/>
+        <Label FontSize="Medium" HorizontalOptions="Center" Text="{Binding Temperature, StringFormat='Temperature: {0}'}" />
        
     </VerticalStackLayout>
 </ContentPage>
