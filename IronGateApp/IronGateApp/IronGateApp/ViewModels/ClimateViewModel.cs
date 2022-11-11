@@ -1,61 +1,83 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.Input;
 using IronGateApp.Models;
 using IronGateApp.Services;
 using IronGateApp.Views;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using IronGateApp.Models.Enums;
 
 namespace IronGateApp.ViewModels
 {
-   
+
     public partial class ClimateViewModel : BaseViewModel
     {
         private readonly ClimateService _climateService;
 
         public ClimateViewModel(ClimateService climateService)
         {
-            _climateService= climateService;
+            _climateService = climateService;
         }
 
 
-        public ObservableCollection<Climate> Climates { get; set; } = new();
+        public Climate Climate { get; set; } = new();
 
         [RelayCommand]
         async Task GetClimateAsync()
         {
             try
             {
-                var climates = await _climateService.GetClimate();
-
-                if (climates != null)
-                    Climates.Clear();
-
-                foreach (var climate in climates)
-                    Climates.Add(climate);
+                Climate = await _climateService.GetClimateAsync();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                Debug.WriteLine($"Unable to get climate: {ex.Message}");
+                await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
             }
         }
 
-
-        async Task GoToDetails(Climate climate)
+        [RelayCommand]
+        async Task GetFirstFloorClimateAsync()
         {
-            if (climate == null)
-                return;
-
-            await Shell.Current.GoToAsync(nameof(ClimateDetailsPage), true, new Dictionary<string, object>
+            try
             {
-                {"Climate", climate }
-            });
+                Climate = await _climateService.GetFirstFloorClimateAsync();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Unable to get climate: {ex.Message}");
+                await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
+            }
         }
 
+        [RelayCommand]
+        async Task GoToDetails(string index = "")
+        {
+            switch (index)
+            {
+                case "0":
+                    Climate = await _climateService.GetFirstFloorClimateAsync();
+                    Climate.Floor = Floor.FirstFloor;
+                    
+                    break;
+                case "1":
+                    Climate = await _climateService.GetGroundFloorClimateAsync();
+                    Climate.Floor = Floor.GroundFloor;
+                    break;
+                case "2":
+                    Climate = await _climateService.GetBasementClimateAsync();
+                    Climate.Floor = Floor.Basement;
+                    break;
+                default:
+                    break;
+            }
+            
+            if (Climate != null)
+            {
+                await Shell.Current.GoToAsync(nameof(ClimateDetailsPage), true, new Dictionary<string, object>
+                {
+                    {"Climate", Climate }
+                });
+                
+            }
+        }
     }
 }
