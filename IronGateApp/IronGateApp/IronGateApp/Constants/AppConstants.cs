@@ -29,6 +29,22 @@ namespace IronGateApp.Constants
 
         public const string HUMIDITYFEED = "CHANNELS";
 
+        public const string _apiWriteUrl = "https://api.thingspeak.com/update?api_key=";
+
+        //public const string APIREADFEEDURL = "";
+
+        public const string _readApiKey = "F803W0EVFO7BK3GG";
+
+        public const string _writeApiKey = "AWR4TJXORG6EG6IL";
+
+
+
+        public const string _basementWindow = "field1=";
+        public const string _groundFloorWindow = "field3=";
+        public const string _firstFloorWindow = "field5=";
+
+        public const string _writeWindow = $"{_apiWriteUrl}{_writeApiKey}&";
+        
         #endregion
     }
 }

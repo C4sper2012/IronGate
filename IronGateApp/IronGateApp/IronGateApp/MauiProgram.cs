@@ -27,6 +27,10 @@ namespace IronGateApp
             builder.Services.AddSingleton<SettingsViewModel>();
             builder.Services.AddSingleton<SettingsPage>();
 
+            builder.Services.AddSingleton<WindowsPage>();
+            builder.Services.AddSingleton<WindowsViewModel>();
+            builder.Services.AddSingleton<WindowService>();
+
             builder.Services.AddTransient<IronGateContext>();
 
 
