@@ -58,6 +58,7 @@
 		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.2" />
 		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.2" />
 		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.2" />
+		<PackageReference Include="Syncfusion.Maui.Charts" Version="20.3.56" />
 	</ItemGroup>
 
 	<ItemGroup>
