@@ -24,21 +24,21 @@ public partial class MainPageViewModel : BaseViewModel
         tmpData.Add(new()
         {
             Floor = "Basement",
-            Temperature = Int32.Parse(climateBasement.Channel.BasementTemp)
+            Temperature = Convert.ToInt32(climateBasement.Feeds.Select(x => x.Field1).FirstOrDefault(x => x != null))
         });
 
         Climate climateGroundFloor = await _climateService.GetGroundFloorClimateAsync();
         tmpData.Add(new()
         {
             Floor = "Ground floor",
-            Temperature = Int32.Parse(climateGroundFloor.Channel.GroundFloorTemp)
+            Temperature = Convert.ToInt32(climateGroundFloor.Feeds.Select(x => x.Field4).FirstOrDefault(x => x != null))
         });
 
         Climate climateFirstFloor = await _climateService.GetFirstFloorClimateAsync();
         tmpData.Add(new()
         {
             Floor = "First floor",
-            Temperature = Int32.Parse(climateFirstFloor.Channel.FirstFloorTemp)
+            Temperature = Convert.ToInt32(climateFirstFloor.Feeds.Select(x => x.Field7).FirstOrDefault(x => x != null))
         });
 
         return tmpData;
