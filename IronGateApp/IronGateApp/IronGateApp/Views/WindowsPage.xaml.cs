@@ -19,6 +19,7 @@ namespace IronGateApp.Views
         //    await _windowsViewModel.GetSwitchState();
         //}
 
+
         private void BaseSwitch_Toggled(object sender, ToggledEventArgs e)
         {
             _windowsViewModel.ToggleWindowsCommand.Execute("0");
@@ -33,6 +34,7 @@ namespace IronGateApp.Views
         {
             _windowsViewModel.ToggleWindowsCommand.Execute("2");
         }
+
 
         private async void ContentPage_Loaded(object sender, EventArgs e)
         {

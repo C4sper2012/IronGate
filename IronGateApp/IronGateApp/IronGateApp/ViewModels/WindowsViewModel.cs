@@ -1,11 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using IronGateApp.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IronGateApp.ViewModels
 {
@@ -16,13 +11,29 @@ namespace IronGateApp.ViewModels
         {
             _windowService= windowService;
         }
+        
 
-        [ObservableProperty]
         bool _firstFloorIsOpen;
-        [ObservableProperty]
+        public bool FirsttFloorIsOpen 
+        {
+            get => _firstFloorIsOpen;
+            set => _firstFloorIsOpen = value;
+           
+        }
+
         bool _groundFloorIsOpen;
-        [ObservableProperty]
+        public bool GroundFloorIsOpen
+        {
+            get => _groundFloorIsOpen;
+            set => _groundFloorIsOpen = value;
+        }
+
         bool _basementIsOpen;
+        public bool BasementIsOpen
+        {
+            get => _basementIsOpen;
+            set => _basementIsOpen = value;
+        }
 
         [RelayCommand]
         async Task ToggleWindowsAsync(string index)
@@ -37,12 +48,14 @@ namespace IronGateApp.ViewModels
             }
         }
 
+        
         public async Task GetSwitchState()
         {
            var windowState =  await _windowService.GetFloorWindowState();
             _basementIsOpen = windowState.Item1;
             _groundFloorIsOpen = windowState.Item2;
             _firstFloorIsOpen = windowState.Item3;
+            OnPropertyChanged();
         }
 
 

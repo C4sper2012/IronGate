@@ -16,21 +16,23 @@ namespace IronGateApp.Services
         }
 
         WindowControl windowControl;
+        StringBuilder sb = new StringBuilder();
 
         public async Task<Tuple<bool, bool, bool>> GetFloorWindowState()
         {
-            var response = await client.GetAsync("https://api.thingspeak.com/channels/1916369/feeds.json?api_key=F803W0EVFO7BK3GG&results=1");
+            var response = await client.GetAsync("https://api.thingspeak.com/channels/1916369/feeds.json?api_key=F803W0EVFO7BK3GG&results=100");
+          
             if (response.IsSuccessStatusCode)
             {
-                windowControl = await response.Content.ReadFromJsonAsync<WindowControl>();
+                windowControl = await response.Content.ReadFromJsonAsync<WindowControl>(); 
+                
 
-                int field1 = Convert.ToInt32(windowControl.Feeds.FirstOrDefault().Field1);
-                int field3 = Convert.ToInt32(windowControl.Feeds.FirstOrDefault().Field3);
-                int field5 = Convert.ToInt32(windowControl.Feeds.FirstOrDefault().Field5);
+
+                // If API returns "1" make Tuple parameter True.
                 return Tuple.Create(
-                        Convert.ToBoolean(field1),
-                        Convert.ToBoolean(field3),
-                        Convert.ToBoolean(field5)
+                        windowControl.Feeds.Last().Field1.Equals("1"),
+                        windowControl.Feeds.Last().Field3.Equals("1"),
+                        windowControl.Feeds.Last().Field5.Equals("1")
                     );
                 //TODO: Add Polly
             }
@@ -40,7 +42,6 @@ namespace IronGateApp.Services
 
         public async Task<Tuple<bool, bool, bool>> ToggleWindows(string index)
         {
-            StringBuilder sb = new StringBuilder();
             Tuple<bool, bool, bool> floorResults = await GetFloorWindowState();
 
             bool firstFloorWindowOpen = floorResults.Item3;
@@ -52,42 +53,15 @@ namespace IronGateApp.Services
             {
                 case "0":
                     sb.Append(AppConstants._basementWindow);
-                    if (basementWindowOpen)
-                    {
-                        basementWindowOpen = false;
-                        sb.Append("0");
-                    }
-                    else
-                    {
-                        basementWindowOpen = true;
-                        sb.Append("1");
-                    }
+                    RoomSelectHelper(basementWindowOpen);
                     break;
                 case "1":
                     sb.Append(AppConstants._groundFloorWindow);
-                    if (groundFloorWindowOpen)
-                    {
-                        groundFloorWindowOpen = false;
-                        sb.Append("0");
-                    }
-                    else
-                    {
-                        groundFloorWindowOpen = true;
-                        sb.Append("1");
-                    }
+                    RoomSelectHelper(groundFloorWindowOpen);
                     break;
                 case "2":
                     sb.Append(AppConstants._firstFloorWindow);
-                    if (firstFloorWindowOpen)
-                    {
-                        firstFloorWindowOpen = false;
-                        sb.Append("0");
-                    }
-                    else
-                    {
-                        firstFloorWindowOpen = true;
-                        sb.Append("1");
-                    }
+                    RoomSelectHelper(firstFloorWindowOpen);
                     break;
                 default:
                     break;
@@ -103,6 +77,22 @@ namespace IronGateApp.Services
                 Debug.WriteLine("Request sent!");
             }
             return Tuple.Create(basementWindowOpen, groundFloorWindowOpen, firstFloorWindowOpen);
+
+        }
+
+
+        private void RoomSelectHelper(bool floor)
+        {
+            if (floor)
+            {
+                floor = false;
+                sb.Append("0");
+            }
+            else
+            {
+                floor = true;
+                sb.Append("1");
+            }
 
         }
 
