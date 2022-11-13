@@ -12,10 +12,10 @@ namespace IronGateApp.Views
 			BindingContext = mainPageViewModel;
 		}
 
-		//protected override void OnAppearing()
-		//{
-		//	base.OnAppearing();
-		//	_mainPageViewModel.GetChartDataCommand.Execute(this);
-		//}
+		protected override async void OnAppearing()
+		{
+			base.OnAppearing();
+			await _mainPageViewModel.GetChartData();
+		}
 	}
 }

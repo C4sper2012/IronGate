@@ -29,6 +29,7 @@ namespace IronGateApp
 
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<MainPageViewModel>();
+            builder.Services.AddSingleton<HomePageChartService>();
 
             builder.Services.AddSingleton<SettingsViewModel>();
             builder.Services.AddSingleton<SettingsPage>();

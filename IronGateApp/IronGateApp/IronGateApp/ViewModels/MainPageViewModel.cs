@@ -1,46 +1,30 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using IronGateApp.Models;
 using IronGateApp.Services;
 using System.Collections.ObjectModel;
 
-namespace IronGateApp.ViewModels;
-public partial class MainPageViewModel : BaseViewModel
+namespace IronGateApp.ViewModels
 {
-    public ObservableCollection<RoomDHT11> Data { get; set; } = new();
-
-    private readonly ClimateService _climateService;
-    public MainPageViewModel(ClimateService climateService)
+    public partial class MainPageViewModel : BaseViewModel
     {
-        _climateService = climateService;
-        Task<ObservableCollection<RoomDHT11>> task = GetChartData();
-        Data = task.Result;
-    }
+        [ObservableProperty]
+        private int waterLevel;
 
-    //[RelayCommand]
-    private async Task<ObservableCollection<RoomDHT11>> GetChartData()
-    {
-        ObservableCollection<RoomDHT11> tmpData = new();
-        Climate climateBasement = await _climateService.GetBasementClimateAsync();
-        tmpData.Add(new()
+        public ObservableCollection<RoomDHT11> Data { get; set; } = new();
+
+        private readonly HomePageChartService _homePageChartService;
+        public MainPageViewModel(HomePageChartService homePageChartService)
         {
-            Floor = "Basement",
-            Temperature = Convert.ToInt32(climateBasement.Feeds.Select(x => x.Field1).FirstOrDefault(x => x != null))
-        });
+            _homePageChartService = homePageChartService;
+        }
 
-        Climate climateGroundFloor = await _climateService.GetGroundFloorClimateAsync();
-        tmpData.Add(new()
+        public async Task GetChartData()
         {
-            Floor = "Ground floor",
-            Temperature = Convert.ToInt32(climateGroundFloor.Feeds.Select(x => x.Field4).FirstOrDefault(x => x != null))
-        });
-
-        Climate climateFirstFloor = await _climateService.GetFirstFloorClimateAsync();
-        tmpData.Add(new()
-        {
-            Floor = "First floor",
-            Temperature = Convert.ToInt32(climateFirstFloor.Feeds.Select(x => x.Field7).FirstOrDefault(x => x != null))
-        });
-
-        return tmpData;
+            Data.Clear();
+            foreach (RoomDHT11 dHT11 in await _homePageChartService.GetChartDataFromRestAPIAsync())
+            {
+                Data.Add(dHT11);
+            }
+        }
     }
 }
