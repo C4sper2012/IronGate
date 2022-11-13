@@ -15,9 +15,9 @@
                 <SwitchCell Text="Recieve notification when water level is too high" On="{Binding Setting.ShouldNotifyWaterLevel}"/>
             </TableSection>
             <TableSection Title="Floor climates">
-                <SwitchCell Text="Recieve notification on first floor climate" On="{Binding Setting.ShouldSendFirstFloorClimate}"/>
-                <SwitchCell Text="Receive notification on ground flor climate" On="{Binding Setting.ShouldSendGroundFloorClimate}"/>
-                <SwitchCell Text="Recieve notification on basement climate"    On="{Binding Setting.ShouldSendBasementClimate}"/>
+                <SwitchCell Text="Enable window on first floor" On="{Binding Setting.FirstFloorWindowIsEnabled}"/>
+                <SwitchCell Text="Enable window on ground flor" On="{Binding Setting.GroundFloorWindowIsEnabled}"/>
+                <SwitchCell Text="Enable window on basement floor" On="{Binding Setting.BasementWindowIsEnabled}"/>
             </TableSection>
             <TableSection Title="Emergency services">
                 <SwitchCell Text="Call emergency services on motion detected" On="{Binding Setting.ShouldCallPoliceOnMotionDetected}"/>

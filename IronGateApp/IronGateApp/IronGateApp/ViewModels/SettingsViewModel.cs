@@ -29,7 +29,6 @@ namespace IronGateApp.ViewModels
             }
             catch (Exception ex)
             {
-                // TODO
             }
 
             await Shell.Current.DisplayAlert("Settings was saved!", "Your settings was saved", "Ok");
