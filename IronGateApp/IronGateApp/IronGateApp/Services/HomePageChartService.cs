@@ -56,8 +56,8 @@ namespace IronGateApp.Services
 
         public async Task<int> GetWaterLevelFromRestAPIAsync()
         {
-            var sensor = await _client.GetFromJsonAsync<object>("https://api.thingspeak.com/channels/1916393/fields/1.json?api_key=5SUJCFNTGZ25ODE6&results=1");
-            return 1;
+            Sensor sensor = await _client.GetFromJsonAsync<Sensor>("https://api.thingspeak.com/channels/1916393/fields/1.json?api_key=5SUJCFNTGZ25ODE6&results=1");
+            return Convert.ToInt32(sensor.Feeds.First().Field1);
         }
     }
 }

@@ -26,5 +26,10 @@ namespace IronGateApp.ViewModels
                 Data.Add(dHT11);
             }
         }
+
+        public async Task GetSensorDataAsync()
+        {
+            waterLevel = await _homePageChartService.GetWaterLevelFromRestAPIAsync();
+        }
     }
 }
