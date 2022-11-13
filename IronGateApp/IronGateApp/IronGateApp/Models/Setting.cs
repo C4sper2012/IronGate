@@ -17,13 +17,13 @@ namespace IronGateApp.Models
         #region Floor Climates
 
         [ObservableProperty]
-        bool _shouldSendFirstFloorClimate;
+        bool _firstFloorWindowIsEnabled;
 
         [ObservableProperty]
-        bool _shouldSendGroundFloorClimate;
+        bool _groundFloorWindowIsEnabled;
 
         [ObservableProperty]
-        bool _shouldSendBasementClimate;
+        bool _basementWindowIsEnabled;
 
         #endregion
 
