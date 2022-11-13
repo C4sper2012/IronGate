@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using IronGateApp.Models;
 using IronGateApp.Services;
 
 namespace IronGateApp.ViewModels
@@ -27,10 +26,11 @@ namespace IronGateApp.ViewModels
         {
             try
             {
+                if (Connectivity.NetworkAccess != NetworkAccess.Internet) { return; }
                 var message = await _windowService.ToggleWindows(_firstFloorIsOpen, _groundFloorIsOpen, _basementIsOpen);
                 MessagingCenter.Send(this, "WindowMessage", message);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -39,9 +39,18 @@ namespace IronGateApp.ViewModels
         [RelayCommand]
         public async Task<Tuple<bool, bool, bool>> GetSwitchState()
         {
-           var windowState =  await _windowService.GetFloorWindowState();
            
-            return windowState;
+            try
+            {
+                var windowState = await _windowService.GetFloorWindowState();
+                return windowState;
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+
         }
     }
 }
