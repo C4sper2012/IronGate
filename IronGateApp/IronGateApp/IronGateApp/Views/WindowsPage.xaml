@@ -4,7 +4,6 @@
              xmlns:viewmodel="clr-namespace:IronGateApp.ViewModels"
              x:Class="IronGateApp.Views.WindowsPage"
              x:DataType="viewmodel:WindowsViewModel"
-             Loaded="ContentPage_Loaded"
              Title="Windows Page">
 
     <StackLayout>
@@ -12,21 +11,21 @@
             <Grid>
                 <Label Text="First Floor" TextColor="White" FontSize="Medium" />
                 <Label Text="Open" FontSize="Small" TextColor="White" Margin="0,40,0,0"></Label>
-                <Switch x:Name="FirstSwitch" IsToggled="{Binding FirstFloorIsOpen}" OnColor="White" ThumbColor="Silver" Toggled="FirstSwitch_Toggled"/>
+                <Switch x:Name="FirstSwitch" IsVisible="true" IsToggled="{Binding FirstFloorIsOpen}" OnColor="White" ThumbColor="Silver"/>
             </Grid>
         </Frame>
         <Frame CornerRadius="20" BackgroundColor="{StaticResource Primary}" Margin="20,20,20,0">
             <Grid>
                 <Label Text="Ground Floor" TextColor="White" FontSize="Medium" />
                 <Label Text="Open" FontSize="Small" TextColor="White" Margin="0,40,0,0"></Label>
-                <Switch x:Name="GroundSwitch" IsToggled="{Binding GroundFloorIsOpen}" OnColor="White" ThumbColor="Silver" Toggled="GroundSwitch_Toggled"/>
+                <Switch x:Name="GroundSwitch" IsVisible="true" IsToggled="{Binding GroundFloorIsOpen}" OnColor="White" ThumbColor="Silver"/>
             </Grid>
         </Frame>
         <Frame CornerRadius="20" BackgroundColor="{StaticResource Primary}" Margin="20,20,20,0">
             <Grid>
                 <Label Text="Basement/Cellar" TextColor="White" FontSize="Medium"/>
                 <Label Text="Open" FontSize="Small" TextColor="White" Margin="0,40,0,0"></Label>
-                <Switch x:Name="BaseSwitch" IsToggled="{Binding BasementIsOpen}" OnColor="White" ThumbColor="Silver" Toggled="BaseSwitch_Toggled"/>
+                <Switch x:Name="BaseSwitch" IsVisible="true" IsToggled="{Binding BasementIsOpen}" OnColor="White" ThumbColor="Silver"/>
             </Grid>
         </Frame>
     </StackLayout>

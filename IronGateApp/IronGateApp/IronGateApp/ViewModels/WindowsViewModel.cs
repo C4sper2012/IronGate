@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using IronGateApp.Models;
 using IronGateApp.Services;
 
 namespace IronGateApp.ViewModels
@@ -11,36 +12,28 @@ namespace IronGateApp.ViewModels
         {
             _windowService= windowService;
         }
-        
 
+        [ObservableProperty]
         bool _firstFloorIsOpen;
-        public bool FirsttFloorIsOpen 
-        {
-            get => _firstFloorIsOpen;
-            set => _firstFloorIsOpen = value;
-           
-        }
 
+        [ObservableProperty]
         bool _groundFloorIsOpen;
-        public bool GroundFloorIsOpen
-        {
-            get => _groundFloorIsOpen;
-            set => _groundFloorIsOpen = value;
-        }
 
+        [ObservableProperty]
         bool _basementIsOpen;
-        public bool BasementIsOpen
-        {
-            get => _basementIsOpen;
-            set => _basementIsOpen = value;
-        }
+
+
+        public int toggleCount = 0;
+
 
         [RelayCommand]
-        async Task ToggleWindowsAsync(string index)
+        async Task ToggleWindowsAsync()
         {
+
             try
             {
-                await _windowService.ToggleWindows(index);
+                var message = await _windowService.ToggleWindows(_firstFloorIsOpen, _groundFloorIsOpen, _basementIsOpen);
+                MessagingCenter.Send(this, "WindowMessage", message);
             }
             catch (Exception ex)
             {
@@ -48,14 +41,12 @@ namespace IronGateApp.ViewModels
             }
         }
 
-        
-        public async Task GetSwitchState()
+        [RelayCommand]
+        public async Task<Tuple<bool, bool, bool>> GetSwitchState()
         {
            var windowState =  await _windowService.GetFloorWindowState();
-            _basementIsOpen = windowState.Item1;
-            _groundFloorIsOpen = windowState.Item2;
-            _firstFloorIsOpen = windowState.Item3;
-            OnPropertyChanged();
+           
+            return windowState;
         }
 
 
