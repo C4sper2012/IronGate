@@ -22,14 +22,9 @@ namespace IronGateApp.ViewModels
         [ObservableProperty]
         bool _basementIsOpen;
 
-
-        public int toggleCount = 0;
-
-
         [RelayCommand]
         async Task ToggleWindowsAsync()
         {
-
             try
             {
                 var message = await _windowService.ToggleWindows(_firstFloorIsOpen, _groundFloorIsOpen, _basementIsOpen);
@@ -48,7 +43,5 @@ namespace IronGateApp.ViewModels
            
             return windowState;
         }
-
-
     }
 }

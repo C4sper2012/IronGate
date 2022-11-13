@@ -20,13 +20,11 @@ namespace IronGateApp.Services
 
         public async Task<Tuple<bool, bool, bool>> GetFloorWindowState()
         {
-            var response = await client.GetAsync("https://api.thingspeak.com/channels/1916369/feeds.json?api_key=F803W0EVFO7BK3GG&results=100");
+            var response = await client.GetAsync(AppConstants._get100WindowFeeds);
 
             if (response.IsSuccessStatusCode)
             {
                 windowControl = await response.Content.ReadFromJsonAsync<WindowControl>();
-
-
 
                 // If API returns "1" make Tuple parameter True.
                 return Tuple.Create(
@@ -37,7 +35,6 @@ namespace IronGateApp.Services
                 //TODO: Add Polly
             }
             return Tuple.Create(false, false, false);
-
         }
 
         public async Task<bool> ToggleWindows(bool firstState, bool groundState, bool baseState)
@@ -57,11 +54,9 @@ namespace IronGateApp.Services
             {
                 Debug.WriteLine("Request sent!");
                 return true;
-
             }
             return false;
         }
-
 
         private void ToggleFloor(bool firstState, bool groundState, bool baseState)
         {
@@ -73,8 +68,6 @@ namespace IronGateApp.Services
             sb.Append("&");
             sb.Append(AppConstants._firstFloorWindow);
             sb.Append(Convert.ToInt32(firstState));
-
         }
-
     }
 }

@@ -40,12 +40,5 @@ namespace IronGateApp.Views
         {
             _windowsViewModel.ToggleWindowsCommand.Execute(null);
         }
-
-
-
-        //private async void ContentPage_Loaded(object sender, EventArgs e)
-        //{
-        //    await _windowsViewModel.GetSwitchState();
-        //}
     }
 }
