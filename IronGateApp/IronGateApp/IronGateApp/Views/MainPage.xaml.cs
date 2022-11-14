@@ -16,7 +16,7 @@ namespace IronGateApp.Views
 		{
 			base.OnAppearing();
 			await _mainPageViewModel.GetChartData();
-			await _mainPageViewModel.GetSensorDataAsync();
+			_mainPageViewModel.WaterLevel = await _mainPageViewModel.GetSensorDataAsync();
 		}
 	}
 }

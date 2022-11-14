@@ -1,7 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using IronGateApp.Models;
 using IronGateApp.Services;
+using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace IronGateApp.ViewModels
 {
@@ -9,6 +13,9 @@ namespace IronGateApp.ViewModels
     {
         [ObservableProperty]
         private int waterLevel;
+
+        [ObservableProperty]
+        private bool isRefreshing;
 
         public ObservableCollection<RoomDHT11> Data { get; set; } = new();
 
@@ -27,9 +34,26 @@ namespace IronGateApp.ViewModels
             }
         }
 
-        public async Task GetSensorDataAsync()
-        {
-            waterLevel = await _homePageChartService.GetWaterLevelFromRestAPIAsync();
+        public async Task<int> GetSensorDataAsync() => await _homePageChartService.GetWaterLevelFromRestAPIAsync();
+
+        [RelayCommand]
+        private async Task UpdateData()
+        { 
+            try
+            {
+                WaterLevel = await GetSensorDataAsync();
+                await GetChartData();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Unable to update data: {ex.Message}");
+                await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
+            }
+            finally
+            {
+                IsRefreshing = false;
+            }
+            
         }
     }
 }
