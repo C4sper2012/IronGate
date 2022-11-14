@@ -29,13 +29,10 @@ namespace IronGateApp.Models
         public object field4 { get; set; }
     }
 
-    public class Sensor
+    public class MotionSensor
     {
         public Channel channel { get; set; }
         public List<SensorFeed> feeds { get; set; }
     }
-
-
-
 
 }
