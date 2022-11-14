@@ -12,8 +12,8 @@ public partial class MainPageViewModel : BaseViewModel
     public MainPageViewModel(ClimateService climateService)
     {
         _climateService = climateService;
-        Task<ObservableCollection<RoomDHT11>> task = GetChartData();
-        Data = task.Result;
+        //Task<ObservableCollection<RoomDHT11>> task = GetChartData();
+        //Data = task.Result;
     }
 
     //[RelayCommand]
