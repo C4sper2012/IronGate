@@ -2,16 +2,13 @@
 using CommunityToolkit.Mvvm.Input;
 using IronGateApp.Models;
 using IronGateApp.Services;
-using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Threading.Tasks;
 
 namespace IronGateApp.ViewModels
 {
     public partial class MainPageViewModel : BaseViewModel
     {
-    }
         [ObservableProperty]
         private int waterLevel;
 
@@ -21,10 +18,7 @@ namespace IronGateApp.ViewModels
         public ObservableCollection<RoomDHT11> Data { get; set; } = new();
 
         private readonly HomePageChartService _homePageChartService;
-        public MainPageViewModel(HomePageChartService homePageChartService)
-        {
-            _homePageChartService = homePageChartService;
-        }
+        public MainPageViewModel(HomePageChartService homePageChartService) => _homePageChartService = homePageChartService;
 
         public async Task GetChartData()
         {
