@@ -4,8 +4,9 @@ using System.Runtime.CompilerServices;
 
 namespace IronGateApp.ViewModels
 {
-    public class BaseViewModel : ObservableObject
+    public partial class BaseViewModel : ObservableObject
     {
-
+        [ObservableProperty]
+        bool _isRefreshing;
     }
 }

@@ -11,6 +11,7 @@ namespace IronGateApp.ViewModels
 {
     public partial class MainPageViewModel : BaseViewModel
     {
+    }
         [ObservableProperty]
         private int waterLevel;
 
