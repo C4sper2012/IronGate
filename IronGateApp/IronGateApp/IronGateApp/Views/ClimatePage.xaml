@@ -2,12 +2,38 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IronGateApp.Views.ClimatePage"
+             xmlns:viewmodel="clr-namespace:IronGateApp.ViewModels"
+             x:DataType="viewmodel:ClimateViewModel"
              Title="ClimatePage">
     <VerticalStackLayout>
-        <Label 
-            Text="Climate Page"
-            FontSize="Large"
-            VerticalOptions="Center"
-            HorizontalOptions="Center" />
+        <Button Text="First Floor"
+                TextColor="White"
+                FontSize="Large"
+                Command="{Binding GoToDetailsCommand}"
+                CommandParameter="0"
+                BackgroundColor="{StaticResource Primary}"
+                HeightRequest="70"
+                WidthRequest="350"
+                Margin="0, 50, 0, 30"
+                CornerRadius="20" />
+        <Button Text="Ground Floor"
+                TextColor="White"
+                BackgroundColor="{StaticResource Primary}"
+                FontSize="Large"
+                Command="{Binding GoToDetailsCommand}"
+                CommandParameter="1"
+                HeightRequest="70"
+                WidthRequest="350"
+                CornerRadius="20"
+                Margin="0, 0, 0, 30" />
+        <Button Text="Cellar/Basement"
+                TextColor="White"
+                BackgroundColor="{StaticResource Primary}"
+                FontSize="Large"
+                Command="{Binding GoToDetailsCommand}"
+                CommandParameter="2"
+                HeightRequest="70"
+                WidthRequest="350"
+                CornerRadius="20"/>
     </VerticalStackLayout>
 </ContentPage>

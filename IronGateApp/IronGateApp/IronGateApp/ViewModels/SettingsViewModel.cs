@@ -1,13 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CommunityToolkit.Mvvm.Input;
+using IronGateApp.DatabaseContext;
+using IronGateApp.Models;
 
 namespace IronGateApp.ViewModels
 {
-    public class SettingsViewModel
+    public partial class SettingsViewModel : BaseViewModel
     {
+        private readonly IronGateContext _ironGateContext;
 
+        public Setting Setting { get; set; } = new();
+
+        public SettingsViewModel(IronGateContext ironGateContext)
+        {
+            _ironGateContext = ironGateContext;
+        }
+
+        public async Task<Setting> GetSettingsAsync()
+        {
+            return await _ironGateContext.GetSettingsAsync();
+        }
+
+        [RelayCommand]
+        async Task SaveSettings(Setting setting)
+        {
+            try
+            {
+                await _ironGateContext.SaveSettingsAsync(setting);
+            }
+            catch (Exception ex)
+            {
+            }
+
+            await Shell.Current.DisplayAlert("Settings was saved!", "Your settings was saved", "Ok");
+        }
     }
 }

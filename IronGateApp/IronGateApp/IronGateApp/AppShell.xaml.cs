@@ -1,4 +1,4 @@
-using Microsoft.Maui.Controls;
+using IronGateApp.Views;
 
 namespace IronGateApp
 {
@@ -7,7 +7,8 @@ namespace IronGateApp
         public AppShell()
         {
             InitializeComponent();
-            BindingContext = this;
+            Routing.RegisterRoute(nameof(ClimateDetailsPage), typeof(ClimateDetailsPage));
+            
         }
     }
 }
