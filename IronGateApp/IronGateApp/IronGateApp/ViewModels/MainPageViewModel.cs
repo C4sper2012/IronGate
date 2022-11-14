@@ -1,46 +1,59 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using IronGateApp.Models;
 using IronGateApp.Services;
+using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
-namespace IronGateApp.ViewModels;
-public partial class MainPageViewModel : BaseViewModel
+namespace IronGateApp.ViewModels
 {
-    public ObservableCollection<RoomDHT11> Data { get; set; } = new();
-
-    private readonly ClimateService _climateService;
-    public MainPageViewModel(ClimateService climateService)
+    public partial class MainPageViewModel : BaseViewModel
     {
-        _climateService = climateService;
-        Task<ObservableCollection<RoomDHT11>> task = GetChartData();
-        Data = task.Result;
-    }
+        [ObservableProperty]
+        private int waterLevel;
 
-    //[RelayCommand]
-    private async Task<ObservableCollection<RoomDHT11>> GetChartData()
-    {
-        ObservableCollection<RoomDHT11> tmpData = new();
-        Climate climateBasement = await _climateService.GetBasementClimateAsync();
-        tmpData.Add(new()
+        [ObservableProperty]
+        private bool isRefreshing;
+
+        public ObservableCollection<RoomDHT11> Data { get; set; } = new();
+
+        private readonly HomePageChartService _homePageChartService;
+        public MainPageViewModel(HomePageChartService homePageChartService)
         {
-            Floor = "Basement",
-            Temperature = Convert.ToInt32(climateBasement.Feeds.Select(x => x.Field1).FirstOrDefault(x => x != null))
-        });
+            _homePageChartService = homePageChartService;
+        }
 
-        Climate climateGroundFloor = await _climateService.GetGroundFloorClimateAsync();
-        tmpData.Add(new()
+        public async Task GetChartData()
         {
-            Floor = "Ground floor",
-            Temperature = Convert.ToInt32(climateGroundFloor.Feeds.Select(x => x.Field4).FirstOrDefault(x => x != null))
-        });
+            Data.Clear();
+            foreach (RoomDHT11 dHT11 in await _homePageChartService.GetChartDataFromRestAPIAsync())
+            {
+                Data.Add(dHT11);
+            }
+        }
 
-        Climate climateFirstFloor = await _climateService.GetFirstFloorClimateAsync();
-        tmpData.Add(new()
-        {
-            Floor = "First floor",
-            Temperature = Convert.ToInt32(climateFirstFloor.Feeds.Select(x => x.Field7).FirstOrDefault(x => x != null))
-        });
+        public async Task<int> GetSensorDataAsync() => await _homePageChartService.GetWaterLevelFromRestAPIAsync();
 
-        return tmpData;
+        [RelayCommand]
+        private async Task UpdateData()
+        { 
+            try
+            {
+                WaterLevel = await GetSensorDataAsync();
+                await GetChartData();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Unable to update data: {ex.Message}");
+                await Shell.Current.DisplayAlert("Error!", ex.Message, "OK");
+            }
+            finally
+            {
+                IsRefreshing = false;
+            }
+            
+        }
     }
 }
