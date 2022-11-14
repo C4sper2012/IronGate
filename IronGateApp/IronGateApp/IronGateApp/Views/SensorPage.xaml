@@ -5,7 +5,7 @@
              xmlns:model="clr-namespace:IronGateApp.Models"
              xmlns:viewmodel="clr-namespace:IronGateApp.ViewModels"
              x:DataType="viewmodel:SensorViewModel"
-             Title="Sensor Page">
+             Title="Sensor">
     <Grid
         ColumnDefinitions="*,*"
         ColumnSpacing="5"

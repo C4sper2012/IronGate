@@ -4,7 +4,7 @@
              x:Class="IronGateApp.Views.ClimatePage"
              xmlns:viewmodel="clr-namespace:IronGateApp.ViewModels"
              x:DataType="viewmodel:ClimateViewModel"
-             Title="ClimatePage">
+             Title="Climate">
     <VerticalStackLayout>
         <Button Text="First Floor"
                 TextColor="White"

@@ -1,4 +1,3 @@
-using IronGateApp.DatabaseContext;
 using IronGateApp.ViewModels;
 
 namespace IronGateApp.Views
