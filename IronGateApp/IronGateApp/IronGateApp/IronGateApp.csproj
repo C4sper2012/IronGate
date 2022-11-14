@@ -57,6 +57,7 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\alert-symbol-isolated-icon-design-vector-9704330.jpg" />
+	  <None Remove="Resources\Images\alert.svg" />
 	</ItemGroup>
 
 	<ItemGroup>

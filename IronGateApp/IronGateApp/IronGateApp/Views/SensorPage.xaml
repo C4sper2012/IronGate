@@ -20,17 +20,22 @@
             <CollectionView ItemsSource="{Binding Sensors}" SelectionMode="None">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:SensorFeed">
-                        <Frame CornerRadius="20" BackgroundColor="WhiteSmoke" Margin="20,20,20,0">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
-
-                                </Grid.RowDefinitions>
-
-                                <Label TextColor="{StaticResource Black}" Style="{StaticResource MediumLabel}" Text="{Binding created_at}" Grid.Row="1" />
-                                <Label TextColor="{StaticResource Black}" Style="{StaticResource LargeLabel}" Text="{Binding field4 }"   />
-                            </Grid>
+                        <Frame CornerRadius="20" BackgroundColor="Red" Margin="20,20,20,0">
+                            <Grid Padding="0">
+                                <Frame HeightRequest="125" Style="{StaticResource CardView}">
+                                    <Grid Padding="0" ColumnDefinitions="125,*">
+                                    <Image Aspect="AspectFill" Source="alert.svg"
+                                       WidthRequest="70"
+                                       HeightRequest="70"/>
+                                    <VerticalStackLayout
+                                        Grid.Column="1"
+                                        Padding="0">
+                                            <Label TextColor="Black" Style="{StaticResource LargeLabel}" Text="{Binding field4}" />
+                                            <Label TextColor="Black" Style="{StaticResource MediumLabel}" Text="{Binding created_at}" />
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </Grid>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
