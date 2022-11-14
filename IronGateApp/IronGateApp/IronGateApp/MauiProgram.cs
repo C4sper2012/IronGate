@@ -27,6 +27,11 @@ namespace IronGateApp
             builder.Services.AddSingleton<SensorService>();
 
 
+            builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<MainPageViewModel>();
+            builder.Services.AddSingleton<HomePageChartService>();
+
+
             builder.Services.AddTransient<ClimateDetailsViewModel>();
             builder.Services.AddSingleton<SettingsViewModel>();
             builder.Services.AddSingleton<ClimateViewModel>();
