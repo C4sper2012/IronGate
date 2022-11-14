@@ -23,6 +23,10 @@ namespace IronGateApp
             #region Scopes
 
             builder.Services.AddTransient<IronGateContext>();
+            builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);
+
+            builder.Services.AddSingleton<ClimateDetailsPage>();
+            builder.Services.AddSingleton<ClimatePage>();
             builder.Services.AddSingleton<ClimateService>();
             builder.Services.AddSingleton<SensorService>();
 
@@ -45,6 +49,11 @@ namespace IronGateApp
             builder.Services.AddSingleton<SensorPage>();
             builder.Services.AddSingleton<SettingsPage>();
 
+            builder.Services.AddSingleton<WindowsPage>();
+            builder.Services.AddSingleton<WindowsViewModel>();
+            builder.Services.AddSingleton<WindowService>();
+
+            builder.Services.AddTransient<IronGateContext>();
             #endregion
 
             return builder.Build();
