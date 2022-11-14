@@ -97,10 +97,17 @@ This section contains information about the technical details og the project.
 
     ```
     GET https://api.thingspeak.com/channels/1916393/status.json?api_key=5SUJCFNTGZ25ODE6
-    ```
-
+    ```l
 
 ### Nuget packages
+|Name|Version|
+|----|-------|
+|CommunityToolkit.Mvvm | 8.0.0|
+|Polly | 7.2.3|
+|sqlite-net-pcl|1.8.116|
+|SQLitePCLRaw.bundle_green|2.1.2|
+|Newtonsoft.Json| 13.0.1 |
+
 
 ## Psysical Architecture
 
