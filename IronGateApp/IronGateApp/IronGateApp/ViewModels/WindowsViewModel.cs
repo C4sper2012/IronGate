@@ -37,18 +37,19 @@ namespace IronGateApp.ViewModels
         }
 
         [RelayCommand]
-        public async Task<Tuple<bool, bool, bool>> GetSwitchState()
+        public async Task GetSwitchState()
         {
-           
             try
             {
+                if (Connectivity.NetworkAccess != NetworkAccess.Internet) { return; }
                 var windowState = await _windowService.GetFloorWindowState();
-                return windowState;
+                BasementIsOpen = windowState.Item1;
+                GroundFloorIsOpen = windowState.Item2;
+                FirstFloorIsOpen = windowState.Item3;
             }
             catch (Exception ex)
             {
 
-                throw;
             }
 
         }

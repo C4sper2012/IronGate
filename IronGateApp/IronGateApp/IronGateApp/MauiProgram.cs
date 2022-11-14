@@ -21,6 +21,8 @@ namespace IronGateApp
                 });
 
             #region Scopes
+            builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);
+
             builder.Services.AddSingleton<ClimateDetailsPage>();
             builder.Services.AddSingleton<ClimatePage>();
             builder.Services.AddSingleton<ClimateService>();

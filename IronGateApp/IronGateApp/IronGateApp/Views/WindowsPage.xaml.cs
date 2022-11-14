@@ -25,10 +25,7 @@ namespace IronGateApp.Views
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            var state = await _windowsViewModel.GetSwitchState();
-            _windowsViewModel.BasementIsOpen = state.Item1;
-            _windowsViewModel.GroundFloorIsOpen = state.Item2;
-            _windowsViewModel.FirstFloorIsOpen = state.Item3;
+            await _windowsViewModel.GetSwitchState();
 
             FirstSwitch.Toggled += OnSwitch_Toggled;
             GroundSwitch.Toggled += OnSwitch_Toggled;
