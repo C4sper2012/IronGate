@@ -397,3 +397,6 @@ FodyWeavers.xsd
 # Platform IO
 .pio
 .vscode
+
+# Rider
+.idea
