@@ -1,9 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using IronGateApp.Models;
+using IronGateApp.Models.Enums;
 using IronGateApp.Services;
 using IronGateApp.Views;
 using System.Diagnostics;
-using IronGateApp.Models.Enums;
 
 namespace IronGateApp.ViewModels
 {

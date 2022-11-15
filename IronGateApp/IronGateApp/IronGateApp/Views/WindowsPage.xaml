@@ -4,7 +4,7 @@
              xmlns:viewmodel="clr-namespace:IronGateApp.ViewModels"
              x:Class="IronGateApp.Views.WindowsPage"
              x:DataType="viewmodel:WindowsViewModel"
-             Title="Windows Page">
+             Title="Windows">
 
     <StackLayout>
         <Frame CornerRadius="20" BackgroundColor="{StaticResource Primary}" Margin="20,20,20,0">

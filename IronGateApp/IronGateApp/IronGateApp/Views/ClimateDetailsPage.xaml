@@ -4,9 +4,9 @@
              x:Class="IronGateApp.Views.ClimateDetailsPage"
              xmlns:viewmodel="clr-namespace:IronGateApp.ViewModels"
              x:DataType="viewmodel:ClimateDetailsViewModel"
-             Title="ClimateDetailsPage">
+             Title="Climate details">
     <VerticalStackLayout Padding="10" Spacing="10" x:DataType="viewmodel:ClimateDetailsViewModel">
-        <Label FontSize="Header" HorizontalOptions="Center" Margin="0, 20, 0, 20" Text="{Binding Climate.Floor}" ></Label>
+        <Label FontSize="Large" HorizontalOptions="Center" Margin="0, 20, 0, 20" Text="{Binding Climate.Floor}" ></Label>
         <Label FontSize="Medium" HorizontalOptions="Center" Margin="0, 20, 0, 20" Text="{Binding Humidity, StringFormat='Humidity: {0}'}"/>
         <Label FontSize="Medium" HorizontalOptions="Center" Text="{Binding Temperature, StringFormat='Temperature: {0}'}" />
        

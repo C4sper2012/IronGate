@@ -2,7 +2,6 @@
 using IronGateApp.Models;
 using IronGateApp.Services;
 using System.Collections.ObjectModel;
-using static IronGateApp.Models.SensorChannel;
 
 namespace IronGateApp.ViewModels
 {

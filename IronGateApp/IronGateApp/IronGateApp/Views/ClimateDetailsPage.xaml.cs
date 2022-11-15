@@ -1,5 +1,5 @@
 using IronGateApp.ViewModels;
-using IronGateApp.Models.Enums;
+
 namespace IronGateApp.Views
 {
     public partial class ClimateDetailsPage : ContentPage
