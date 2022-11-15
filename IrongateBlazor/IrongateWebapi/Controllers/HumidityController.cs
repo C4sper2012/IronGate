@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Irongate.WebAPI.Controllers
 {
-    using global::IrongateWebapi;
     using Microsoft.AspNetCore.Mvc;
 
     namespace IrongateWebapi.Controllers
