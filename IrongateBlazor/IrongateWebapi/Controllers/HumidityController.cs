@@ -15,17 +15,16 @@ namespace Irongate.WebAPI.Controllers
         [Route("[controller]")]
         public class HumidityController : ControllerBase
         {
-            private readonly ILogger<WeatherForecastController> _logger;
 
-            public HumidityController(ILogger<WeatherForecastController> logger)
-            {
-                _logger = logger;
-            }
-
-            [HttpGet(Name = "GetWeatherForecast")]
-            public IEnumerable<WeatherForecast> Get()
+            public HumidityController()
             {
             }
+
+            //[HttpGet(Name = "GetWeatherForecast")]
+            //public IEnumerable<> Get()
+            //{
+
+            //}
         }
     }
 }
