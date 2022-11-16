@@ -21,7 +21,7 @@ public class ClimateService : IGenericService<ClimateDTO, IClimateRepository, Cl
     {
         if (id == 0)
         {
-            LogWa
+            
             return null;
         }
         try
