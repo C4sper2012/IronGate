@@ -1,6 +1,9 @@
+using Auth0.AspNetCore.Authentication;
 using Irongate.Blazor.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 namespace Irongate.Blazor
 {
@@ -14,6 +17,16 @@ namespace Irongate.Blazor
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
             builder.Services.AddSingleton<WeatherForecastService>();
+
+            builder.Services.AddAuth0WebAppAuthentication(options =>
+            {
+                options.Domain = builder.Configuration["Auth0:Domain"];
+                options.ClientId = builder.Configuration["Auth0:ClientId"];
+                options.ClientSecret = builder.Configuration["Auth0:ClientSecret"];
+
+                options.CallbackPath = "/callback";
+            });
+               
 
             var app = builder.Build();
 
@@ -31,6 +44,9 @@ namespace Irongate.Blazor
 
             app.UseRouting();
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+            
             app.MapBlazorHub();
             app.MapFallbackToPage("/_Host");
 
