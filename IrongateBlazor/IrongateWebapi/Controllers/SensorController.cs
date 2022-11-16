@@ -9,9 +9,42 @@ namespace Irongate.WebAPI.Controllers
     {
         [Route("{id:int}")]
         [HttpGet]
-        public MotionSensor GetClimateById(int id)
+        public MotionSensor GetSensorById(int id)
         {
+            
             return new MotionSensor();
+        }
+
+        [Route("all")]
+        [HttpGet]
+        public IEnumerable<MotionSensor> GetAllSensors()
+        {
+            // TODO: Implement
+            return new List<MotionSensor>(){new(){ Value = 1, ID = 1, TimeStamp = DateTime.Now}};
+        }
+        
+        [Route("all/{take:int}")]
+        [HttpGet]
+        public IEnumerable<MotionSensor> Take(int take)
+        {
+            // TODO: Implement
+            return new List<MotionSensor>(){new(){ Value = 1, ID = 1, TimeStamp = DateTime.Now}};
+        }
+        
+        [Route("{datefrom:datetime}/{dateTo:datetime}")]
+        [HttpGet]
+        public IEnumerable<MotionSensor> GetSensorFromToDate(DateTime datefrom, DateTime dateTo)
+        {
+            // TODO: Implement
+            return new List<MotionSensor>(){new(){ Value = 1, ID = 1, TimeStamp = DateTime.Now}};
+        }
+        
+        [Route("{datefrom:datetime}")]
+        [HttpGet]
+        public IEnumerable<MotionSensor> GetSensorFromDate(DateTime dateTime)
+        {
+            // TODO: Implement
+            return new List<MotionSensor>(){new(){ Value = 1, ID = 1, TimeStamp = DateTime.Now}};
         }
     }
 }
