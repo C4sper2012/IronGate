@@ -1,9 +1,10 @@
 ﻿using System.Reflection.Metadata;
+using Irongate.Repository.Interfaces;
 using Org.BouncyCastle.Crypto.Signers;
 
 namespace Irongate.Service;
 
-public abstract class GenericService<T, I, E> : IGenericService<T> where T : class where I : IGenericService<E> where E : class
+public abstract class GenericService<T, I, E> : IGenericService<T> where T : class where I : IGenericRepository<E> where E : class
 {
     private readonly I _genericRepository;
     private readonly MappingService _mappingService;
@@ -15,37 +16,11 @@ public abstract class GenericService<T, I, E> : IGenericService<T> where T : cla
         _mappingService = mappingService;
     }
 
-    public async Task Create(T entity)
+    public async Task<T> GetById()
     {
         try
         {
-            await _genericRepository.Create(_mappingService._mapper.Map<E>(entity));
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
-    }
-
-    public async Task Update(T entity)
-    {
-        try
-        {
-            await _genericRepository.Update(_mappingService._mapper.Map<E>(entity));
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
-    }
-
-    public async Task Delete(T entity)
-    {
-        try
-        {
-            await _genericRepository.Delete(_mappingService._mapper.Map<E>(entity));
+            
         }
         catch (Exception e)
         {

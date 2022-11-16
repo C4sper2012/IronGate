@@ -1,12 +1,12 @@
 ﻿
 using AutoMapper;
 using Irongate.Repository.Domain.Models;
+using Irongate.Service.Base;
 using Irongate.Service.DTO;
-using Org.BouncyCastle.Crypto.Utilities;
 
 namespace Irongate.Service;
 
-public class MappingService
+public class MappingService : BaseService
 {
     public readonly IMapper _mapper;
 
@@ -34,11 +34,11 @@ public class MappingService
         try
         {
             _mapper.ConfigurationProvider.CreateMapper();
+            LogInformation("Successfully created mappings");
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
-            Console.WriteLine(e);
-            throw;
+          LogError("Failed to create mappings", ex);
         }
     }
 }
