@@ -1,6 +1,8 @@
 ﻿@page "/climate"
 @using System.Globalization
 @attribute [Authorize]
+@inject IClimateService ClimateService
+@inject ILocalStorageService LocalStorage
 
 <h3>Climate</h3>
 
@@ -33,6 +35,11 @@
     </div>
 
 @code {
+
+    protected override async Task OnInitializedAsync()
+    {
+        ClimateService.GetClimates(await LocalStorage.GetItemAsync<string>("ACCESS_TOKEN"));
+    }
 
     bool smooth = false;
     bool showDataLabels = false;

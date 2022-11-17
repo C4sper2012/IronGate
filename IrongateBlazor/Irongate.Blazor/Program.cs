@@ -1,4 +1,5 @@
 using Auth0.AspNetCore.Authentication;
+using Blazored.LocalStorage;
 using Irongate.Service.Interfaces;
 using Irongate.Service.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -18,8 +19,10 @@ namespace Irongate.Blazor
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
-            builder.Services.AddTransient<IMQTTService, MQTTService>();
             
+            builder.Services.AddScoped<IMQTTService, MQTTService>();
+            builder.Services.AddScoped<IClimateService, ClimateService>();
+            builder.Services.AddBlazoredLocalStorage();
 
             builder.Services.AddAuth0WebAppAuthentication(options =>
             {
