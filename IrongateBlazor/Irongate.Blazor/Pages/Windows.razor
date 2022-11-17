@@ -3,7 +3,7 @@
 @using System.Diagnostics
 @attribute [Authorize]
 @inject IConfiguration ConfigurationBuilder
-@inject IMQTTService MqttService
+@inject IWindowService WindowService
 
 
 <h3>Windows</h3>
@@ -42,7 +42,7 @@
         string password = ConfigurationBuilder["Thingspeak:WindowControls:FirstFloor:Password"];
         string topic = ConfigurationBuilder["Thingspeak:WindowControls:FirstFloor:Topic"];
         
-        MqttService.Init(broker, port, clientId, topic, username, password, item.Value);
+        WindowService.Init(broker, port, clientId, topic, username, password, item.Value);
     }
 
     void OnClickGroundFloor(RadzenSplitButtonItem item)
@@ -54,7 +54,7 @@
         string password = ConfigurationBuilder["Thingspeak:WindowControls:GroundFloor:Password"];
         string topic = ConfigurationBuilder["Thingspeak:WindowControls:GroundFloor:Topic"];
         
-        MqttService.Init(broker, port, clientId, topic, username, password, item.Value);
+        WindowService.Init(broker, port, clientId, topic, username, password, item.Value);
     }
     
     void OnClickBasement(RadzenSplitButtonItem item)
@@ -66,7 +66,7 @@
         string password = ConfigurationBuilder["Thingspeak:WindowControls:Basement:Password"];
         string topic = ConfigurationBuilder["Thingspeak:WindowControls:Basement:Topic"];
         
-        MqttService.Init(broker, port, clientId, topic, username, password, item.Value);
+        WindowService.Init(broker, port, clientId, topic, username, password, item.Value);
     }
 
 }
