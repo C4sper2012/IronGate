@@ -1,6 +1,7 @@
 ﻿@page "/sensor"
 @attribute [Authorize]
-
+@inject IMotionSensorService MotionSensorService
+@inject ILocalStorageService LocalStorage
 
 <h3>Sensor</h3>
 
@@ -28,9 +29,15 @@
 
 @code {
 
+    // protected override async Task OnInitializedAsync()
+    // {
+    //     base.OnInitialized();
+    //     var items = await MotionSensorService.GetSensor();
+    // }
 
     void OnChange(string value, string name)
     {
+        
     }
 
 }

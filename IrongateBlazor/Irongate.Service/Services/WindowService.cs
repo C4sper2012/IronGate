@@ -3,7 +3,7 @@ using uPLibrary.Networking.M2Mqtt;
 
 namespace Irongate.Service.Services
 {
-    public class MQTTService : IMQTTService
+    public class WindowService : IWindowService
     {
         public void Init(string broker, int port, string clientId, string topic, string username, string password, string item)
         {

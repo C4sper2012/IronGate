@@ -36,14 +36,13 @@
 
 @code {
 
-    protected override async Task OnInitializedAsync()
-    {
-        var items =  await ClimateService.GetClimates();
-    }
+    // protected override async Task OnInitializedAsync()
+    // {
+    //     var items =  await ClimateService.GetClimates();
+    // }
 
     bool smooth = false;
     bool showDataLabels = false;
-
     class DataItem
     {
         public string Date { get; set; }

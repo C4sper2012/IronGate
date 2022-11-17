@@ -2,7 +2,7 @@
 
 namespace Irongate.Service.Models
 {
-    public class Root
+    public class MotionSensor
     {
         [JsonProperty("id")]
         public int Id { get; set; }

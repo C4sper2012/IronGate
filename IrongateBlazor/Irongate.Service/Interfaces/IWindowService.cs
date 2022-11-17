@@ -2,7 +2,7 @@
 
 namespace Irongate.Service.Interfaces;
 
-public interface IMQTTService
+public interface IWindowService
 {
     /// <summary>
     /// 
