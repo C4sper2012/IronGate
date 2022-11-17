@@ -1,31 +1,63 @@
 ﻿@page "/climate"
-@using System.Globalization
 @attribute [Authorize]
 @inject IClimateService ClimateService
 @inject ILocalStorageService LocalStorage
 
-<h3>Climate</h3>
+<h1 class="text-center">Climate</h1>
 
 <div class="container">
         <div class="row">
             <div class="col-sm-12 my-5">
-                <RadzenCard Class="w-100 mb-4" Style="display: flex; align-items: center; gap: 0.5rem" >
+                <RadzenCard Class="w-100 mb-4" Style="display: flex; align-items: center; gap: 0.5rem">
                     <RadzenCheckBox @bind-Value="@smooth" Name="smooth"></RadzenCheckBox>
                     <RadzenLabel Text="Smooth" For="smooth" Style="margin-right: 1rem;"/>
                     <RadzenCheckBox @bind-Value="@showDataLabels" Name="dataLabels"></RadzenCheckBox>
                     <RadzenLabel Text="Show Data Labels" For="dataLabels" />
                 </RadzenCard>
-                <RadzenChart>
-                    <RadzenLineSeries Smooth="@smooth" Data="@revenue2019" CategoryProperty="Date" Title="Temp" LineType="LineType.Dashed" ValueProperty="Revenue">
+               <h2>First Floor</h2>
+                <RadzenChart class="m-3">
+                    <RadzenLineSeries Smooth="@smooth" Data="@FirstFloor" CategoryProperty="TimeStamp" Title="Temp" LineType="LineType.Dashed" ValueProperty="Temperature">
                         <RadzenMarkers MarkerType="MarkerType.Square" />
                         <RadzenSeriesDataLabels Visible="@showDataLabels" />
                     </RadzenLineSeries>
-                    <RadzenLineSeries Smooth="@smooth" Data="@revenue2020" CategoryProperty="Date" Title="Humid" ValueProperty="Revenue">
+                    <RadzenLineSeries Smooth="@smooth" Data="@FirstFloor" CategoryProperty="TimeStamp" Title="Humid" ValueProperty="Humidity">
                         <RadzenMarkers MarkerType="MarkerType.Circle" />
                         <RadzenSeriesDataLabels Visible="@showDataLabels" />
                     </RadzenLineSeries>
                     <RadzenCategoryAxis Padding="20" Formatter="@FormatAsFullDate" />
-                    <RadzenValueAxis Formatter="@FormatAsTempAndHumid">
+                    <RadzenValueAxis>
+                        <RadzenGridLines Visible="true" />
+                        <RadzenAxisTitle Text="Temp and Humid" />
+                    </RadzenValueAxis>
+                </RadzenChart>
+                <h2>Ground Floor</h2>
+                <RadzenChart class="m-3">
+                    <RadzenLineSeries Smooth="@smooth" Data="@GroundFloor" CategoryProperty="TimeStamp" Title="Temp" LineType="LineType.Dashed" ValueProperty="Temperature">
+                        <RadzenMarkers MarkerType="MarkerType.Square" />
+                        <RadzenSeriesDataLabels Visible="@showDataLabels" />
+                    </RadzenLineSeries>
+                    <RadzenLineSeries Smooth="@smooth" Data="@GroundFloor" CategoryProperty="TimeStamp" Title="Humid" ValueProperty="Humidity">
+                        <RadzenMarkers MarkerType="MarkerType.Circle" />
+                        <RadzenSeriesDataLabels Visible="@showDataLabels" />
+                    </RadzenLineSeries>
+                    <RadzenCategoryAxis Padding="20" Formatter="@FormatAsFullDate" />
+                    <RadzenValueAxis>
+                        <RadzenGridLines Visible="true" />
+                        <RadzenAxisTitle Text="Temp and Humid" />
+                    </RadzenValueAxis>
+                </RadzenChart>
+                <h2>Basement</h2>
+                 <RadzenChart class="m-3">
+                    <RadzenLineSeries Smooth="@smooth" Data="@Basement" CategoryProperty="TimeStamp" Title="Temp" LineType="LineType.Dashed" ValueProperty="Temperature">
+                        <RadzenMarkers MarkerType="MarkerType.Square" />
+                        <RadzenSeriesDataLabels Visible="@showDataLabels" />
+                    </RadzenLineSeries>
+                    <RadzenLineSeries Smooth="@smooth" Data="@Basement" CategoryProperty="TimeStamp" Title="Humid" ValueProperty="Humidity">
+                        <RadzenMarkers MarkerType="MarkerType.Circle" />
+                        <RadzenSeriesDataLabels Visible="@showDataLabels" />
+                    </RadzenLineSeries>
+                    <RadzenCategoryAxis Padding="20" Formatter="@FormatAsFullDate" />
+                    <RadzenValueAxis>
                         <RadzenGridLines Visible="true" />
                         <RadzenAxisTitle Text="Temp and Humid" />
                     </RadzenValueAxis>
@@ -38,15 +70,41 @@
 
     // protected override async Task OnInitializedAsync()
     // {
+    //     ClimateData data = new ClimateData();
     //     var items =  await ClimateService.GetClimates();
+    //     foreach (var item in items)
+    //     {
+    //         data.Id = item.Id;
+    //         data.TimeStamp = item.TimeStamp;
+    //         //data.Floor = item.Floor;
+    //         data.Temperature = item.Temperature;
+    //         data.Humidity = item.Humidity;
+    //     }
     // }
 
     bool smooth = false;
     bool showDataLabels = false;
-    class DataItem
+    
+    enum Floor
     {
-        public string Date { get; set; }
-        public double Revenue { get; set; }
+        FirstFloor = 2,
+        GroundFloor = 1,
+        Basement = 0
+    }
+    
+    class ClimateData
+    {
+        public int Id { get; set; }
+
+        public int EntryID { get; set; }
+
+        public DateTime TimeStamp { get; set; }
+
+        public Floor Floor { get; set; }
+
+        public int Temperature { get; set; }
+
+        public int Humidity { get; set; }
     }
 
     string FormatAsFullDate(object value)
@@ -59,136 +117,186 @@
         return string.Empty;
     }
 
-    string FormatAsTempAndHumid(object value)
-    {
-        return ((double) value).ToString("C0", CultureInfo.CreateSpecificCulture("en-US"));
-    }
+    // string FormatAsTempAndHumid(object value)
+    // {
+    //     return ((double) value).ToString("C0", CultureInfo.CreateSpecificCulture("en-US"));
+    // }
     
-    DataItem[] revenue2019 = new DataItem[] {
-        new DataItem
-        {
-            Date = ("2019-01-01"),
-            Revenue = 234000
-        },
-        new DataItem
-        {
-            Date = ("2019-02-01"),
-            Revenue = 269000
-        },
-        new DataItem
-        {
-            Date = ("2019-03-01"),
-            Revenue = 233000
-        },
-        new DataItem
-        {
-            Date = ("2019-04-01"),
-            Revenue = 244000
-        },
-        new DataItem
-        {
-            Date = ("2019-05-01"),
-            Revenue = 214000
-        },
-        new DataItem
-        {
-            Date = ("2019-06-01"),
-            Revenue = 253000
-        },
-        new DataItem
-        {
-            Date = ("2019-07-01"),
-            Revenue = 274000
-        },
-        new DataItem
-        {
-            Date = ("2019-08-01"),
-            Revenue = 284000
-        },
-        new DataItem
-        {
-            Date = ("2019-09-01"),
-            Revenue = 273000
-        },
-        new DataItem
-        {
-            Date = ("2019-10-01"),
-            Revenue = 282000
-        },
-        new DataItem
-        {
-            Date = ("2019-11-01"),
-            Revenue = 289000
-        },
-        new DataItem
-        {
-            Date = ("2019-12-01"),
-            Revenue = 294000
-        }
+    List<ClimateData> FirstFloor = new List<ClimateData>() {
+        // new ClimateData()
+        // {
+        //     Id = 1,
+        //     Temperature = 20,
+        //     Humidity = 50,
+        //     TimeStamp = DateTime.Now.AddDays(0),
+        //     Floor = Floor.FirstFloor
+        // },
+        // new ClimateData
+        // {
+        //     Id = 2,
+        //     Temperature = 22,
+        //     Humidity = 55,
+        //     TimeStamp = DateTime.Now.AddDays(-1),
+        //     Floor = Floor.FirstFloor
+        // },
+        // new ClimateData
+        // {
+        //     Id = 3,
+        //     Temperature = 23,
+        //     Humidity = 45,
+        //     TimeStamp = DateTime.Now.AddDays(-2),
+        //     Floor = Floor.FirstFloor
+        // },
+        // new ClimateData
+        // {
+        //     Id = 4,
+        //     Temperature = 24,
+        //     Humidity = 50,
+        //     TimeStamp = DateTime.Now.AddDays(-3),
+        //     Floor = Floor.FirstFloor
+        // },
+        // new ClimateData
+        // {
+        //     Id = 5,
+        //     Temperature = 26,
+        //     Humidity = 40,
+        //     TimeStamp = DateTime.Now.AddDays(-4),
+        //     Floor = Floor.FirstFloor
+        // },
+        // new ClimateData
+        // {
+        //     Id = 6,
+        //     Temperature = 18,
+        //     Humidity = 80,
+        //     TimeStamp = DateTime.Now.AddDays(-5),
+        //     Floor = Floor.FirstFloor
+        // },
+        // new ClimateData
+        // {
+        //     Id = 7,
+        //     Temperature = 17,
+        //     Humidity = 70,
+        //     TimeStamp = DateTime.Now.AddDays(-6),
+        //     Floor = Floor.FirstFloor
+        // }
     };
     
-    DataItem[] revenue2020 = new DataItem[] {
-        new DataItem
-        {
-            Date = ("2019-01-01"),
-            Revenue = 334000
-        },
-        new DataItem
-        {
-            Date = ("2019-02-01"),
-            Revenue = 369000
-        },
-        new DataItem
-        {
-            Date = ("2019-03-01"),
-            Revenue = 333000
-        },
-        new DataItem
-        {
-            Date = ("2019-04-01"),
-            Revenue = 344000
-        },
-        new DataItem
-        {
-            Date = ("2019-05-01"),
-            Revenue = 314000
-        },
-        new DataItem
-        {
-            Date = ("2019-06-01"),
-            Revenue = 353000
-        },
-        new DataItem
-        {
-            Date = ("2019-07-01"),
-            Revenue = 374000
-        },
-        new DataItem
-        {
-            Date = ("2019-08-01"),
-            Revenue = 384000
-        },
-        new DataItem
-        {
-            Date = ("2019-09-01"),
-            Revenue = 373000
-        },
-        new DataItem
-        {
-            Date = ("2019-10-01"),
-            Revenue = 382000
-        },
-        new DataItem
-        {
-            Date = ("2019-11-01"),
-            Revenue = 389000
-        },
-        new DataItem
-        {
-            Date = ("2019-12-01"),
-            Revenue = 394000
-        }
+    List<ClimateData> GroundFloor = new List<ClimateData>() {
+        // new ClimateData()
+        // {
+        //     Id = 8,
+        //     Temperature = 20,
+        //     Humidity = 50,
+        //     TimeStamp = DateTime.Now.AddDays(0),
+        //     Floor = Floor.GroundFloor
+        // },
+        // new ClimateData
+        // {
+        //     Id = 9,
+        //     Temperature = 22,
+        //     Humidity = 55,
+        //     TimeStamp = DateTime.Now.AddDays(-1),
+        //     Floor = Floor.GroundFloor
+        // },
+        // new ClimateData
+        // {
+        //     Id = 10,
+        //     Temperature = 23,
+        //     Humidity = 45,
+        //     TimeStamp = DateTime.Now.AddDays(-2),
+        //     Floor = Floor.GroundFloor
+        // },
+        // new ClimateData
+        // {
+        //     Id = 11,
+        //     Temperature = 24,
+        //     Humidity = 50,
+        //     TimeStamp = DateTime.Now.AddDays(-3),
+        //     Floor = Floor.GroundFloor
+        // },
+        // new ClimateData
+        // {
+        //     Id = 12,
+        //     Temperature = 26,
+        //     Humidity = 40,
+        //     TimeStamp = DateTime.Now.AddDays(-4),
+        //     Floor = Floor.GroundFloor
+        // },
+        // new ClimateData
+        // {
+        //     Id = 13,
+        //     Temperature = 18,
+        //     Humidity = 80,
+        //     TimeStamp = DateTime.Now.AddDays(-5),
+        //     Floor = Floor.GroundFloor
+        // },
+        // new ClimateData
+        // {
+        //     Id = 14,
+        //     Temperature = 17,
+        //     Humidity = 70,
+        //     TimeStamp = DateTime.Now.AddDays(-6),
+        //     Floor = Floor.GroundFloor
+        // }
     };
-}
-
+    
+    List<ClimateData> Basement = new List<ClimateData>() {
+        // new ClimateData()
+        // {
+        //     Id = 15,
+        //     Temperature = 20,
+        //     Humidity = 50,
+        //     TimeStamp = DateTime.Now.AddDays(0),
+        //     Floor = Floor.Basement
+        // },
+        // new ClimateData
+        // {
+        //     Id = 16,
+        //     Temperature = 22,
+        //     Humidity = 55,
+        //     TimeStamp = DateTime.Now.AddDays(-1),
+        //     Floor = Floor.Basement
+        // },
+        // new ClimateData
+        // {
+        //     Id = 17,
+        //     Temperature = 23,
+        //     Humidity = 45,
+        //     TimeStamp = DateTime.Now.AddDays(-2),
+        //     Floor = Floor.Basement
+        // },
+        // new ClimateData
+        // {
+        //     Id = 18,
+        //     Temperature = 24,
+        //     Humidity = 50,
+        //     TimeStamp = DateTime.Now.AddDays(-3),
+        //     Floor = Floor.Basement
+        // },
+        // new ClimateData
+        // {
+        //     Id = 19,
+        //     Temperature = 26,
+        //     Humidity = 40,
+        //     TimeStamp = DateTime.Now.AddDays(-4),
+        //     Floor = Floor.Basement
+        // },
+        // new ClimateData
+        // {
+        //     Id = 20,
+        //     Temperature = 18,
+        //     Humidity = 80,
+        //     TimeStamp = DateTime.Now.AddDays(-5),
+        //     Floor = Floor.Basement
+        // },
+        // new ClimateData
+        // {
+        //     Id = 21,
+        //     Temperature = 17,
+        //     Humidity = 70,
+        //     TimeStamp = DateTime.Now.AddDays(-6),
+        //     Floor = Floor.Basement
+        // }
+    };
+    
 }
