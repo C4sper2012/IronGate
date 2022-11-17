@@ -19,6 +19,17 @@ namespace Irongate.Service.Services
 
         public async Task<List<MotionSensor>> GetSensor()
         {
+            List<MotionSensor> motionSensor = new ();
+            // for (int i = 0; i < 10; i++)
+            // {
+            //     motionSensor.Add(new MotionSensor()
+            //     {
+            //         EntryID = i, Id = i, Value = 1, TimeStamp = DateTime.Now.AddDays(-i)
+            //     });
+            // }
+
+            return motionSensor;
+            
             var client = new RestClient("http://10.135.16.30/Motion/all/10");
             var request = new RestRequest();
             request.Method = Method.Get;

@@ -1,43 +1,65 @@
 ﻿@page "/sensor"
+@using Irongate.Service.Models
 @attribute [Authorize]
 @inject IMotionSensorService MotionSensorService
 @inject ILocalStorageService LocalStorage
 
-<h3>Sensor</h3>
+<h1 class="text-center">Motion Sensor</h1>
 
-<div class="col-md-6 col-lg-4 p-3">
-    <RadzenCard>
-        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Placeholder</RadzenText>
-        <RadzenTextBox Placeholder="Search..." Change=@(args => OnChange(args, "TextBox with placeholder")) Class="w-100"/>
-    </RadzenCard>
-</div>
 
-<RadzenDataGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="4"
-                AllowSorting="true" ColumnWidth="200px" TItem="Sensor"
-                SelectionMode="DataGridSelectionMode.Single">
+<RadzenDataGrid Data="@MotionSensors" TItem="MotionSensor" AllowSorting="true" AllowMultiColumnSorting="true" AllowPaging="true" PageSize="5" AllowFiltering="true" FilterMode="FilterMode.Advanced" LogicalFilterOperator="LogicalFilterOperator.Or">
     <Columns>
-        <RadzenDataGridColumn Sortable="false" Filterable="false" TItem="Sensor">
-            <Template>
-                
-            </Template>
-        </RadzenDataGridColumn>
-        <RadzenDataGridColumn TItem="Sensor" Title="Title"/>
-        <RadzenDataGridColumn TItem="Sensor" Title="Date"/>
-        <RadzenDataGridColumn TItem="Sensor" Title="Time"/>
+        <RadzenDataGridColumn TItem="MotionSensor" Property="Id" Title="ID"/>
+
+        <RadzenDataGridColumn TItem="MotionSensor" Property="Value" Title="Value"/>
+        <RadzenDataGridColumn TItem="MotionSensor" Property="TimeStamp" Title="TimeStamp"/>
     </Columns>
 </RadzenDataGrid>
 
+<RadzenCard Class="w-100 mb-4 mt-5" Style="display: flex; align-items: center; gap: 0.5rem">
+    <RadzenCheckBox @bind-Value="@smooth" Name="smooth"></RadzenCheckBox>
+    <RadzenLabel Text="Smooth" For="smooth" Style="margin-right: 1rem;"/>
+    <RadzenCheckBox @bind-Value="@showDataLabels" Name="dataLabels"></RadzenCheckBox>
+    <RadzenLabel Text="Show Data Labels" For="dataLabels"/>
+</RadzenCard>
+<h2>Entries</h2>
+<RadzenChart class="m-3">
+    <RadzenLineSeries Smooth="@smooth" Data="@MotionSensors" CategoryProperty="TimeStamp" Title="Temp" LineType="LineType.Dashed" ValueProperty="Value">
+        <RadzenMarkers MarkerType="MarkerType.Square"/>
+        <RadzenSeriesDataLabels Visible="@showDataLabels"/>
+    </RadzenLineSeries>
+    <RadzenValueAxis>
+        <RadzenGridLines Visible="true"/>
+    </RadzenValueAxis>
+</RadzenChart>
+
 @code {
+    bool smooth = false;
+    bool showDataLabels = false;
 
-    // protected override async Task OnInitializedAsync()
-    // {
-    //     base.OnInitialized();
-    //     var items = await MotionSensorService.GetSensor();
-    // }
-
-    void OnChange(string value, string name)
+    class DataItem
     {
-        
+        public string Date { get; set; }
+        public double Revenue { get; set; }
+    }
+
+
+    string FormatAsFullDate(object value)
+    {
+        if (value != null)
+        {
+            return Convert.ToDateTime(value).ToString("yy-MM-dd");
+        }
+
+        return string.Empty;
+    }
+
+    public IEnumerable<MotionSensor> MotionSensors { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+        MotionSensors = await MotionSensorService.GetSensor();
     }
 
 }
