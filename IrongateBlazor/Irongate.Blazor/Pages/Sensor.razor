@@ -4,6 +4,33 @@
 
 <h3>Sensor</h3>
 
+<div class="col-md-6 col-lg-4 p-3">
+    <RadzenCard>
+        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Placeholder</RadzenText>
+        <RadzenTextBox Placeholder="Search..." Change=@(args => OnChange(args, "TextBox with placeholder")) Class="w-100"/>
+    </RadzenCard>
+</div>
+
+<RadzenDataGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="4"
+                AllowSorting="true" ColumnWidth="200px" TItem="Sensor"
+                SelectionMode="DataGridSelectionMode.Single">
+    <Columns>
+        <RadzenDataGridColumn Sortable="false" Filterable="false" TItem="Sensor">
+            <Template>
+                
+            </Template>
+        </RadzenDataGridColumn>
+        <RadzenDataGridColumn TItem="Sensor" Title="Title"/>
+        <RadzenDataGridColumn TItem="Sensor" Title="Date"/>
+        <RadzenDataGridColumn TItem="Sensor" Title="Time"/>
+    </Columns>
+</RadzenDataGrid>
+
 @code {
+
+
+    void OnChange(string value, string name)
+    {
+    }
 
 }
