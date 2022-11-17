@@ -4,6 +4,6 @@ namespace Irongate.Service.Interfaces
 {
     public interface IClimateService
     {
-        public List<Climate> GetClimates(string accessToken);
+        public Task<List<Climate>> GetClimates();
     }
 }

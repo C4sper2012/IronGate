@@ -10,6 +10,7 @@ public class Login : PageModel
     {
         var authenticationProperties = new LoginAuthenticationPropertiesBuilder()
             .WithRedirectUri(returnUrl)
+            .WithAudience("https://IronGate/api")
             .Build();
         await HttpContext.ChallengeAsync(Auth0Constants.AuthenticationScheme, authenticationProperties);
     }

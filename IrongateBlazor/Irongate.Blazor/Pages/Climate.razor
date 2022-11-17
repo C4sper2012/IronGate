@@ -38,7 +38,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        ClimateService.GetClimates(await LocalStorage.GetItemAsync<string>("ACCESS_TOKEN"));
+        var items =  await ClimateService.GetClimates();
     }
 
     bool smooth = false;

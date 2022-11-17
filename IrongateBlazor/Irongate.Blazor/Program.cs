@@ -5,6 +5,7 @@ using Irongate.Service.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using uPLibrary.Networking.M2Mqtt;
 
@@ -31,9 +32,13 @@ namespace Irongate.Blazor
                 options.ClientSecret = builder.Configuration["Auth0:ClientSecret"];
 
                 options.CallbackPath = "/callback";
+            }).WithAccessToken(options =>
+            {
+                options.Audience = builder.Configuration["Auth0:Audience"];
             });
-               
 
+            builder.Services.AddHttpContextAccessor();
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
