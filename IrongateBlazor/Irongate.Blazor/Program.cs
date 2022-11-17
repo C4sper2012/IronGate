@@ -1,5 +1,4 @@
 using Auth0.AspNetCore.Authentication;
-using Irongate.Blazor.Data;
 using Irongate.Service.Interfaces;
 using Irongate.Service.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -19,7 +18,6 @@ namespace Irongate.Blazor
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
-            builder.Services.AddSingleton<WeatherForecastService>();
             builder.Services.AddTransient<IMQTTService, MQTTService>();
             
 

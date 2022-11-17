@@ -15,7 +15,7 @@ public interface IMQTTService
     /// <param name="password"></param>
     /// <param name="item"></param>
     public void Init(string broker, int port, string clientId, string topic, string username, string password, string item);
-
+    
     /// <summary>
     /// 
     /// </summary>
@@ -26,7 +26,7 @@ public interface IMQTTService
     /// <param name="password"></param>
     /// <returns></returns>
     public MqttClient ConnectMQTT(string broker, int port, string clientId, string username, string password);
-
+    
     /// <summary>
     /// 
     /// </summary>

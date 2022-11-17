@@ -6,7 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Irongate.Blazor", "Irongate.Blazor\Irongate.Blazor.csproj", "{58F380FA-365C-4B84-874C-5E973CEAE3DA}"
 
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Irongate.Service", "Irongate.Service\Irongate.Service.csproj", "{2243CF27-5457-4C60-8C4F-7B2BF63D7F0D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Irongate.Service", "Irongate.Service\Irongate.Service.csproj", "{8E8D0D42-0054-4E23-BC1D-1500424FD72B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,10 +20,10 @@ Global
 		{58F380FA-365C-4B84-874C-5E973CEAE3DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58F380FA-365C-4B84-874C-5E973CEAE3DA}.Release|Any CPU.Build.0 = Release|Any CPU
 
-		{2243CF27-5457-4C60-8C4F-7B2BF63D7F0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2243CF27-5457-4C60-8C4F-7B2BF63D7F0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2243CF27-5457-4C60-8C4F-7B2BF63D7F0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2243CF27-5457-4C60-8C4F-7B2BF63D7F0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E8D0D42-0054-4E23-BC1D-1500424FD72B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E8D0D42-0054-4E23-BC1D-1500424FD72B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E8D0D42-0054-4E23-BC1D-1500424FD72B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E8D0D42-0054-4E23-BC1D-1500424FD72B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
