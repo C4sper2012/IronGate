@@ -1,9 +1,4 @@
 using Auth0.AspNetCore.Authentication;
-using Irongate.Blazor.Data;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 
 namespace Irongate.Blazor
 {
@@ -16,7 +11,6 @@ namespace Irongate.Blazor
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
-            builder.Services.AddSingleton<WeatherForecastService>();
 
             builder.Services.AddAuth0WebAppAuthentication(options =>
             {
