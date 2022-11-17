@@ -1,9 +1,12 @@
 using Auth0.AspNetCore.Authentication;
 using Irongate.Blazor.Data;
+using Irongate.Service.Interfaces;
+using Irongate.Service.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using uPLibrary.Networking.M2Mqtt;
 
 namespace Irongate.Blazor
 {
@@ -17,6 +20,8 @@ namespace Irongate.Blazor
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
             builder.Services.AddSingleton<WeatherForecastService>();
+            builder.Services.AddTransient<IMQTTService, MQTTService>();
+            
 
             builder.Services.AddAuth0WebAppAuthentication(options =>
             {

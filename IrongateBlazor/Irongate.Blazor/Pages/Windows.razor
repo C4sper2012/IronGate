@@ -1,9 +1,72 @@
 ﻿@page "/windows"
+@using uPLibrary.Networking.M2Mqtt
+@using System.Diagnostics
 @attribute [Authorize]
+@inject IConfiguration ConfigurationBuilder
+@inject IMQTTService MqttService
 
 
 <h3>Windows</h3>
 
+<RadzenSplitButton Click=@OnClickFirstFloor Text="First Floor">
+    <ChildContent>
+        <RadzenSplitButtonItem Text="Open" Value="1"/>
+        <RadzenSplitButtonItem Text="Close" Value="0"/>
+    </ChildContent>
+</RadzenSplitButton>
+<RadzenSplitButton Click=@OnClickGroundFloor Text="Ground Floor">
+    <ChildContent>
+        <RadzenSplitButtonItem Text="Open" Value="1"/>
+        <RadzenSplitButtonItem Text="Close" Value="0"/>
+    </ChildContent>
+</RadzenSplitButton>
+
+<RadzenSplitButton Click=@OnClickBasement Text="Basement">
+    <ChildContent>
+        <RadzenSplitButtonItem Text="Open" Value="1"/>
+        <RadzenSplitButtonItem Text="Close" Value="0"/>
+    </ChildContent>
+</RadzenSplitButton>
+
+@* <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1916369/widgets/542048?api_key=0QYE3TAWD42POHP2"></iframe> *@
+
+
+
 @code {
+    void OnClickFirstFloor(RadzenSplitButtonItem item)
+    {
+        string broker = ConfigurationBuilder["Thingspeak:WindowControls:FirstFloor:Broker"];
+        int port =  Convert.ToInt32(ConfigurationBuilder["Thingspeak:WindowControls:FirstFloor:Port"]);
+        string clientId = ConfigurationBuilder["Thingspeak:WindowControls:FirstFloor:ClientId"];
+        string username = ConfigurationBuilder["Thingspeak:WindowControls:FirstFloor:Username"];
+        string password = ConfigurationBuilder["Thingspeak:WindowControls:FirstFloor:Password"];
+        string topic = ConfigurationBuilder["Thingspeak:WindowControls:FirstFloor:Topic"];
+        
+        MqttService.Init(broker, port, clientId, topic, username, password, item.Value);
+    }
+
+    void OnClickGroundFloor(RadzenSplitButtonItem item)
+    {
+        string broker = ConfigurationBuilder["Thingspeak:WindowControls:GroundFloor:Broker"];
+        int port =  Convert.ToInt32(ConfigurationBuilder["Thingspeak:WindowControls:GroundFloor:Port"]);
+        string clientId = ConfigurationBuilder["Thingspeak:WindowControls:GroundFloor:ClientId"];
+        string username = ConfigurationBuilder["Thingspeak:WindowControls:GroundFloor:Username"];
+        string password = ConfigurationBuilder["Thingspeak:WindowControls:GroundFloor:Password"];
+        string topic = ConfigurationBuilder["Thingspeak:WindowControls:GroundFloor:Topic"];
+        
+        MqttService.Init(broker, port, clientId, topic, username, password, item.Value);
+    }
+    
+    void OnClickBasement(RadzenSplitButtonItem item)
+    {
+        string broker = ConfigurationBuilder["Thingspeak:WindowControls:Basement:Broker"];
+        int port =  Convert.ToInt32(ConfigurationBuilder["Thingspeak:WindowControls:Basement:Port"]);
+        string clientId = ConfigurationBuilder["Thingspeak:WindowControls:Basement:ClientId"];
+        string username = ConfigurationBuilder["Thingspeak:WindowControls:Basement:Username"];
+        string password = ConfigurationBuilder["Thingspeak:WindowControls:Basement:Password"];
+        string topic = ConfigurationBuilder["Thingspeak:WindowControls:Basement:Topic"];
+        
+        MqttService.Init(broker, port, clientId, topic, username, password, item.Value);
+    }
 
 }

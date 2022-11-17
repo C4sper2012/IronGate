@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace Irongate.Service.Base;
+namespace Irongate.Service.Services.Base;
 
 public abstract class BaseService
 {
@@ -58,4 +58,3 @@ public abstract class BaseService
     /// <returns>Method name</returns>
     protected static string GetActualAsyncMethodName([CallerMemberName] string name = null) => name;
 }
-
