@@ -1,0 +1,78 @@
+﻿@page "/waterLevel"
+
+<RadzenText TextStyle="TextStyle.H3" TagName="TagName.H1" Class="my-4">
+    Water level chart
+</RadzenText>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col">
+            <RadzenCard Class="w-100 mb-4" Style="display: flex; align-items: center; gap: 0.5rem">
+                <RadzenCheckBox @bind-Value="@smooth" Name="smooth"></RadzenCheckBox>
+                <RadzenLabel Text="Smooth" For="smooth" Style="margin-right: 1rem;" />
+                <RadzenCheckBox @bind-Value="@showDataLabels" Name="dataLabels"></RadzenCheckBox>
+                <RadzenLabel Text="Show Data Labels" For="dataLabels" />
+            </RadzenCard>
+            <RadzenChart>
+                <RadzenAreaSeries Smooth="@smooth" Data="@WaterLevels" CategoryProperty="TimeStamp" Title="2020" LineType="LineType.Dashed" ValueProperty="Value">
+                    <RadzenSeriesDataLabels Visible="@showDataLabels" />
+                </RadzenAreaSeries>
+                <RadzenCategoryAxis Padding="20" Formatter="@FormatAsMonth" />
+            </RadzenChart>
+        </div>
+    </div>
+</div>
+@code {
+    bool smooth = true;
+    bool showDataLabels = false;
+
+    public class WaterLevelData
+    {
+        public int Value { get; set; }
+        public DateTime TimeStamp { get; set; }
+    }
+
+    string FormatAsMonth(object value)
+    {
+        if (value != null)
+        {
+            return Convert.ToDateTime(value).ToString("yy-MM-dd");
+        }
+
+        return string.Empty;
+    }
+
+    public List<WaterLevelData> WaterLevels { get; set; } = new()
+    {
+        //new()
+        //{
+        //    Value = 1,
+        //    TimeStamp = DateTime.Parse("2019-01-01")
+        //},
+        //new()
+        //{
+        //    Value = 3,
+        //    TimeStamp = DateTime.Parse("2019-02-01")
+        //},
+        //new()
+        //{
+        //    Value = 4,
+        //    TimeStamp = DateTime.Parse("2019-03-01")
+        //},
+        //new()
+        //{
+        //    Value = 1,
+        //    TimeStamp = DateTime.Parse("2019-04-01")
+        //},
+        //new()
+        //{
+        //    Value = 2,
+        //    TimeStamp = DateTime.Parse("2019-05-01")
+        //},
+        //new()
+        //{
+        //    Value = 0,
+        //    TimeStamp = DateTime.Parse("2019-06-01")
+        //}
+    };
+}
