@@ -16,8 +16,8 @@
                 <RadzenLabel Text="Show Data Labels" For="dataLabels" />
             </RadzenCard>
             <RadzenChart>
-                <RadzenAreaSeries Smooth="@smooth" Data="@WaterLevels" CategoryProperty="TimeStamp" Title="2020" LineType="LineType.Dashed" ValueProperty="Value">
-                    <RadzenSeriesDataLabels Visible="@showDataLabels" />
+                <RadzenAreaSeries Smooth="@smooth" Data="@WaterLevels" CategoryProperty="timeStamp" Title="Water level" LineType="LineType.Dashed" ValueProperty="value">
+                    <RadzenSeriesDataLabels Visible="@showDataLabels"  />
                 </RadzenAreaSeries>
                 <RadzenCategoryAxis Padding="20" Formatter="@FormatAsMonth" />
             </RadzenChart>
@@ -39,7 +39,7 @@
     {
         if (value != null)
         {
-            return Convert.ToDateTime(value).ToString("yy-MM-dd");
+            return Convert.ToDateTime(value).ToString("dd-MM HH:mm");
         }
 
         return string.Empty;
