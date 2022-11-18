@@ -1,0 +1,47 @@
+﻿@page "/waterLevel"
+@attribute [Authorize]
+@inject IWaterLevelSevice WaterLevelService
+
+<RadzenText TextStyle="TextStyle.H3" TagName="TagName.H1" Class="my-4">
+    Water level chart
+</RadzenText>
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col">
+            <RadzenCard Class="w-100 mb-4" Style="display: flex; align-items: center; gap: 0.5rem">
+                <RadzenCheckBox @bind-Value="@smooth" Name="smooth"></RadzenCheckBox>
+                <RadzenLabel Text="Smooth" For="smooth" Style="margin-right: 1rem;" />
+                <RadzenCheckBox @bind-Value="@showDataLabels" Name="dataLabels"></RadzenCheckBox>
+                <RadzenLabel Text="Show Data Labels" For="dataLabels" />
+            </RadzenCard>
+            <RadzenChart>
+                <RadzenAreaSeries Smooth="@smooth" Data="@WaterLevels" CategoryProperty="timeStamp" Title="Water level" LineType="LineType.Dashed" ValueProperty="value">
+                    <RadzenSeriesDataLabels Visible="@showDataLabels"  />
+                </RadzenAreaSeries>
+                <RadzenCategoryAxis Padding="20" Formatter="@FormatAsDays" />
+            </RadzenChart>
+        </div>
+    </div>
+</div>
+@code {
+    bool smooth = true;
+    bool showDataLabels = false;
+
+    public List<Service.Models.WaterLevel> WaterLevels { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        WaterLevels = await WaterLevelService.GetWaterLevel();
+    }
+
+    string FormatAsDays(object value)
+    {
+        if (value != null)
+        {
+            return Convert.ToDateTime(value).ToString("dd-MM HH:mm");
+        }
+
+        return string.Empty;
+    }
+}

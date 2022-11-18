@@ -5,16 +5,15 @@ namespace Irongate.Service.Models
 {
     public class Climate
     {
-        [JsonProperty("id")] public int Id { get; set; }
+        public int id { get; set; }
 
-        [JsonProperty("entryID")] public int EntryID { get; set; }
+        public int entryID { get; set; }
+        public DateTime timeStamp { get; set; }
 
-        [JsonProperty("timeStamp")] public DateTime TimeStamp { get; set; }
+        public Floor floor { get; set; }
 
-        [JsonProperty("floor")] public Floor Floor { get; set; }
+         public int temperature { get; set; }
 
-        [JsonProperty("temperature")] public int Temperature { get; set; }
-
-        [JsonProperty("humidity")] public int Humidity { get; set; }
+        public int humidity { get; set; }
     }
 }

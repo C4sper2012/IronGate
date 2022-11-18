@@ -3,10 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Irongate.Blazor", "Irongate.Blazor\Irongate.Blazor.csproj", "{58F380FA-365C-4B84-874C-5E973CEAE3DA}"
-
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Irongate.Blazor", "Irongate.Blazor\Irongate.Blazor.csproj", "{58F380FA-365C-4B84-874C-5E973CEAE3DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Irongate.Service", "Irongate.Service\Irongate.Service.csproj", "{8E8D0D42-0054-4E23-BC1D-1500424FD72B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Irongate.Service", "Irongate.Service\Irongate.Service.csproj", "{8E8D0D42-0054-4E23-BC1D-1500424FD72B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,12 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-
 		{58F380FA-365C-4B84-874C-5E973CEAE3DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{58F380FA-365C-4B84-874C-5E973CEAE3DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58F380FA-365C-4B84-874C-5E973CEAE3DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58F380FA-365C-4B84-874C-5E973CEAE3DA}.Release|Any CPU.Build.0 = Release|Any CPU
-
 		{8E8D0D42-0054-4E23-BC1D-1500424FD72B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8E8D0D42-0054-4E23-BC1D-1500424FD72B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E8D0D42-0054-4E23-BC1D-1500424FD72B}.Release|Any CPU.ActiveCfg = Release|Any CPU
