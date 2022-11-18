@@ -19,7 +19,7 @@
                 <RadzenAreaSeries Smooth="@smooth" Data="@WaterLevels" CategoryProperty="timeStamp" Title="Water level" LineType="LineType.Dashed" ValueProperty="value">
                     <RadzenSeriesDataLabels Visible="@showDataLabels"  />
                 </RadzenAreaSeries>
-                <RadzenCategoryAxis Padding="20" Formatter="@FormatAsMonth" />
+                <RadzenCategoryAxis Padding="20" Formatter="@FormatAsDays" />
             </RadzenChart>
         </div>
     </div>
@@ -35,7 +35,7 @@
         WaterLevels = await WaterLevelService.GetWaterLevel();
     }
 
-    string FormatAsMonth(object value)
+    string FormatAsDays(object value)
     {
         if (value != null)
         {

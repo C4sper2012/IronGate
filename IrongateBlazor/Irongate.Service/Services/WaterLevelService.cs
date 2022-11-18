@@ -15,7 +15,7 @@ namespace Irongate.Service.Services
 
         public async Task<List<WaterLevel>> GetWaterLevel()
         {
-            RestClient client = new("http://10.135.16.30/WaterLevel/all/100");
+            RestClient client = new("http://10.135.16.30/WaterLevel/all/2000");
             RestRequest request = new()
             {
                 Method = Method.Get
