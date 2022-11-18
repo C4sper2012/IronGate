@@ -1,7 +1,7 @@
 ﻿@page "/climate"
+@using Irongate.Service.Models
 @attribute [Authorize]
 @inject IClimateService ClimateService
-@inject ILocalStorageService LocalStorage
 
 <h1 class="text-center">Climate</h1>
 
@@ -16,11 +16,11 @@
                 </RadzenCard>
                <h2>First Floor</h2>
                 <RadzenChart class="m-3">
-                    <RadzenLineSeries Smooth="@smooth" Data="@FirstFloor" CategoryProperty="TimeStamp" Title="Temp" LineType="LineType.Dashed" ValueProperty="Temperature">
+                    <RadzenLineSeries Smooth="@smooth" Data="@FirstFloor" CategoryProperty="timeStamp" Title="Temp" LineType="LineType.Dashed" ValueProperty="temperature">
                         <RadzenMarkers MarkerType="MarkerType.Square" />
                         <RadzenSeriesDataLabels Visible="@showDataLabels" />
                     </RadzenLineSeries>
-                    <RadzenLineSeries Smooth="@smooth" Data="@FirstFloor" CategoryProperty="TimeStamp" Title="Humid" ValueProperty="Humidity">
+                    <RadzenLineSeries Smooth="@smooth" Data="@FirstFloor" CategoryProperty="timeStamp" Title="Humid" ValueProperty="humidity">
                         <RadzenMarkers MarkerType="MarkerType.Circle" />
                         <RadzenSeriesDataLabels Visible="@showDataLabels" />
                     </RadzenLineSeries>
@@ -32,11 +32,11 @@
                 </RadzenChart>
                 <h2>Ground Floor</h2>
                 <RadzenChart class="m-3">
-                    <RadzenLineSeries Smooth="@smooth" Data="@GroundFloor" CategoryProperty="TimeStamp" Title="Temp" LineType="LineType.Dashed" ValueProperty="Temperature">
+                    <RadzenLineSeries Smooth="@smooth" Data="@GroundFloor" CategoryProperty="timeStamp" Title="Temp" LineType="LineType.Dashed" ValueProperty="temperature">
                         <RadzenMarkers MarkerType="MarkerType.Square" />
                         <RadzenSeriesDataLabels Visible="@showDataLabels" />
                     </RadzenLineSeries>
-                    <RadzenLineSeries Smooth="@smooth" Data="@GroundFloor" CategoryProperty="TimeStamp" Title="Humid" ValueProperty="Humidity">
+                    <RadzenLineSeries Smooth="@smooth" Data="@GroundFloor" CategoryProperty="timeStamp" Title="Humid" ValueProperty="humidity">
                         <RadzenMarkers MarkerType="MarkerType.Circle" />
                         <RadzenSeriesDataLabels Visible="@showDataLabels" />
                     </RadzenLineSeries>
@@ -48,11 +48,11 @@
                 </RadzenChart>
                 <h2>Basement</h2>
                  <RadzenChart class="m-3">
-                    <RadzenLineSeries Smooth="@smooth" Data="@Basement" CategoryProperty="TimeStamp" Title="Temp" LineType="LineType.Dashed" ValueProperty="Temperature">
+                    <RadzenLineSeries Smooth="@smooth" Data="@Basement" CategoryProperty="timeStamp" Title="Temp" LineType="LineType.Dashed" ValueProperty="temperature">
                         <RadzenMarkers MarkerType="MarkerType.Square" />
                         <RadzenSeriesDataLabels Visible="@showDataLabels" />
                     </RadzenLineSeries>
-                    <RadzenLineSeries Smooth="@smooth" Data="@Basement" CategoryProperty="TimeStamp" Title="Humid" ValueProperty="Humidity">
+                    <RadzenLineSeries Smooth="@smooth" Data="@Basement" CategoryProperty="timeStamp" Title="Humid" ValueProperty="humidity">
                         <RadzenMarkers MarkerType="MarkerType.Circle" />
                         <RadzenSeriesDataLabels Visible="@showDataLabels" />
                     </RadzenLineSeries>
@@ -68,19 +68,17 @@
 
 @code {
 
-    // protected override async Task OnInitializedAsync()
-    // {
-    //     ClimateData data = new ClimateData();
-    //     var items =  await ClimateService.GetClimates();
-    //     foreach (var item in items)
-    //     {
-    //         data.Id = item.Id;
-    //         data.TimeStamp = item.TimeStamp;
-    //         //data.Floor = item.Floor;
-    //         data.Temperature = item.Temperature;
-    //         data.Humidity = item.Humidity;
-    //     }
-    // }
+
+    public List<Climate> FirstFloor { get; set; }
+    public List<Climate> GroundFloor { get; set; }
+    public List<Climate> Basement { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        FirstFloor =  await ClimateService.GetClimates(2);
+        GroundFloor = await ClimateService.GetClimates(1);
+        Basement = await ClimateService.GetClimates(0);
+    }
 
     bool smooth = false;
     bool showDataLabels = false;
@@ -92,20 +90,20 @@
         Basement = 0
     }
     
-    class ClimateData
-    {
-        public int Id { get; set; }
-
-        public int EntryID { get; set; }
-
-        public DateTime TimeStamp { get; set; }
-
-        public Floor Floor { get; set; }
-
-        public int Temperature { get; set; }
-
-        public int Humidity { get; set; }
-    }
+    // class ClimateData
+    // {
+    //     public int Id { get; set; }
+    //
+    //     public int EntryID { get; set; }
+    //
+    //     public DateTime TimeStamp { get; set; }
+    //
+    //     public Floor Floor { get; set; }
+    //
+    //     public int Temperature { get; set; }
+    //
+    //     public int Humidity { get; set; }
+    // }
 
     string FormatAsFullDate(object value)
     {
@@ -117,12 +115,7 @@
         return string.Empty;
     }
 
-    // string FormatAsTempAndHumid(object value)
-    // {
-    //     return ((double) value).ToString("C0", CultureInfo.CreateSpecificCulture("en-US"));
-    // }
-    
-    List<ClimateData> FirstFloor = new List<ClimateData>() {
+    //List<ClimateData> FirstFloor = new List<ClimateData>() {
         // new ClimateData()
         // {
         //     Id = 1,
@@ -179,9 +172,9 @@
         //     TimeStamp = DateTime.Now.AddDays(-6),
         //     Floor = Floor.FirstFloor
         // }
-    };
+    //};
     
-    List<ClimateData> GroundFloor = new List<ClimateData>() {
+    //List<ClimateData> GroundFloor = new List<ClimateData>() {
         // new ClimateData()
         // {
         //     Id = 8,
@@ -238,9 +231,9 @@
         //     TimeStamp = DateTime.Now.AddDays(-6),
         //     Floor = Floor.GroundFloor
         // }
-    };
+    //};
     
-    List<ClimateData> Basement = new List<ClimateData>() {
+    //List<ClimateData> Basement = new List<ClimateData>() {
         // new ClimateData()
         // {
         //     Id = 15,
@@ -297,6 +290,6 @@
         //     TimeStamp = DateTime.Now.AddDays(-6),
         //     Floor = Floor.Basement
         // }
-    };
-    
+    //};
+
 }
