@@ -11,22 +11,22 @@ namespace Irongate.Service.Services
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public WaterLevelService(IHttpContextAccessor httpContextAccessor)
-        {
-            _httpContextAccessor = httpContextAccessor;
-        }
-
+        public WaterLevelService(IHttpContextAccessor httpContextAccessor) => _httpContextAccessor = httpContextAccessor;
 
         public async Task<List<WaterLevel>> GetWaterLevel()
         {
-            var client = new RestClient("http://10.135.16.30/WaterLevel");
-            var request = new RestRequest();
-            request.Method = Method.Get;
+            RestClient client = new("http://10.135.16.30/WaterLevel/all/100");
+            RestRequest request = new()
+            {
+                Method = Method.Get
+            };
             request.AddHeader("content-type", "application/json");
             request.AddHeader("authorization", $"Bearer {await _httpContextAccessor.HttpContext.GetTokenAsync("access_token")}");
             RestResponse response = client.Execute(request);
-            return JsonSerializer.Deserialize<List<WaterLevel>>(response.Content);
+
+            List<WaterLevel> result = JsonSerializer.Deserialize<List<WaterLevel>>(response.Content);
+
+            return result;
         }
     }
 }
-
