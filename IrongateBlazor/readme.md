@@ -16,6 +16,12 @@
 
 <br>
 
+### WebAPI
+
+[Link to WebAPI README.md](https://github.com/C4sper2012/IrongateWebAPI/blob/develop/README.md)
+
+<br>
+
 ## Auth0  
 
 Settings for Auth0 in the project can be found under 
@@ -63,7 +69,8 @@ Settings can be found under:
 IronGate/IrongateBlazor/Irongate.Blazor/appsettings.json
 ```
 
-There is MQTT settings for Windows for all floors.
+Below is MQTT settings for windows on all floors. 
+
 ```json
 "Thingspeak": {
     "WindowControls": {
@@ -93,6 +100,5 @@ There is MQTT settings for Windows for all floors.
         "Topic": "channels/1916369/publish/fields/field1"
 
       }
-
 ```
 
