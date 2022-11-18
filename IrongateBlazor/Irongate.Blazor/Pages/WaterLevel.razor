@@ -1,4 +1,6 @@
 ﻿@page "/waterLevel"
+@attribute [Authorize]
+@inject IWaterLevelSevice WaterLevelService
 
 <RadzenText TextStyle="TextStyle.H3" TagName="TagName.H1" Class="my-4">
     Water level chart
