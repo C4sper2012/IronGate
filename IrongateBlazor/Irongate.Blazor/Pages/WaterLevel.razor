@@ -28,14 +28,11 @@
     bool smooth = true;
     bool showDataLabels = false;
 
-    public class WaterLevelData
-    {
-        public int Value { get; set; }
-        public DateTime TimeStamp { get; set; }
-    }
+    public List<Service.Models.WaterLevel> WaterLevels { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
+        WaterLevels = await WaterLevelService.GetWaterLevel();
     }
 
     string FormatAsMonth(object value)
@@ -47,38 +44,4 @@
 
         return string.Empty;
     }
-
-    public List<WaterLevel> WaterLevels { get; set; } = new()
-    {
-        //new()
-        //{
-        //    Value = 1,
-        //    TimeStamp = DateTime.Parse("2019-01-01")
-        //},
-        //new()
-        //{
-        //    Value = 3,
-        //    TimeStamp = DateTime.Parse("2019-02-01")
-        //},
-        //new()
-        //{
-        //    Value = 4,
-        //    TimeStamp = DateTime.Parse("2019-03-01")
-        //},
-        //new()
-        //{
-        //    Value = 1,
-        //    TimeStamp = DateTime.Parse("2019-04-01")
-        //},
-        //new()
-        //{
-        //    Value = 2,
-        //    TimeStamp = DateTime.Parse("2019-05-01")
-        //},
-        //new()
-        //{
-        //    Value = 0,
-        //    TimeStamp = DateTime.Parse("2019-06-01")
-        //}
-    };
 }
