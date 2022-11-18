@@ -1,0 +1,34 @@
+﻿@page "/Admin"
+@using Irongate.Service.Models
+@attribute [Authorize]
+@inject ILogService LogService
+
+<h3>Admin</h3>
+<RadzenDataGrid Data="@Logs" TItem="Log" AllowSorting="true" AllowMultiColumnSorting="true" AllowPaging="true" PageSize="5" AllowFiltering="true" FilterMode="FilterMode.Advanced" LogicalFilterOperator="LogicalFilterOperator.Or">
+    <Columns>
+        <RadzenDataGridColumn TItem="Log" Property="ID" Title="ID"/>
+        <RadzenDataGridColumn TItem="Log" Property="Message" Title="Message"/>
+        <RadzenDataGridColumn TItem="Log" Property="TimeStamp" Title="Timestamp"/>
+    </Columns>
+</RadzenDataGrid>
+<RadzenButton Clicked="@Clicked"Shade="Shade.Darker">Delete All Data!</RadzenButton>
+
+@code {
+    public IEnumerable<Log> Logs { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+        
+        await LogService.CreateAsync(new Log()
+        {
+            Message = "A user tried to access the admin panel",
+            TimeStamp = DateTime.Now
+        });
+        Logs = await LogService.GetLogs();
+    }
+    
+    async Task Clicked()
+    {
+        await LogService.DeleteAsync();
+    }
+}
