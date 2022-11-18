@@ -34,6 +34,10 @@
         public DateTime TimeStamp { get; set; }
     }
 
+    protected override async Task OnInitializedAsync()
+    {
+    }
+
     string FormatAsMonth(object value)
     {
         if (value != null)
@@ -44,7 +48,7 @@
         return string.Empty;
     }
 
-    public List<WaterLevelData> WaterLevels { get; set; } = new()
+    public List<WaterLevel> WaterLevels { get; set; } = new()
     {
         //new()
         //{
