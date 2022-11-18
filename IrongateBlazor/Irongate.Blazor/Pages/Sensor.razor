@@ -9,51 +9,14 @@
 
 <RadzenDataGrid Data="@MotionSensors" TItem="MotionSensor" AllowSorting="true" AllowMultiColumnSorting="true" AllowPaging="true" PageSize="5" AllowFiltering="true" FilterMode="FilterMode.Advanced" LogicalFilterOperator="LogicalFilterOperator.Or">
     <Columns>
-        <RadzenDataGridColumn TItem="MotionSensor" Property="Id" Title="ID"/>
-
-        <RadzenDataGridColumn TItem="MotionSensor" Property="Value" Title="Value"/>
-        <RadzenDataGridColumn TItem="MotionSensor" Property="TimeStamp" Title="TimeStamp"/>
+        <RadzenDataGridColumn TItem="MotionSensor" Property="id" Title="ID"/>
+        <RadzenDataGridColumn TItem="MotionSensor" Property="value" Title="Motion Detected"/>
+        <RadzenDataGridColumn TItem="MotionSensor" Property="timeStamp" Title="Timestamp"/>
     </Columns>
 </RadzenDataGrid>
 
-<RadzenCard Class="w-100 mb-4 mt-5" Style="display: flex; align-items: center; gap: 0.5rem">
-    <RadzenCheckBox @bind-Value="@smooth" Name="smooth"></RadzenCheckBox>
-    <RadzenLabel Text="Smooth" For="smooth" Style="margin-right: 1rem;"/>
-    <RadzenCheckBox @bind-Value="@showDataLabels" Name="dataLabels"></RadzenCheckBox>
-    <RadzenLabel Text="Show Data Labels" For="dataLabels"/>
-</RadzenCard>
-<h2>Entries</h2>
-<RadzenChart class="m-3">
-    <RadzenLineSeries Smooth="@smooth" Data="@MotionSensors" CategoryProperty="TimeStamp" Title="Temp" LineType="LineType.Dashed" ValueProperty="Value">
-        <RadzenMarkers MarkerType="MarkerType.Square"/>
-        <RadzenSeriesDataLabels Visible="@showDataLabels"/>
-    </RadzenLineSeries>
-    <RadzenValueAxis>
-        <RadzenGridLines Visible="true"/>
-    </RadzenValueAxis>
-</RadzenChart>
 
 @code {
-    bool smooth = false;
-    bool showDataLabels = false;
-
-    class DataItem
-    {
-        public string Date { get; set; }
-        public double Revenue { get; set; }
-    }
-
-
-    string FormatAsFullDate(object value)
-    {
-        if (value != null)
-        {
-            return Convert.ToDateTime(value).ToString("yy-MM-dd");
-        }
-
-        return string.Empty;
-    }
-
     public IEnumerable<MotionSensor> MotionSensors { get; set; }
 
     protected override async Task OnInitializedAsync()
