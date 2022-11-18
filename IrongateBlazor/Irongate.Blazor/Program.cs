@@ -26,6 +26,8 @@ namespace Irongate.Blazor
             builder.Services.AddScoped<IMotionSensorService, MotionSensorService>();
             builder.Services.AddScoped<IWindowService, WindowService>();
             builder.Services.AddScoped<IClimateService, ClimateService>();
+            builder.Services.AddScoped<ILogService, LogService>();
+
             builder.Services.AddBlazoredLocalStorage();
 
             builder.Services.AddAuth0WebAppAuthentication(options =>

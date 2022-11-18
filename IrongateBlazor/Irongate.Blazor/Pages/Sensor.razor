@@ -1,43 +1,28 @@
 ﻿@page "/sensor"
+@using Irongate.Service.Models
 @attribute [Authorize]
 @inject IMotionSensorService MotionSensorService
 @inject ILocalStorageService LocalStorage
 
-<h3>Sensor</h3>
+<h1 class="text-center">Motion Sensor</h1>
 
-<div class="col-md-6 col-lg-4 p-3">
-    <RadzenCard>
-        <RadzenText TextStyle="TextStyle.Subtitle2" TagName="TagName.H3">Placeholder</RadzenText>
-        <RadzenTextBox Placeholder="Search..." Change=@(args => OnChange(args, "TextBox with placeholder")) Class="w-100"/>
-    </RadzenCard>
-</div>
 
-<RadzenDataGrid AllowFiltering="true" FilterCaseSensitivity="FilterCaseSensitivity.CaseInsensitive" AllowPaging="true" PageSize="4"
-                AllowSorting="true" ColumnWidth="200px" TItem="Sensor"
-                SelectionMode="DataGridSelectionMode.Single">
+<RadzenDataGrid Data="@MotionSensors" TItem="MotionSensor" AllowSorting="true" AllowMultiColumnSorting="true" AllowPaging="true" PageSize="5" AllowFiltering="true" FilterMode="FilterMode.Advanced" LogicalFilterOperator="LogicalFilterOperator.Or">
     <Columns>
-        <RadzenDataGridColumn Sortable="false" Filterable="false" TItem="Sensor">
-            <Template>
-                
-            </Template>
-        </RadzenDataGridColumn>
-        <RadzenDataGridColumn TItem="Sensor" Title="Title"/>
-        <RadzenDataGridColumn TItem="Sensor" Title="Date"/>
-        <RadzenDataGridColumn TItem="Sensor" Title="Time"/>
+        <RadzenDataGridColumn TItem="MotionSensor" Property="id" Title="ID"/>
+        <RadzenDataGridColumn TItem="MotionSensor" Property="value" Title="Motion Detected"/>
+        <RadzenDataGridColumn TItem="MotionSensor" Property="timeStamp" Title="Timestamp"/>
     </Columns>
 </RadzenDataGrid>
 
+
 @code {
+    public IEnumerable<MotionSensor> MotionSensors { get; set; }
 
-    // protected override async Task OnInitializedAsync()
-    // {
-    //     base.OnInitialized();
-    //     var items = await MotionSensorService.GetSensor();
-    // }
-
-    void OnChange(string value, string name)
+    protected override async Task OnInitializedAsync()
     {
-        
+        base.OnInitialized();
+        MotionSensors = await MotionSensorService.GetSensor();
     }
 
 }

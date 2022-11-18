@@ -4,16 +4,12 @@ namespace Irongate.Service.Models
 {
     public class MotionSensor
     {
-        [JsonProperty("id")]
-        public int Id { get; set; }
+        public int id { get; set; }
 
-        [JsonProperty("entryID")]
-        public int EntryID { get; set; }
+        public int entryID { get; set; }
 
-        [JsonProperty("value")]
-        public int Value { get; set; }
+        public int value { get; set; }
 
-        [JsonProperty("timeStamp")]
-        public DateTime TimeStamp { get; set; }
+        public DateTime timeStamp { get; set; }
     }
 }
