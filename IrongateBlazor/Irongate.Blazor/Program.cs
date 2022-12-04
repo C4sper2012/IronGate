@@ -35,7 +35,7 @@ namespace Irongate.Blazor
                 options.Domain = builder.Configuration["Auth0:Domain"];
                 options.ClientId = builder.Configuration["Auth0:ClientId"];
                 options.ClientSecret = builder.Configuration["Auth0:ClientSecret"];
-
+                options.Scope = "openid profile email roles";
                 options.CallbackPath = "/callback";
             }).WithAccessToken(options =>
             {
