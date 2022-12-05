@@ -1,4 +1,6 @@
-﻿using System.Text.Json;
+﻿using System.Globalization;
+using System.Text.Json;
+using Irongate.Service.Constants;
 using Irongate.Service.Interfaces;
 using Irongate.Service.Models;
 using Irongate.Service.Models.Enum;
@@ -17,18 +19,16 @@ namespace Irongate.Service.Services
             _httpContextAccessor = httpContextAccessor;
         }
         
-        public async Task<List<Climate>> GetClimates(int floor)
+        public async Task<List<Climate>> GetClimates(DateTime dateTime, int floor)
         {
-            string dateTime = DateTime.Now.AddDays(-3).ToUniversalTime().ToString("yyyy-MM-dd'T'00:00:00K");
-            //var client = new RestClient($"http://10.135.16.30/Climate/{DateTime.Now.AddDays(-3).ToUniversalTime().ToString("yyyy-MM-dd'T'00:00:00K")}/{DateTime.Now.AddDays(-3).ToUniversalTime().ToString("yyyy-MM-dd'T'00:00:00K")}/{floor}");
-            var client = new RestClient($"http://10.135.16.30/Climate/2022-11-10T00%3A00%3A00Z/2022-11-20T00%3A00%3A00Z/" + floor);
+            string url = $"http://{AppConstants.DatabaseAddress}/Climate/{dateTime.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture)}/{floor}";
+            var client = new RestClient(url);
             var request = new RestRequest();
             request.Method = Method.Get;
             request.AddHeader("content-type", "application/json");
             request.AddHeader("authorization", $"Bearer {await _httpContextAccessor.HttpContext.GetTokenAsync("access_token")}");
             RestResponse response = client.Execute(request);
             var climates = JsonSerializer.Deserialize<List<Climate>>(response.Content);
-            //return climates.FindAll(x => x.humidity != 0 && x.temperature != 0).DistinctBy(x => x.timeStamp.Date).ToList();
             return climates.FindAll(x => x.humidity != 0 && x.temperature != 0).ToList();
         }
         

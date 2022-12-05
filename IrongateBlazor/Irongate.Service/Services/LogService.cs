@@ -1,4 +1,5 @@
-﻿using Irongate.Service.Interfaces;
+﻿using Irongate.Service.Constants;
+using Irongate.Service.Interfaces;
 using Irongate.Service.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
@@ -18,7 +19,7 @@ namespace Irongate.Service.Services
         
         public async Task CreateAsync(Log log)
         {
-            var client = new RestClient("http://10.135.16.30/Log");
+            var client = new RestClient($"http://{AppConstants.DatabaseAddress}/Log");
             var request = new RestRequest();
             request.Method = Method.Post;
             request.AddHeader("content-type", "application/json");
@@ -30,7 +31,7 @@ namespace Irongate.Service.Services
         
         public async Task DeleteAsync()
         {
-            var client = new RestClient("http://10.135.16.30/Log/Clear");
+            var client = new RestClient($"http://{AppConstants.DatabaseAddress}/Log/Clear");
             var request = new RestRequest();
             request.Method = Method.Get;
             request.AddHeader("content-type", "application/json");
@@ -41,7 +42,7 @@ namespace Irongate.Service.Services
 
         public async Task<List<Log>> GetLogs()
         {
-            var client = new RestClient("http://10.135.16.30/Log/all");
+            var client = new RestClient($"http://{AppConstants.DatabaseAddress}/Log/all");
             var request = new RestRequest();
             request.Method = Method.Get;
             request.AddHeader("content-type", "application/json");
@@ -49,6 +50,5 @@ namespace Irongate.Service.Services
             RestResponse response = await client.ExecuteAsync(request);
             return JsonConvert.DeserializeObject<List<Log>>(response.Content);
         }
-
     }
 }

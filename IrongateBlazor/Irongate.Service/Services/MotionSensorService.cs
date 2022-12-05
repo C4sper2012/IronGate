@@ -3,6 +3,7 @@ using Irongate.Service.Interfaces;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using System.Text.Json;
+using Irongate.Service.Constants;
 using RestSharp;
 
 namespace Irongate.Service.Services
@@ -18,7 +19,7 @@ namespace Irongate.Service.Services
 
         public async Task<List<MotionSensor>> GetSensor()
         {
-            var client = new RestClient("http://10.135.16.30/Sensor/all");
+            var client = new RestClient($"http://{AppConstants.DatabaseAddress}/Sensor/all");
             var request = new RestRequest();
             request.Method = Method.Get;
             request.AddHeader("content-type", "application/json");

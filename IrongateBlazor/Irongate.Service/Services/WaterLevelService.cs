@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Irongate.Service.Constants;
 using Irongate.Service.Interfaces;
 using Irongate.Service.Models;
 using Microsoft.AspNetCore.Authentication;
@@ -15,7 +16,7 @@ namespace Irongate.Service.Services
 
         public async Task<List<WaterLevel>> GetWaterLevel()
         {
-            RestClient client = new("http://10.135.16.30/WaterLevel/all/2000");
+            RestClient client = new($"https://{AppConstants.DatabaseAddress}/WaterLevel/all/2000");
             RestRequest request = new()
             {
                 Method = Method.Get
