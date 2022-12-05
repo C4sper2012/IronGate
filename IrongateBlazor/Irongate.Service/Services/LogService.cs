@@ -19,7 +19,7 @@ namespace Irongate.Service.Services
         
         public async Task CreateAsync(Log log)
         {
-            var client = new RestClient($"http://{AppConstants.DatabaseAddress}/Log");
+            var client = new RestClient($"http://{AppConstants.DatabaseAddress}/Log/Create");
             var request = new RestRequest();
             request.Method = Method.Post;
             request.AddHeader("content-type", "application/json");
