@@ -1,7 +1,7 @@
 ﻿@page "/windows"
 @using uPLibrary.Networking.M2Mqtt
 @using System.Diagnostics
-@attribute [Authorize]
+@attribute [Authorize("IronGate-Write")]
 @inject IConfiguration ConfigurationBuilder
 @inject IWindowService WindowService
 
@@ -30,6 +30,7 @@
 
 
 @code {
+    
     void OnClickFirstFloor(RadzenSplitButtonItem item)
     {
         string broker = ConfigurationBuilder["Thingspeak:WindowControls:FirstFloor:Broker"];

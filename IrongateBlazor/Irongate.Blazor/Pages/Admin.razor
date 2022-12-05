@@ -1,7 +1,9 @@
 ﻿@page "/Admin"
 @using Irongate.Service.Models
+@using Microsoft.AspNetCore.Authentication
 @attribute [Authorize(Roles = "IronGate-Admin")]
 @inject ILogService LogService
+@inject IHttpContextAccessor httpContextAccessor
 
 <h3>Admin</h3>
 <RadzenDataGrid Data="@Logs" TItem="Log" AllowSorting="true" AllowMultiColumnSorting="true" AllowPaging="true" PageSize="5" AllowFiltering="true" FilterMode="FilterMode.Advanced" LogicalFilterOperator="LogicalFilterOperator.Or">
@@ -14,8 +16,10 @@
 <RadzenButton class="mt-3" ButtonStyle="ButtonStyle.Danger" Clicked="@Clicked" Shade="Shade.Darker">Delete all data!</RadzenButton>
 <RadzenButton class="mt-3"  ButtonStyle="ButtonStyle.Success" Clicked="@GetNewData()" Shade="Shade.Darker">Get new data</RadzenButton>
 
+<p>Your access token: @httpContextAccessor.HttpContext.GetTokenAsync("access_token")</p>
 @code {
-    public IEnumerable<Log> Logs { get; set; }
+
+    public List<Log> Logs { get; set; } = new();
     protected override async Task OnInitializedAsync()
     {
         base.OnInitialized();
@@ -26,7 +30,7 @@
             TimeStamp = DateTime.Now
         });
         
-        Logs = await LogService.GetLogs();
+        Logs = await LogService.GetLogs() ;
     }
     
     async Task Clicked()

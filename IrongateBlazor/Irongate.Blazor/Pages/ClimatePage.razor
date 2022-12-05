@@ -1,6 +1,6 @@
 ﻿@page "/climate"
 @using Irongate.Service.Models
-@attribute [Authorize]
+@attribute [Authorize(Roles = "IronGate-Read")]
 @inject IClimateService ClimateService
 
 <h1 class="text-center">Climate</h1>

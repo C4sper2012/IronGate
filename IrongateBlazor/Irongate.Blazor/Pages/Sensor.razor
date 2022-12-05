@@ -1,6 +1,6 @@
 ﻿@page "/sensor"
 @using Irongate.Service.Models
-@attribute [Authorize]
+@attribute [Authorize(Roles = "IronGate-Read")]
 @inject IMotionSensorService MotionSensorService
 @inject ILocalStorageService LocalStorage
 
