@@ -14,16 +14,18 @@
     </Columns>
 </RadzenDataGrid>
 <RadzenButton class="mt-3" ButtonStyle="ButtonStyle.Danger" Clicked="@Clicked" Shade="Shade.Darker">Delete all data!</RadzenButton>
-<RadzenButton class="mt-3"  ButtonStyle="ButtonStyle.Success" Clicked="@GetNewData()" Shade="Shade.Darker">Get new data</RadzenButton>
+<RadzenButton class="mt-3"  ButtonStyle="ButtonStyle.Success" Clicked="@GetNewData" Shade="Shade.Darker">Get new data</RadzenButton>
 
-<p>Your access token: @httpContextAccessor.HttpContext.GetTokenAsync("access_token")</p>
+<p>Your access token: @AccessToken</p>
+
 @code {
 
-    public List<Log> Logs { get; set; } = new();
+    public IEnumerable<Log> Logs { get; set; }
+    public string AccessToken { get; set; }
     protected override async Task OnInitializedAsync()
     {
         base.OnInitialized();
-        
+        AccessToken = await httpContextAccessor.HttpContext.GetTokenAsync("access_token");
         await LogService.CreateAsync(new Log()
         {
             Message = "A user accessed the admin panel",

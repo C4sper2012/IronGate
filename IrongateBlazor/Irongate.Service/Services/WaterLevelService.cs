@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Text.Json;
 using Irongate.Service.Constants;
 using Irongate.Service.Interfaces;
@@ -14,9 +15,9 @@ namespace Irongate.Service.Services
 
         public WaterLevelService(IHttpContextAccessor httpContextAccessor) => _httpContextAccessor = httpContextAccessor;
 
-        public async Task<List<WaterLevel>> GetWaterLevel()
+        public async Task<List<WaterLevel>> GetWaterLevel(DateTime dateTime)
         {
-            RestClient client = new($"https://{AppConstants.DatabaseAddress}/WaterLevel/all/2000");
+            RestClient client = new($"http://{AppConstants.DatabaseAddress}/WaterLevel/{dateTime.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture)}");
             RestRequest request = new()
             {
                 Method = Method.Get

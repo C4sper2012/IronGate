@@ -4,5 +4,5 @@ namespace Irongate.Service.Interfaces;
 
 public interface IWaterLevelSevice
 {
-    public Task<List<WaterLevel>> GetWaterLevel();
+    public Task<List<WaterLevel>> GetWaterLevel(DateTime dateTime);
 }

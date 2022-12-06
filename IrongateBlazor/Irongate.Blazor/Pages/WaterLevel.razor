@@ -1,11 +1,12 @@
 ﻿@page "/waterLevel"
-@attribute [Authorize(Roles = "IronGate-Read")]
+@attribute [Authorize(Roles = "IronGate-User")]
 @inject IWaterLevelSevice WaterLevelService
+
 
 <RadzenText TextStyle="TextStyle.H3" TagName="TagName.H1" Class="my-4">
     Water level chart
 </RadzenText>
-
+<RadzenDatePicker ShowTime="false" HourFormat="24" DateFormat="MM/dd/yyyy h:mm tt" Change="@(async () => await UpdateWaterLevel())" @bind-Value="@Date"/>
 <div class="container my-5">
     <div class="row">
         <div class="col">
@@ -29,12 +30,20 @@
     bool showDataLabels = false;
 
     public List<Service.Models.WaterLevel> WaterLevels { get; set; }
-
+    public DateTime? Date { get; set; }
     protected override async Task OnInitializedAsync()
     {
-        WaterLevels = await WaterLevelService.GetWaterLevel();
+        await UpdateWaterLevel();
     }
 
+    async Task UpdateWaterLevel()
+    {
+        if (Date.HasValue)
+        {
+            WaterLevels = await WaterLevelService.GetWaterLevel(Date.Value);
+        }
+    }
+    
     string FormatAsDays(object value)
     {
         if (value != null)

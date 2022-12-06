@@ -54,9 +54,9 @@ namespace Irongate.Service.Services
                 var client = new RestClient($"http://{AppConstants.DatabaseAddress}/Log/all");
                 var request = new RestRequest();
                 request.Method = Method.Get;
-                request.AddHeader("content-type", "application/json");
-                request.AddHeader("authorization", $"Bearer {await _httpContextAccessor.HttpContext.GetTokenAsync("access_token")}");
-                RestResponse response = await client.ExecuteAsync(request);
+                request.AddHeader("authorization",
+                    $"Bearer {await _httpContextAccessor.HttpContext.GetTokenAsync("access_token")}");
+                RestResponse response = client.Execute(request);
                 return JsonConvert.DeserializeObject<List<Log>>(response.Content);
             }
             catch (Exception e)
