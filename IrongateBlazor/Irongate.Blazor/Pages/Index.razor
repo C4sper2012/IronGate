@@ -1,8 +1,10 @@
 ﻿@page "/"
-@attribute [Authorize(Roles = "IronGate-User")]
+@attribute [Authorize]
+@inject IHttpContextAccessor httpContextAccessor
+
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello User, Welcome to Irongate!</h1>
+<h1>Hello @httpContextAccessor.HttpContext.User.Identity.Name, Welcome to Irongate!</h1>
 <br/>
-<h4>Here you can monitor Information about you house, like checking temperature, flood warnings, motion detection and open or close windows.</h4>
+<h4>Here you can monitor Information about your house, like checking temperature, flood warnings, motion detection and open or close windows.</h4>

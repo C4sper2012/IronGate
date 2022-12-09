@@ -6,7 +6,7 @@ namespace Irongate.Blazor.Pages.Login;
 
 public class Login : PageModel
 {
-    public async Task OnGet(string returnUrl = "/")
+    public async Task OnGet(string returnUrl = "/Account")
     {
         var authenticationProperties = new LoginAuthenticationPropertiesBuilder()
             .WithRedirectUri(returnUrl)

@@ -1,0 +1,15 @@
+﻿@page "/AccessToken"
+@using Microsoft.AspNetCore.Authentication
+@inject IHttpContextAccessor httpContextAccessor
+<h3>AccessToken</h3>
+<p class="w-50">Your access token: @Token</p>
+
+@code {
+    public string Token { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        Token = await httpContextAccessor.HttpContext.GetTokenAsync("access_token");
+    }
+}
