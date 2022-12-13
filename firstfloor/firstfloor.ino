@@ -1,4 +1,4 @@
-#include "topfloor.h"
+#include "firstfloor.h"
 
 WiFiClient net;
 MQTTClient client(500);
@@ -17,7 +17,7 @@ void connect() {
   }
 
   Serial.print("\nconnecting...");
-  while (!client.connect("NAU4KRsqEB05FzIpJCUvBy0", "NAU4KRsqEB05FzIpJCUvBy0", "lDoIYJHbpSkvHVOXAO+eqa/M")) {
+  while (!client.connect("FirstFloor Arduino to MQTT")) {
     Serial.print(".");
     delay(1000);
   }
@@ -26,9 +26,9 @@ void connect() {
 
   Serial.println("\nconnected!");
 
-  client.subscribe(ServoChannel);
+  client.subscribe(firstFloorWindow);
   Serial.print("Listening on ");
-  Serial.print(ServoChannel);
+  Serial.print(firstFloorWindow);
 }
 
 void messageReceived(String &topic, String &payload) 
@@ -78,7 +78,7 @@ void setup() {
   dht.begin();
   WiFi.begin(ssid, pass);
 
-  client.begin("mqtt3.thingspeak.com", net);
+  client.begin(mosquittoHost, net);
   client.onMessage(messageReceived);
 
   connect();
@@ -99,13 +99,14 @@ void loop() {
     temperature = dht.readTemperature();
     humidity = dht.readHumidity();
 
-    String query = "field7=";
-    query.concat(temperature);
-    query.concat("&field8=");
-    query.concat(humidity);
-
-    Serial.println(query);
-    client.publish(TemperatureChannel, query);
+    String tempResult = "";
+    tempResult += temperature;
+    String humidResult = "";
+    humidResult += humidity;
+    Serial.println(tempResult);
+    Serial.println(humidResult);
+    client.publish(firstFloorTemp, tempResult);
+    client.publish(firstFloorHumid, humidResult);
   }
 
   if (millis() - lastSoundMillis > 20000) {
@@ -113,7 +114,7 @@ void loop() {
     lastSoundMillis = millis();
 
     if(digitalRead(SOUNDSENSORPIN)) {
-       client.publish(SoundChannel, "field7=1");
+       client.publish(firstFloorSound, "1");
     }
   }
 
@@ -141,8 +142,10 @@ void loop() {
       display.print("Motion triggered!");
       display.display();
       if (windowIsOpen) {
-      client.publish(ServoPublishChannel, "field1=0&field3=0&field5=0");
-      client.publish(SoundChannel, "field4=1");
+      client.publish(firstFloorWindow, "0");
+      client.publish(groundFloorWindow, "0");
+      client.publish(basementWindow, "0");
+      client.publish(firstFloorMotion, "1");
       windowIsOpen = false;
       lastSRMillis = millis();
       }
@@ -157,7 +160,10 @@ void loop() {
       display.print("First floor: Ok");
       display.display();
       if (!windowIsOpen) {
-      client.publish(ServoPublishChannel, "field1=1&field3=1&field5=1");
+        
+      client.publish(firstFloorWindow, "1");
+      client.publish(groundFloorWindow, "1");
+      client.publish(basementWindow, "1");
       windowIsOpen = true;
       }
     }

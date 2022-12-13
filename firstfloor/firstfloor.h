@@ -1,5 +1,5 @@
-#ifndef TOPFLOOR_H_
-#define TOPFLOOR_H_
+#ifndef FIRSTFLOOR_H_
+#define FIRSTFLOOR_H_
 
 #include <SPI.h>
 #include <WiFiNINA.h>
@@ -26,11 +26,27 @@
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
 
-const char ServoChannel[] = "channels/1916369/subscribe/fields/field5";
-const char ServoPublishChannel[] = "channels/1916369/publish";
-const char TemperatureChannel[] = "channels/1916370/publish";
-const char SoundChannel[] = "channels/1916393/publish";
+// Mosquitto broker
+const char mosquittoHost[] = "10.135.16.65";
 
+const char firstFloorTemp[] = "Home/FirstFloor/Temp";
+const char firstFloorHumid[] = "Home/FirstFloor/Humid";
+const char firstFloorMotion[] = "Home/FirstFloor/Motion";
+const char firstFloorWindow[] = "Home/FirstFloor/Window";
+const char firstFloorSound[] = "Home/FirstFloor/Sound"; 
+
+const char groundFloorWindow[] = "Home/GroundFloor/Window";
+const char basementWindow[] = "Home/Basement/Window";
+
+#pragma region Thingspeak
+
+// Thingspeak
+// const char ServoChannel[] = "channels/1916369/subscribe/fields/field5";
+// const char ServoPublishChannel[] = "channels/1916369/publish";
+// const char TemperatureChannel[] = "channels/1916370/publish";
+// const char SoundChannel[] = "channels/1916393/publish";
+
+#pragma endregion
 const char ssid[] = "SibirienAP";
 const char pass[] = "Siberia51244";
 
@@ -38,10 +54,9 @@ unsigned long lastMillis = 0;
 unsigned long lastSoundMillis = 0;
 unsigned long lastSRMillis = 0;
 
-
 int temperature = 0;
 int humidity = 0;
 
 bool windowIsOpen = false;
 
-#endif /* MAIN_H_ */
+#endif /* FIRSTFLOOR_H_ */
