@@ -1,3 +1,4 @@
+#pragma region Includes
 #include <SPI.h>
 #include <DHT.h>
 #include <WiFiNINA.h>
@@ -8,9 +9,12 @@
 #include <MFRC522.h>
 #include <ArduinoJson.h>
 #include <Wire.h>
+#pragma endregion
 
+#pragma region WiFi credentials 
 #define SECRET_SSID "SibirienAP"
 #define SECRET_PASS "Siberia51244"
+#pragma endregion
 
 #define DHTPin 2
 #define BUTTON 3
@@ -20,38 +24,103 @@
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
 #define OLED_RESET 4
-
 #define SS_PIN 13
-#define RST_PIN 7//6
+#define RST_PIN 7
+
+DHT dht(DHTPin, DHT11);
+
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
+
+MFRC522 mfrc522(SS_PIN, RST_PIN);
+
+WiFiClient net;
+
+MQTTClient client(500);
+
+Servo servo;
  
-// extern const char hostName[] = "dandelionfoe677.cloud.shiftr.io";
-// extern const char clientName[] = "arduino MKR 1010 LED and Temp";
-// extern const char username[] = "dandelionfoe677";
-// extern const char password[] = "avmhcvQMNAmNki4b";
-extern const char hostName2[] = "mqtt3.thingspeak.com";
-// extern const char clientName2[] = "FiY4CCM3FykaFS4HCQMsAQI";
-// extern const char username2[] = "FiY4CCM3FykaFS4HCQMsAQI";
-// extern const char password2[] = "dQQtXzEmULVutVCZ590F2oPv";
+unsigned long startMillis;
+unsigned long currentMillis;
+const unsigned long interval = 25000; // 25 sec.
+//const unsigned long interval = 3600000; // 1 hour.
+
+String baseTemp = "";
+String baseHumid = "";
+String groundTemp = "";
+String groundHumid = "";
+String firstTemp = "";
+String firstHumid = "";
+
+int state = 0;
+int floorIndex = 0;
+
+bool authenticated = false;
+
+#pragma region Shiftr
+// const char hostName[] = "dandelionfoe677.cloud.shiftr.io";
+// const char clientName[] = "arduino MKR 1010 LED and Temp";
+// const char username[] = "dandelionfoe677";
+// const char password[] = "avmhcvQMNAmNki4b";
+
+#pragma endregion
 
 
-extern const char username3[] = "DgciLSs4AAUdCy8AAjsoFgE";
-extern const char clientName3[] = "DgciLSs4AAUdCy8AAjsoFgE";
-extern const char password3[] = "GYsbytl/X62bjKR9JbYHEsQP";
+#pragma region Mosquitto MQTT
 
-extern const char tempAndHumPubChannel[] = "channels/1916370/publish";
-extern const char servoPubChannel[] = "channels/1916369/publish";
+const char mosquittoHost[] = "10.135.16.65";
+const char clientId[] = "GroundFloor Arduino";
 
-extern const char groundFloorWindow[] = "channels/1916369/subscribe/fields/field3";
+// Subscribe and Publish channels
+//###############################################################
 
-extern const char basementTemp[] = "channels/1916370/subscribe/fields/field1";
-extern const char basementHumid[] = "channels/1916370/subscribe/fields/field2";
+//First Floor
+const char firstFloorTemp[] = "Home/FirstFloor/Temp";
+const char firstFloorHumid[] = "Home/FirstFloor/Humid";
+const char firstFloorMotion[] = "Home/FirstFloor/Motion";
+const char firstFloorSound[] = "Home/FirstFloor/Sound";
+const char firstFloorWindow[] = "Home/FirstFloor/Window";
 
-extern const char localTemp[] = "channels/1916370/subscribe/fields/field4";
-extern const char localHumid[] = "channels/1916370/subscribe/fields/field5";
+//Ground Floor
+const char groundFloorTemp[] = "Home/GroundFloor/Temp";
+const char groundFloorHumid[] = "Home/GroundFloor/Humid";
+const char groundFloorWindow[] = "Home/GroundFloor/Window";
 
-extern const char firstfloorTemp[] = "channels/1916370/subscribe/fields/field7";
-extern const char firstfloorHumid[] = "channels/1916370/subscribe/fields/field8";
+//Basement
+const char basementTemp[] = "Home/Basement/Temp";
+const char basementHumid[] = "Home/Basement/Humid";
+const char basementWaterLevel[] = "Home/Basement/WaterLevel";
+const char basementWindow[] = "Home/Basement/Window";
 
-extern const char motionChannel[] = "channels/1916393/subscribe/fields/field4";
+//###############################################################
 
+#pragma endregion
 
+#pragma region thingspeak
+
+// const char hostName2[] = "mqtt3.thingspeak.com";
+
+// const char clientName2[] = "FiY4CCM3FykaFS4HCQMsAQI";
+// const char username2[] = "FiY4CCM3FykaFS4HCQMsAQI";
+// const char password2[] = "dQQtXzEmULVutVCZ590F2oPv";
+
+// const char username3[] = "DgciLSs4AAUdCy8AAjsoFgE";
+// const char clientName3[] = "DgciLSs4AAUdCy8AAjsoFgE";
+// const char password3[] = "GYsbytl/X62bjKR9JbYHEsQP";
+
+// const char tempAndHumPubChannel[] = "channels/1916370/publish";
+// const char servoPubChannel[] = "channels/1916369/publish";
+
+// const char groundFloorWindow[] = "channels/1916369/subscribe/fields/field3";
+
+// const char basementTemp[] = "channels/1916370/subscribe/fields/field1";
+// const char basementHumid[] = "channels/1916370/subscribe/fields/field2";
+
+// const char localTemp[] = "channels/1916370/subscribe/fields/field4";
+// const char localHumid[] = "channels/1916370/subscribe/fields/field5";
+
+// const char firstfloorTemp[] = "channels/1916370/subscribe/fields/field7";
+// const char firstfloorHumid[] = "channels/1916370/subscribe/fields/field8";
+
+// const char motionChannel[] = "channels/1916393/subscribe/fields/field4";
+
+#pragma endregion

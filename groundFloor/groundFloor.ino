@@ -1,31 +1,5 @@
 #include "secrets.h"
 
-DHT dht(DHTPin, DHT11);
-
-Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
-
-MFRC522 mfrc522(SS_PIN, RST_PIN);
-
-WiFiClient net;
-MQTTClient client(500);
-StaticJsonDocument<1000> doc;
-Servo servo;
-
-unsigned long startMillis;
-unsigned long currentMillis;
-const unsigned long interval = 60000;
-
-String baseTemp = "";
-String baseHumid = "";
-String groundTemp = "";
-String groundHumid = "";
-String firstTemp = "";
-String firstHumid = "";
-
-int state = 0;
-int floorIndex = 0;
-
-bool authenticated = false;
 
 void setup() {
   Serial.begin(9600);
@@ -58,7 +32,7 @@ void setup() {
   WiFiDrv::pinMode(BLUELED, OUTPUT);
   WiFiDrv::pinMode(GREENLED, OUTPUT);
   
-  client.begin(hostName2, net);
+  client.begin(mosquittoHost, net);
   client.onMessage(messageReceived);
   connect();
   openAllWindows();
@@ -103,7 +77,7 @@ void connect() {
   while (WiFi.status() != WL_CONNECTED) {
     Serial.print(".");
     WiFiDrv::digitalWrite(BLUELED, HIGH);
-    delay(1000); // TODO: Make to millis if possible.
+    delay(1000);
     WiFiDrv::digitalWrite(BLUELED, LOW);
     delay(1000);
   }
@@ -124,8 +98,9 @@ void messageReceived(String &topic, String &payload) {
 
 void getPayload(String topic, String payload) {
 
-  if (topic == motionChannel) {
+  if (topic == firstFloorMotion && payload == "1") {
     int motionDelay = millis();
+
     updateOledMotion();
     while (millis() < motionDelay + 3000) {}
   }
@@ -135,16 +110,16 @@ void getPayload(String topic, String payload) {
   if (topic == basementHumid) {
     baseHumid = payload;
   }
-  if (topic == localTemp) {
+  if (topic == groundFloorTemp) {
     groundTemp = payload;
   }
-  if (topic == localHumid) {
+  if (topic == groundFloorHumid) {
     groundHumid = payload;
   }
-  if (topic == firstfloorTemp) {
+  if (topic == firstFloorTemp) {
     firstTemp = payload;
   }
-  if (topic == firstfloorHumid) {
+  if (topic == firstFloorHumid) {
     firstHumid = payload;
   }
   if (topic == groundFloorWindow) {
@@ -187,12 +162,13 @@ void publishTempAndHum() {
   int t = dht.readTemperature();
   int h = dht.readHumidity();
   String tempResult = "";
-  tempResult += "field4=";
+  String humidResult = "";
   tempResult += t;
-  tempResult += "&field5=";
-  tempResult += h;
+  humidResult += h;
   Serial.println(tempResult);
-  client.publish(tempAndHumPubChannel, tempResult);
+  Serial.println(humidResult);
+  client.publish(groundFloorTemp, tempResult);
+  client.publish(groundFloorHumid, humidResult);
 }
 
 #pragma endregion
@@ -200,32 +176,31 @@ void publishTempAndHum() {
 #pragma region MQTT 
 
 void connectMQTT() {
-  Serial.print("\nconnecting to "); Serial.print(clientName3); Serial.print(" ");
-  while (!client.connect(clientName3, username3, password3)) {
+  Serial.print("\nconnecting "); Serial.print(clientId); Serial.print(" To MQTT"); Serial.print(" ");
+  while (!client.connect(clientId)) {
     Serial.print(".");
     delay(1000);
   }
+#pragma region thingspeak subscribtions
+  // while (!client.connect(clientName3, username3, password3)) {
+  //   Serial.print(".");
+  //   delay(1000);
+  // }
   //client.subscribe("channels/1916370/subscribe");
+#pragma endregion
+  client.subscribe(firstFloorTemp);
+  client.subscribe(firstFloorHumid);
+  client.subscribe(firstFloorMotion);
+  client.subscribe(firstFloorWindow);
+
+  client.subscribe(groundFloorTemp);
+  client.subscribe(groundFloorHumid);
+  client.subscribe(groundFloorWindow);
+  
   client.subscribe(basementTemp);
   client.subscribe(basementHumid);
-  client.subscribe(groundFloorWindow);
-  client.subscribe(localTemp);
-  client.subscribe(localHumid);
-  client.subscribe(firstfloorTemp);
-  client.subscribe(firstfloorHumid);
-  client.subscribe(motionChannel);
+  client.subscribe(basementWindow);
 }
-
-// void subcribe() {
-//   //client.subscribe("home/light");
-//   //client.subscribe("home/temp/on");
-//   //client.subscribe("channels/1910459/subscribe");
-  
-//   //client.subscribe("channe")
-//   //client.subscribe("channels/1916370/subscribe");
-//   //client.unsubscribe("home/temp");
-
-// }
 
 #pragma endregion
 
@@ -272,7 +247,9 @@ void readCard() {
 #pragma region Window Controls
 
 void openAllWindows() {
-  client.publish(servoPubChannel, "field1=1&field3=1&field5=1");
+  client.publish(firstFloorWindow, "1");
+  client.publish(groundFloorWindow, "1");
+  client.publish(basementWindow, "1");
 }
 
 void closeAllWindows() {}
