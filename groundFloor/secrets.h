@@ -56,19 +56,17 @@ int floorIndex = 0;
 
 bool authenticated = false;
 
-#pragma region Shiftr
-// const char hostName[] = "dandelionfoe677.cloud.shiftr.io";
-// const char clientName[] = "arduino MKR 1010 LED and Temp";
-// const char username[] = "dandelionfoe677";
-// const char password[] = "avmhcvQMNAmNki4b";
-
-#pragma endregion
-
-
 #pragma region Mosquitto MQTT
 
+
+// Credentials
+//###############################################################
 const char mosquittoHost[] = "10.135.16.65";
 const char clientId[] = "GroundFloor Arduino";
+const char username[] = "IronGate";
+const char password[] = "Qjc2WZFw";
+//###############################################################
+
 
 // Subscribe and Publish channels
 //###############################################################
@@ -92,35 +90,5 @@ const char basementWaterLevel[] = "Home/Basement/WaterLevel";
 const char basementWindow[] = "Home/Basement/Window";
 
 //###############################################################
-
-#pragma endregion
-
-#pragma region thingspeak
-
-// const char hostName2[] = "mqtt3.thingspeak.com";
-
-// const char clientName2[] = "FiY4CCM3FykaFS4HCQMsAQI";
-// const char username2[] = "FiY4CCM3FykaFS4HCQMsAQI";
-// const char password2[] = "dQQtXzEmULVutVCZ590F2oPv";
-
-// const char username3[] = "DgciLSs4AAUdCy8AAjsoFgE";
-// const char clientName3[] = "DgciLSs4AAUdCy8AAjsoFgE";
-// const char password3[] = "GYsbytl/X62bjKR9JbYHEsQP";
-
-// const char tempAndHumPubChannel[] = "channels/1916370/publish";
-// const char servoPubChannel[] = "channels/1916369/publish";
-
-// const char groundFloorWindow[] = "channels/1916369/subscribe/fields/field3";
-
-// const char basementTemp[] = "channels/1916370/subscribe/fields/field1";
-// const char basementHumid[] = "channels/1916370/subscribe/fields/field2";
-
-// const char localTemp[] = "channels/1916370/subscribe/fields/field4";
-// const char localHumid[] = "channels/1916370/subscribe/fields/field5";
-
-// const char firstfloorTemp[] = "channels/1916370/subscribe/fields/field7";
-// const char firstfloorHumid[] = "channels/1916370/subscribe/fields/field8";
-
-// const char motionChannel[] = "channels/1916393/subscribe/fields/field4";
 
 #pragma endregion

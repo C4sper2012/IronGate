@@ -3,7 +3,6 @@
 
 void setup() {
   Serial.begin(9600);
-
   SPI.begin();
   Wire.begin();
   mfrc522.PCD_Init();
@@ -177,7 +176,7 @@ void publishTempAndHum() {
 
 void connectMQTT() {
   Serial.print("\nconnecting "); Serial.print(clientId); Serial.print(" To MQTT"); Serial.print(" ");
-  while (!client.connect(clientId)) {
+  while (!client.connect(clientId, username, password)) {
     Serial.print(".");
     delay(1000);
   }
