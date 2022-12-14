@@ -1,4 +1,4 @@
-# The IronGate project
+# The IronGate Project
 
 The future is now! Every home needs great security, and with great security, comes alot of sensors.
 
