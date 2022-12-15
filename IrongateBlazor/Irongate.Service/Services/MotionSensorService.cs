@@ -23,7 +23,6 @@ namespace Irongate.Service.Services
             var request = new RestRequest();
             request.Method = Method.Get;
             request.AddHeader("content-type", "application/json");
-            request.AddHeader("authorization", $"Bearer {await _httpContextAccessor.HttpContext.GetTokenAsync("access_token")}");
             RestResponse response = client.Execute(request);
             return JsonSerializer.Deserialize<List<MotionSensor>>(response.Content);
         }

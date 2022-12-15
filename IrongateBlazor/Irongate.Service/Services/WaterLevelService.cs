@@ -17,18 +17,13 @@ namespace Irongate.Service.Services
 
         public async Task<List<WaterLevel>> GetWaterLevel(DateTime dateTime)
         {
-            RestClient client = new($"{AppConstants.APIAddress}/WaterLevel/{dateTime.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture)}");
-            RestRequest request = new()
-            {
-                Method = Method.Get
-            };
+            var client = new RestClient($"{AppConstants.APIAddress}/WaterLevel/{dateTime.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture)}");
+            var request = new RestRequest();
+            request.Method = Method.Get;
             request.AddHeader("content-type", "application/json");
-            request.AddHeader("authorization", $"Bearer {await _httpContextAccessor.HttpContext.GetTokenAsync("access_token")}");
             RestResponse response = client.Execute(request);
-
-            List<WaterLevel> result = JsonSerializer.Deserialize<List<WaterLevel>>(response.Content);
-
-            return result;
+            return JsonSerializer.Deserialize<List<WaterLevel>>(response.Content);
+             
         }
     }
 }

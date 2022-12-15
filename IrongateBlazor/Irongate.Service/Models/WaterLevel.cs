@@ -2,11 +2,8 @@
 {
     public class WaterLevel
     {
-        public int ID { get; set; }
-        public int Value { get; set; }
-        public DateTime TimeStamp { get; set; }
-
-
-        
+        public int id { get; set; }
+        public int value { get; set; }
+        public DateTime timeStamp { get; set; }
     }
 }

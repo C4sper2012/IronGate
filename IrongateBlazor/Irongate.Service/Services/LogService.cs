@@ -21,12 +21,10 @@ namespace Irongate.Service.Services
         {
             try
             {
-                var client = new RestClient($"{AppConstants.APIAddress}/Log/Create");
+                var client = new RestClient($"{AppConstants.APIAddress}/Log/create");
                 var request = new RestRequest();
                 request.Method = Method.Post;
                 request.AddHeader("content-type", "application/json");
-                request.AddHeader("authorization",
-                    $"Bearer {await _httpContextAccessor.HttpContext.GetTokenAsync("access_token")}");
                 request.AddJsonBody(JsonConvert.SerializeObject(log));
                 RestResponse response = client.Execute(request);
             }
@@ -35,15 +33,12 @@ namespace Irongate.Service.Services
                 
             }
         }
-        
         public async Task DeleteAsync()
         {
-            var client = new RestClient($"{AppConstants.APIAddress}/Log/Clear");
+            var client = new RestClient($"{AppConstants.APIAddress}/Log/clear");
             var request = new RestRequest();
             request.Method = Method.Get;
             request.AddHeader("content-type", "application/json");
-            request.AddHeader("authorization",
-                $"Bearer {await _httpContextAccessor.HttpContext.GetTokenAsync("access_token")}");
             RestResponse response = client.Execute(request);
         }
 
@@ -54,8 +49,7 @@ namespace Irongate.Service.Services
                 var client = new RestClient($"{AppConstants.APIAddress}/Log/all");
                 var request = new RestRequest();
                 request.Method = Method.Get;
-                request.AddHeader("authorization",
-                    $"Bearer {await _httpContextAccessor.HttpContext.GetTokenAsync("access_token")}");
+                request.AddHeader("content-type", "application/json");
                 RestResponse response = client.Execute(request);
                 return JsonConvert.DeserializeObject<List<Log>>(response.Content);
             }

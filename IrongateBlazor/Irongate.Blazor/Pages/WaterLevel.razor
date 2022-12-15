@@ -1,5 +1,6 @@
 ﻿@page "/waterLevel"
 @attribute [Authorize(Roles = "IronGate-User")]
+@using Irongate.Service.Models;
 @inject IWaterLevelSevice WaterLevelService
 
 
@@ -29,7 +30,7 @@
     bool smooth = true;
     bool showDataLabels = false;
 
-    public List<Service.Models.WaterLevel> WaterLevels { get; set; }
+    public List<Irongate.Service.Models.WaterLevel> WaterLevels { get; set; }
     public DateTime? Date { get; set; }
     protected override async Task OnInitializedAsync()
     {
