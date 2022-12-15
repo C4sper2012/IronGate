@@ -16,11 +16,11 @@
             </RadzenCard>
             <h2>First Floor</h2>
             <RadzenChart class="m-3">
-                <RadzenLineSeries Smooth="@smooth" Data="@FirstFloor" CategoryProperty="timeStamp" Title="Temp" LineType="LineType.Dashed" ValueProperty="temperature">
+                <RadzenLineSeries Smooth="@smooth" Data="@FirstFloorTemp" CategoryProperty="timeStamp" Title="Temp" LineType="LineType.Dashed" ValueProperty="value">
                     <RadzenMarkers MarkerType="MarkerType.Square"/>
                     <RadzenSeriesDataLabels Visible="@showDataLabels"/>
                 </RadzenLineSeries>
-                <RadzenLineSeries Smooth="@smooth" Data="@FirstFloor" CategoryProperty="timeStamp" Title="Humid" ValueProperty="humidity">
+                <RadzenLineSeries Smooth="@smooth" Data="@FirstFloorHumid" CategoryProperty="timeStamp" Title="Humid" ValueProperty="value">
                     <RadzenMarkers MarkerType="MarkerType.Circle"/>
                     <RadzenSeriesDataLabels Visible="@showDataLabels"/>
                 </RadzenLineSeries>
@@ -32,11 +32,11 @@
             </RadzenChart>
             <h2>Ground Floor</h2>
             <RadzenChart class="m-3">
-                <RadzenLineSeries Smooth="@smooth" Data="@GroundFloor" CategoryProperty="timeStamp" Title="Temp" LineType="LineType.Dashed" ValueProperty="temperature">
+                <RadzenLineSeries Smooth="@smooth" Data="@GroundFloorTemp" CategoryProperty="timeStamp" Title="Temp" LineType="LineType.Dashed" ValueProperty="value">
                     <RadzenMarkers MarkerType="MarkerType.Square"/>
                     <RadzenSeriesDataLabels Visible="@showDataLabels"/>
                 </RadzenLineSeries>
-                <RadzenLineSeries Smooth="@smooth" Data="@GroundFloor" CategoryProperty="timeStamp" Title="Humid" ValueProperty="humidity">
+                <RadzenLineSeries Smooth="@smooth" Data="@GroundFloorHumid" CategoryProperty="timeStamp" Title="Humid" ValueProperty="value">
                     <RadzenMarkers MarkerType="MarkerType.Circle"/>
                     <RadzenSeriesDataLabels Visible="@showDataLabels"/>
                 </RadzenLineSeries>
@@ -48,11 +48,11 @@
             </RadzenChart>
             <h2>Basement</h2>
             <RadzenChart class="m-3">
-                <RadzenLineSeries Smooth="@smooth" Data="@Basement" CategoryProperty="timeStamp" Title="Temp" LineType="LineType.Dashed" ValueProperty="temperature">
+                <RadzenLineSeries Smooth="@smooth" Data="@BasementTemp" CategoryProperty="timeStamp" Title="Temp" LineType="LineType.Dashed" ValueProperty="value">
                     <RadzenMarkers MarkerType="MarkerType.Square"/>
                     <RadzenSeriesDataLabels Visible="@showDataLabels"/>
                 </RadzenLineSeries>
-                <RadzenLineSeries Smooth="@smooth" Data="@Basement" CategoryProperty="timeStamp" Title="Humid" ValueProperty="humidity">
+                <RadzenLineSeries Smooth="@smooth" Data="@BasementHumid" CategoryProperty="timeStamp" Title="Humid" ValueProperty="value">
                     <RadzenMarkers MarkerType="MarkerType.Circle"/>
                     <RadzenSeriesDataLabels Visible="@showDataLabels"/>
                 </RadzenLineSeries>
@@ -69,9 +69,13 @@
 @code {
 
 
-    public List<Climate> FirstFloor { get; set; }
-    public List<Climate> GroundFloor { get; set; }
-    public List<Climate> Basement { get; set; }
+    public List<Temperature> FirstFloorTemp { get; set; }
+    public List<Temperature> GroundFloorTemp { get; set; }
+    public List<Temperature> BasementTemp { get; set; }
+    public List<Humidity> FirstFloorHumid { get; set; }
+    public List<Humidity> GroundFloorHumid { get; set; }
+    public List<Humidity> BasementHumid { get; set; }
+    
     public DateTime? Date { get; set; }
 
     protected override async Task OnInitializedAsync()
@@ -83,9 +87,12 @@
     {
         if (Date.HasValue)
         {
-            FirstFloor = await ClimateService.GetClimates(Date.Value, 2);
-            GroundFloor = await ClimateService.GetClimates(Date.Value, 1);
-            Basement = await ClimateService.GetClimates(Date.Value, 0);
+            FirstFloorTemp = await ClimateService.GetTemperaturesFromDateAndFloor(Date.Value, 2);
+            FirstFloorHumid = await ClimateService.GetHumidityFromDateAndFloor(Date.Value, 2);
+            GroundFloorTemp = await ClimateService.GetTemperaturesFromDateAndFloor(Date.Value, 1);
+            GroundFloorHumid = await ClimateService.GetHumidityFromDateAndFloor(Date.Value, 1);
+            BasementTemp = await ClimateService.GetTemperaturesFromDateAndFloor(Date.Value, 0);
+            BasementHumid = await ClimateService.GetHumidityFromDateAndFloor(Date.Value, 0);
         }
     }
 
