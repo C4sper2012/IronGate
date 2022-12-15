@@ -1,0 +1,27 @@
+
+MQTT Topics
+
+IP: 10.135.16.65
+
+
+First Floor:
+
+Home/FirstFloor/Temp
+Home/FirstFloor/Humid
+Home/FirstFloor/Motion
+Home/FirstFloor/Sound
+Home/FirstFloor/Window
+
+
+Ground Floor:
+
+Home/GroundFloor/Temp
+Home/GroundFloor/Humid
+Home/GroundFloor/Window
+
+Basement:
+
+Home/Basement/Temp
+Home/Basement/Humid
+Home/Basement/WaterLevel
+Home/Basement/Window
