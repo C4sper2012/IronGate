@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Irongate.Blazor.Pages.Login;
@@ -13,8 +12,7 @@ public class Logout : PageModel
     public async Task OnGet()
     {
         var authenticationProperties = new LogoutAuthenticationPropertiesBuilder()
-
-            .WithRedirectUri(Url.Page("/"))
+            .WithRedirectUri("/")
             .Build();
 
         await HttpContext.SignOutAsync(Auth0Constants.AuthenticationScheme, authenticationProperties);

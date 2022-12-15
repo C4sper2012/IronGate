@@ -6,12 +6,13 @@ namespace Irongate.Blazor.Pages.Login;
 
 public class Login : PageModel
 {
-    public async Task OnGet(string returnUrl = "/Account")
+    public async Task OnGet()
     {
         var authenticationProperties = new LoginAuthenticationPropertiesBuilder()
-            .WithRedirectUri(returnUrl)
+            .WithRedirectUri("/Account")
             .WithAudience("https://IronGate/api")
             .Build();
+        
         await HttpContext.ChallengeAsync(Auth0Constants.AuthenticationScheme, authenticationProperties);
     }
 }
