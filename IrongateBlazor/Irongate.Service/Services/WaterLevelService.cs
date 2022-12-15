@@ -17,7 +17,7 @@ namespace Irongate.Service.Services
 
         public async Task<List<WaterLevel>> GetWaterLevel(DateTime dateTime)
         {
-            RestClient client = new($"http://{AppConstants.DatabaseAddress}/WaterLevel/{dateTime.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture)}");
+            RestClient client = new($"{AppConstants.APIAddress}/WaterLevel/{dateTime.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture)}");
             RestRequest request = new()
             {
                 Method = Method.Get

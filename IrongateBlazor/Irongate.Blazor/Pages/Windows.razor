@@ -33,36 +33,36 @@
     
     void OnClickFirstFloor(RadzenSplitButtonItem item)
     {
-        string broker = ConfigurationBuilder["Thingspeak:WindowControls:FirstFloor:Broker"];
-        int port =  Convert.ToInt32(ConfigurationBuilder["Thingspeak:WindowControls:FirstFloor:Port"]);
-        string clientId = ConfigurationBuilder["Thingspeak:WindowControls:FirstFloor:ClientId"];
-        string username = ConfigurationBuilder["Thingspeak:WindowControls:FirstFloor:Username"];
-        string password = ConfigurationBuilder["Thingspeak:WindowControls:FirstFloor:Password"];
-        string topic = ConfigurationBuilder["Thingspeak:WindowControls:FirstFloor:Topic"];
+        string broker = ConfigurationBuilder["MosquittoBroker:WindowControls:FirstFloor:Broker"];
+        int port =  Convert.ToInt32(ConfigurationBuilder["MosquittoBroker:WindowControls:FirstFloor:Port"]);
+        string clientId = ConfigurationBuilder["MosquittoBroker:WindowControls:FirstFloor:ClientId"];
+        string username = ConfigurationBuilder["MosquittoBroker:WindowControls:FirstFloor:Username"];
+        string password = ConfigurationBuilder["MosquittoBroker:WindowControls:FirstFloor:Password"];
+        string topic = ConfigurationBuilder["MosquittoBroker:WindowControls:FirstFloor:Topic"];
         
         WindowService.Init(broker, port, clientId, topic, username, password, item.Value);
     }
 
     void OnClickGroundFloor(RadzenSplitButtonItem item)
     {
-        string broker = ConfigurationBuilder["Thingspeak:WindowControls:GroundFloor:Broker"];
-        int port =  Convert.ToInt32(ConfigurationBuilder["Thingspeak:WindowControls:GroundFloor:Port"]);
-        string clientId = ConfigurationBuilder["Thingspeak:WindowControls:GroundFloor:ClientId"];
-        string username = ConfigurationBuilder["Thingspeak:WindowControls:GroundFloor:Username"];
-        string password = ConfigurationBuilder["Thingspeak:WindowControls:GroundFloor:Password"];
-        string topic = ConfigurationBuilder["Thingspeak:WindowControls:GroundFloor:Topic"];
+        string broker = ConfigurationBuilder["MosquittoBroker:WindowControls:GroundFloor:Broker"];
+        int port =  Convert.ToInt32(ConfigurationBuilder["MosquittoBroker:WindowControls:GroundFloor:Port"]);
+        string clientId = ConfigurationBuilder["MosquittoBroker:WindowControls:GroundFloor:ClientId"];
+        string username = ConfigurationBuilder["MosquittoBroker:WindowControls:GroundFloor:Username"];
+        string password = ConfigurationBuilder["MosquittoBroker:WindowControls:GroundFloor:Password"];
+        string topic = ConfigurationBuilder["MosquittoBroker:WindowControls:GroundFloor:Topic"];
         
         WindowService.Init(broker, port, clientId, topic, username, password, item.Value);
     }
     
     void OnClickBasement(RadzenSplitButtonItem item)
     {
-        string broker = ConfigurationBuilder["Thingspeak:WindowControls:Basement:Broker"];
-        int port =  Convert.ToInt32(ConfigurationBuilder["Thingspeak:WindowControls:Basement:Port"]);
-        string clientId = ConfigurationBuilder["Thingspeak:WindowControls:Basement:ClientId"];
-        string username = ConfigurationBuilder["Thingspeak:WindowControls:Basement:Username"];
-        string password = ConfigurationBuilder["Thingspeak:WindowControls:Basement:Password"];
-        string topic = ConfigurationBuilder["Thingspeak:WindowControls:Basement:Topic"];
+        string broker = ConfigurationBuilder["MosquittoBroker:WindowControls:Basement:Broker"];
+        int port =  Convert.ToInt32(ConfigurationBuilder["MosquittoBroker:WindowControls:Basement:Port"]);
+        string clientId = ConfigurationBuilder["MosquittoBroker:WindowControls:Basement:ClientId"];
+        string username = ConfigurationBuilder["MosquittoBroker:WindowControls:Basement:Username"];
+        string password = ConfigurationBuilder["MosquittoBroker:WindowControls:Basement:Password"];
+        string topic = ConfigurationBuilder["MosquittoBroker:WindowControls:Basement:Topic"];
         
         WindowService.Init(broker, port, clientId, topic, username, password, item.Value);
     }

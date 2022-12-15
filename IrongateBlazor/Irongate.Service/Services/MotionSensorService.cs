@@ -19,7 +19,7 @@ namespace Irongate.Service.Services
 
         public async Task<List<MotionSensor>> GetSensor()
         {
-            var client = new RestClient($"http://{AppConstants.DatabaseAddress}/Sensor/all");
+            var client = new RestClient($"{AppConstants.APIAddress}/Sensor/all");
             var request = new RestRequest();
             request.Method = Method.Get;
             request.AddHeader("content-type", "application/json");

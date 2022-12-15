@@ -21,7 +21,7 @@ namespace Irongate.Service.Services
         {
             try
             {
-                var client = new RestClient($"http://{AppConstants.DatabaseAddress}/Log/Create");
+                var client = new RestClient($"{AppConstants.APIAddress}/Log/Create");
                 var request = new RestRequest();
                 request.Method = Method.Post;
                 request.AddHeader("content-type", "application/json");
@@ -38,7 +38,7 @@ namespace Irongate.Service.Services
         
         public async Task DeleteAsync()
         {
-            var client = new RestClient($"http://{AppConstants.DatabaseAddress}/Log/Clear");
+            var client = new RestClient($"{AppConstants.APIAddress}/Log/Clear");
             var request = new RestRequest();
             request.Method = Method.Get;
             request.AddHeader("content-type", "application/json");
@@ -51,7 +51,7 @@ namespace Irongate.Service.Services
         {
             try
             {
-                var client = new RestClient($"http://{AppConstants.DatabaseAddress}/Log/all");
+                var client = new RestClient($"{AppConstants.APIAddress}/Log/all");
                 var request = new RestRequest();
                 request.Method = Method.Get;
                 request.AddHeader("authorization",

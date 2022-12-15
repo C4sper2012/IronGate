@@ -21,7 +21,7 @@ namespace Irongate.Service.Services
         
         public async Task<List<Climate>> GetClimates(DateTime dateTime, int floor)
         {
-            string url = $"http://{AppConstants.DatabaseAddress}/Climate/{dateTime.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture)}/{floor}";
+            string url = $"{AppConstants.APIAddress}/Climate/{dateTime.ToString("yyyy-MM-dd HH:mm:ss", CultureInfo.InvariantCulture)}/{floor}";
             var client = new RestClient(url);
             var request = new RestRequest();
             request.Method = Method.Get;
