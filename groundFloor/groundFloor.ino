@@ -80,29 +80,29 @@ void connect() {
     WiFiDrv::digitalWrite(BLUELED, LOW);
     delay(1000);
   }
-
   connectMQTT();
   WiFiDrv::digitalWrite(GREENLED, HIGH);
-
   Serial.println("\nconnected!");
 }
 
 void messageReceived(String &topic, String &payload) {
   Serial.println(payload);
   Serial.println(topic);
-  
   getPayload(topic, payload);
-
 }
 
 void getPayload(String topic, String payload) {
 
   if (topic == firstFloorMotion && payload == "1") {
     int motionDelay = millis();
-
+    WiFiDrv::digitalWrite(GREENLED, LOW);
     updateOledMotion();
     while (millis() < motionDelay + 3000) {}
+    WiFiDrv::digitalWrite(GREENLED, HIGH);
   }
+  else if (topic == firstFloorMotion && payload == "0") {
+    client.publish(groundFloorWindow, "1");
+  } 
   if (topic == basementTemp) {
     baseTemp = payload;
   }
@@ -127,6 +127,17 @@ void getPayload(String topic, String payload) {
 }
 
 void updateOledMotion() {
+  int alarmDelay = millis();
+  for (size_t i = 0; i < 3; i++) {
+    WiFiDrv::digitalWrite(BLUELED, HIGH);
+    delay(100);
+    WiFiDrv::digitalWrite(BLUELED, LOW);
+    delay(100);
+    WiFiDrv::digitalWrite(BLUELED, HIGH);
+    delay(100);
+    WiFiDrv::digitalWrite(BLUELED, LOW);
+  }
+ 
   display.clearDisplay();
   display.setTextSize(1);
   display.setTextColor(WHITE);
@@ -138,23 +149,23 @@ void updateOledMotion() {
 #pragma region TempAndHumid
 
 void updateOLED(String displayHeader, String displayTemp, String displayHumid) {
-    display.clearDisplay();
-    display.setTextSize(1);
-    display.setTextColor(WHITE);
-    display.setCursor(0, 0);
-    display.print(displayHeader);
-    display.setCursor(0, 10);
-    display.println("--------------------");
-    display.setTextSize(2);
-    display.setCursor(0, 20);
-    display.print("Temp: ");
-    display.print(displayTemp);
-    display.write(248);
-    display.setCursor(0, 40);
-    display.print("Humid: ");
-    display.print(displayHumid);
-    display.print("%");
-    display.display(); 
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(WHITE);
+  display.setCursor(0, 0);
+  display.print(displayHeader);
+  display.setCursor(0, 10);
+  display.println("--------------------");
+  display.setTextSize(2);
+  display.setCursor(0, 20);
+  display.print("Temp: ");
+  display.print(displayTemp);
+  display.write(248);
+  display.setCursor(0, 40);
+  display.print("Humid: ");
+  display.print(displayHumid);
+  display.print("%");
+  display.display(); 
 }
 
 void publishTempAndHum() {
@@ -166,8 +177,8 @@ void publishTempAndHum() {
   humidResult += h;
   Serial.println(tempResult);
   Serial.println(humidResult);
-  client.publish(groundFloorTemp, tempResult);
-  client.publish(groundFloorHumid, humidResult);
+  client.publish(groundFloorTemp, tempResult, true, 0);
+  client.publish(groundFloorHumid, humidResult, true, 0);
 }
 
 #pragma endregion
@@ -221,10 +232,10 @@ void readCard() {
   byte letter;
   for (byte i = 0; i < mfrc522.uid.size; i++)
   {
-     Serial.print(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " ");
-     Serial.print(mfrc522.uid.uidByte[i], HEX);
-     content.concat(String(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " "));
-     content.concat(String(mfrc522.uid.uidByte[i], HEX));
+    Serial.print(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " ");
+    Serial.print(mfrc522.uid.uidByte[i], HEX);
+    content.concat(String(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " "));
+    content.concat(String(mfrc522.uid.uidByte[i], HEX));
   }
   Serial.println();
   Serial.print("Message : ");
@@ -234,8 +245,7 @@ void readCard() {
     Serial.println("Authorized access");
     authenticated = true;
   }
- 
- else   {
+  else   {
     Serial.println(" Access denied");
     delay(3000);
   }
@@ -250,8 +260,6 @@ void openAllWindows() {
   client.publish(groundFloorWindow, "1");
   client.publish(basementWindow, "1");
 }
-
-void closeAllWindows() {}
 
 void writeServo(String value) {
   if (value == "1") {
