@@ -31,36 +31,36 @@
     
     void OnClickFirstFloor(RadzenSplitButtonItem item)
     {
-        string broker = ConfigurationBuilder["MosquittoBroker:WindowControls:FirstFloor:Broker"];
-        int port =  Convert.ToInt32(ConfigurationBuilder["MosquittoBroker:WindowControls:FirstFloor:Port"]);
-        string clientId = ConfigurationBuilder["MosquittoBroker:WindowControls:FirstFloor:ClientId"];
-        string username = ConfigurationBuilder["MosquittoBroker:WindowControls:FirstFloor:Username"];
-        string password = ConfigurationBuilder["MosquittoBroker:WindowControls:FirstFloor:Password"];
-        string topic = ConfigurationBuilder["MosquittoBroker:WindowControls:FirstFloor:Topic"];
+        string broker = ConfigurationBuilder["MosquittoBroker:WindowsControls:FirstFloor:Broker"];
+        int port =  Convert.ToInt32(ConfigurationBuilder["MosquittoBroker:WindowsControls:FirstFloor:Port"]);
+        string clientId = ConfigurationBuilder["MosquittoBroker:WindowsControls:FirstFloor:ClientId"];
+        string username = ConfigurationBuilder["MosquittoBroker:WindowsControls:FirstFloor:Username"];
+        string password = ConfigurationBuilder["MosquittoBroker:WindowsControls:FirstFloor:Password"];
+        string topic = ConfigurationBuilder["MosquittoBroker:WindowsControls:FirstFloor:Topic"];
         
         WindowService.Init(broker, port, clientId, topic, username, password, item.Value);
     }
 
     void OnClickGroundFloor(RadzenSplitButtonItem item)
     {
-        string broker = ConfigurationBuilder["MosquittoBroker:WindowControls:GroundFloor:Broker"];
-        int port =  Convert.ToInt32(ConfigurationBuilder["MosquittoBroker:WindowControls:GroundFloor:Port"]);
-        string clientId = ConfigurationBuilder["MosquittoBroker:WindowControls:GroundFloor:ClientId"];
-        string username = ConfigurationBuilder["MosquittoBroker:WindowControls:GroundFloor:Username"];
-        string password = ConfigurationBuilder["MosquittoBroker:WindowControls:GroundFloor:Password"];
-        string topic = ConfigurationBuilder["MosquittoBroker:WindowControls:GroundFloor:Topic"];
+        string broker = ConfigurationBuilder["MosquittoBroker:WindowsControls:GroundFloor:Broker"];
+        int port =  Convert.ToInt32(ConfigurationBuilder["MosquittoBroker:WindowsControls:GroundFloor:Port"]);
+        string clientId = ConfigurationBuilder["MosquittoBroker:WindowsControls:GroundFloor:ClientId"];
+        string username = ConfigurationBuilder["MosquittoBroker:WindowsControls:GroundFloor:Username"];
+        string password = ConfigurationBuilder["MosquittoBroker:WindowsControls:GroundFloor:Password"];
+        string topic = ConfigurationBuilder["MosquittoBroker:WindowsControls:GroundFloor:Topic"];
         
         WindowService.Init(broker, port, clientId, topic, username, password, item.Value);
     }
     
     void OnClickBasement(RadzenSplitButtonItem item)
     {
-        string broker = ConfigurationBuilder["MosquittoBroker:WindowControls:Basement:Broker"];
-        int port =  Convert.ToInt32(ConfigurationBuilder["MosquittoBroker:WindowControls:Basement:Port"]);
-        string clientId = ConfigurationBuilder["MosquittoBroker:WindowControls:Basement:ClientId"];
-        string username = ConfigurationBuilder["MosquittoBroker:WindowControls:Basement:Username"];
-        string password = ConfigurationBuilder["MosquittoBroker:WindowControls:Basement:Password"];
-        string topic = ConfigurationBuilder["MosquittoBroker:WindowControls:Basement:Topic"];
+        string broker = ConfigurationBuilder["MosquittoBroker:WindowsControls:Basement:Broker"];
+        int port =  Convert.ToInt32(ConfigurationBuilder["MosquittoBroker:WindowsControls:Basement:Port"]);
+        string clientId = ConfigurationBuilder["MosquittoBroker:WindowsControls:Basement:ClientId"];
+        string username = ConfigurationBuilder["MosquittoBroker:WindowsControls:Basement:Username"];
+        string password = ConfigurationBuilder["MosquittoBroker:WindowsControls:Basement:Password"];
+        string topic = ConfigurationBuilder["MosquittoBroker:WindowsControls:Basement:Topic"];
         
         WindowService.Init(broker, port, clientId, topic, username, password, item.Value);
     }

@@ -2,6 +2,6 @@
 {
     public class AppConstants
     {
-        public const string APIAddress = "https://10.135.16.53:8181";
+        public const string APIAddress = "http://10.135.16.53:8080";
     }
 }
