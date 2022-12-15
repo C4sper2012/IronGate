@@ -1,5 +1,4 @@
 ﻿using Irongate.Service.Models.Enum;
-using Newtonsoft.Json;
 
 namespace Irongate.Service.Models
 {

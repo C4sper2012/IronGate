@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace Irongate.Service.Models
+﻿namespace Irongate.Service.Models
 {
     public class WaterLevel
     {

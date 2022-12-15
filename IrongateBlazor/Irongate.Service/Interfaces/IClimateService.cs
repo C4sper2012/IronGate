@@ -1,5 +1,4 @@
 ﻿using Irongate.Service.Models;
-using Irongate.Service.Models.Enum;
 
 namespace Irongate.Service.Interfaces
 {

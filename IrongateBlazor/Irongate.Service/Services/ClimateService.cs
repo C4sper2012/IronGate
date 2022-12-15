@@ -3,7 +3,6 @@ using System.Text.Json;
 using Irongate.Service.Constants;
 using Irongate.Service.Interfaces;
 using Irongate.Service.Models;
-using Irongate.Service.Models.Enum;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using RestSharp;
