@@ -44,6 +44,16 @@ This section contains information about what libraries the different devices use
 | OLED | Addafruit SSD1306 | Adafruit | 2.5.6 |
 | None | MQTT | Joel Gaehwiler | 2.5.0 |
 
+## MQTT Broker (New)
+
+### Topic descriptions
+This section contains descriptions about all the topics the devices use.
+
+#### IronGate-WindowControl
+The *windows* channel is the IronGate window control channel and is used by the diffrent devices to subscribe and listen to.
+
+## Thingspeak (Deprecated)
+
 ### Channel descriptions
 This section contains descriptions about all the channels the devices uses.
 
@@ -62,94 +72,49 @@ The *1916393* channel is the IronGate uncategorized data channel and is used for
 
 The only devices that can subscribe to this channel is the **Ground floor device** and the **Client test device**.
 
-### Channel fields
-This section contains information about what fields the diffrent devices is using.
+#### Topics
 
-#### 1916369 - IronGate-WindowControl
-| Device | Field | Purpose |
-|---------|-------|---------|
-| Bassement | Field1 | Servo controls |
-| Ground floor | Field3 | Servo controls |
-| First floor | Field5 | Servo controls |
+| FirstFloor | Purpose |
+|----------- | --------|
+| Home/FirstFloor/Temp | Temperature data | 
+| Home/FirstFloor/Humid | Humidity data |
+| Home/FirstFloor/Motion | Motion sensor data |
+| Home/FirstFloor/Sound | Sound sensor data |
+| Home/FirstFloor/Window |Servo controls |
 
-#### 1916370 - IronGate-TemperatureAndHumidity
-| Device | Field | Purpose |
-|---------|-------|---------|
-| Bassement | Field1 | Temperature data |
-| Bassement | Field2 | Humidity data |
-| Ground floor | Field4 | Temperature data |
-| Ground floor | Field5 | Humidity data |
-| First floor | Field7 | Temperature data |
-| First floor | Field8 | Humidity data |
+| GroundFloor | Purpose |
+| -------------- | ------ |
+| Home/GroundFloor/Temp | Temperature data |
+| Home/GroundFloor/Humid | Humidity data |
+| Home/GroundFloor/Window | Servo controls |
 
-#### 1916393 - IronGate-Uncategorized
-| Device | Field | Purpose |
-|---------|-------|---------|
-| Bassement | Field1 | Water level data |
-| Ground floor | Field4 | Motion sensor data |
-| First floor | Field7 | Sound sensor data |
-
-### Permissions
-This section contains information about what permissions the diffrent device have on the ThingSpeak broker.
-
-#### First floor device
-| Channel | Publish | Subscribe |
-|---------|---------|-----------|
-| 1916369 | X | X |
-| 1916370 | X | |
-| 1916393 | X | |
-
-#### Ground floor device
-| Channel | Publish | Subscribe |
-|---------|---------|-----------|
-| 1916369 | X | X |
-| 1916370 | X | X |
-| 1916393 | X | X |
-
-#### Bassement floor device
-| Channel | Publish | Subscribe |
-|---------|---------|-----------|
-| 1916369 | | X |
-| 1916370 | X | |
-| 1916393 | X | |
-
-#### Client test device
-This device is only used for test purposes.
-
-| Channel | Publish | Subscribe |
-|---------|---------|-----------|
-| 1916369 | X | X |
-| 1916370 | X | X |
-| 1916393 | X | X |
+| Basement | Purpose | 
+| ---------| ------- | 
+| Home/Basement/Temp | Temperature data |
+| Home/Basement/Humid | Humidity data | 
+| Home/Basement/WaterLevel | Water level data |
+| Home/Basement/Window | Servo controls |
 
 ### Access
 This section contains information about what credentials the diffrent devices is using.
 
 #### First floor device
-- Host = mqtt3.thingspeak.com
-- Username = NAU4KRsqEB05FzIpJCUvBy0
-- ClientId = NAU4KRsqEB05FzIpJCUvBy0
-- Password = lDoIYJHbpSkvHVOXAO+eqa/M
+- Host = 10.135.16.65
+- Username = IronGate
+- ClientId = FirstFloor_Arduino
+- Password = Qjc2WZFw
 
 #### Ground  floor device
-- Host = mqtt3.thingspeak.com
-- Username = DgciLSs4AAUdCy8AAjsoFgE
-- ClientId = DgciLSs4AAUdCy8AAjsoFgE
-- Password = GYsbytl/X62bjKR9JbYHEsQP
+- Host = 10.135.16.65
+- Username = IronGate
+- ClientId = GroundFloor_Arduino
+- Password = Qjc2WZFw
 
 #### Bassement floor device
-- Host = mqtt3.thingspeak.com
-- Username = CQ0EDQI2GxoiETYQEAAwEhE
-- ClientId = CQ0EDQI2GxoiETYQEAAwEhE
-- Password = ZZP3jZxHza3XO1XMJ4AFbk65
-
-#### Client test device
-This device is only used for test purposes.
-
-- Host = mqtt3.thingspeak.com
-- Username = GCcqATMiOBASNBspJzkSMwI
-- ClientId = GCcqATMiOBASNBspJzkSMwI
-- Password = hSSRXoNF/co86QYUOwJVZ4jd
+- Host = 10.135.16.65
+- Username = IronGate
+- ClientId = Basement_Arduino
+- Password = Qjc2WZFw
 
 ## Diagrams
 ### Psysical Architecture
