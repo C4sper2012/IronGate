@@ -77,6 +77,7 @@ void sendMessage(String restTopic , String payload, bool retained = false, int q
 {
   String fullTopic = String("Home/Basement/" + restTopic);
   client.publish(fullTopic, payload, retained, qos);
+  
   Serial.println(String("Data send - " + payload));
   Serial.println(String("Topic - " + fullTopic));
 }
@@ -120,7 +121,7 @@ void checkWaterLevel()
     
   if (lastWaterLevel != level) {
     lastWaterLevel = level;
-    sendMessage("WaterLevel", String(level));
+    sendMessage("WaterLevel", String(level), true, 1);
   }
 }
 
@@ -130,8 +131,8 @@ void checkTempsAndHumi()
   int t = dht.readTemperature();
   int h = dht.readHumidity();
 
-  sendMessage("Temp", String(t));
-  sendMessage("Humid", String(h));  
+  sendMessage("Temp", String(t), true);
+  sendMessage("Humid", String(h), true);  
 }
 
 void setup() {
@@ -182,7 +183,7 @@ void loop()
   }
 
   //DHT11 sensor
-  if (millis() - lastMillis > 60000) {
+  if (millis() - lastMillis > 1800000) {
     lastMillis = millis();
     checkTempsAndHumi();
   }
